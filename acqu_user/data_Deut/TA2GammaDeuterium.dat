@@ -1,0 +1,29 @@
+## SVN info: $Id: GeomCalibPhysics.dat 31 2011-07-01 19:56:18Z mushkar $
+##
+## Particle data group database,	max # particles
+ParticleID:				16
+##
+## Do some post-initialisation.
+## Should usually be done before display is setup
+Initialise:
+##
+#
+# Initail offset of scalers channels
+# Offset:  0
+# Cut specification...see apparatus setup, same syntax applies
+#         1/2D 	Name      	Link    Scope   Low/High Limits
+#
+# Histograms of physics-level variables
+# histogram name should be preceeded by 1D or 2D (for dimension of spectrum)
+#    for 1D      Name        	chan/low/high   min/max condition(opt)
+#    for 2D     X-Name  X-ch/low/high/id  	Y-Name   Y-ch/low/high/id  Cond(opt)
+#Display: 1D MaxTAGG 400 0 400
+#Display: 1D MaxCB 40 0 40
+#Display: 1D MaxTAPS 20 0 20
+#Display: 1D MaxPID 30 0 30
+Display: 1D ScalCurr 352 0 352
+Display: 1D ScalAcc 352 0 352
+Display: 1D ScalAccCorr 352 0 352
+#
+## END
+

@@ -1,0 +1,27 @@
+#------------------------------------------------------------------------------
+#                     Configuration file for TA2Tagger
+#          (AcquRoot 4v4 user package Tagger apparatus class)
+#------------------------------------------------------------------------------
+#
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#Set-up of magnetic field and MAMI electron beam energy (needed for correct
+#calculation of emitted photon energy).
+#         NMR field    MAMI beam energy
+Magnet:   1.0249        883.15
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#Detector systems in Tagger apparatus
+#         Name       Class Name      Setup file
+Detector: FPD        TA2Ladder          Analysis-Tagger-FP883.dat
+#
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#Standard AcquRoot options
+Reconstruct:
+ParticleID:   16
+Initialise:
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

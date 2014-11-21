@@ -1,0 +1,33 @@
+## SVN info: $Id: CentralApparatus.dat 119 2013-03-11 11:45:08Z mushkar $
+##-----------------------------------------------------------------------
+##
+## Specify list of detectors which constitute the Crystal Ball apparatus
+##	  Name       Class Name		Setup file
+#_______________________________________________________________
+# 
+Detector: NaI        TA2CalArray        Analysis-NaI.dat
+Detector: PID        TA2PlasticPID      Analysis-PID.dat
+Detector: CylMWPC    TA2CylMwpc         Analysis-MWPC.dat
+#_______________________________________________________________
+#
+## Data reconstruction method for Crystal Ball 
+Reconstruct:
+##
+## PDG database	# particles
+ParticleID: 	16
+##
+## Angle-difference limits (in rad.)  for hits correlation
+## 		MaxPhiMwpcNaI	MaxPhiTrackPid	MaxPhiPidNaI	MaxPhiMwpcInterNaI	MaxPhiMwpcInterPid
+# AngleLimits:	20.		50.		100.		30.			50.
+AngleLimits:	20.             50.             15.             60.                     50.
+##
+##
+##		MaxTrack	MaxRpsvertex	MaxZpsvertex	MinZpsvertex
+# TrackLimits:	10		30.		500.		-500.
+TrackLimits:	10		70.		500.		-500.
+##
+## Do some post-initialisation.
+## Should usually be done before display is setup
+Initialise:
+##
+#

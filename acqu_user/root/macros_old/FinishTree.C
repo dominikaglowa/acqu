@@ -15,7 +15,4 @@ void FinishTree(Char_t* file = NULL)
 	f1.Close();
   	printf("done.\n",file);
   	printf("All histograms saved to %s\n",file);
-    
-        gSystem->Exit(0);
-
 }
