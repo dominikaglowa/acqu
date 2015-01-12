@@ -1,0 +1,164 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   13th Jan 2004
+##--Update	JRM Annand... 1st Dec 2004
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data
+##
+## Parameter File: FPcommServer.Offline
+## Configuration file for DataServer (data input for analysis)
+##
+##-----------------------------------------------------------------------
+## Number of Input streams (sources of data), Record length to write data
+## and switch 0/1 = no/yes to control data write
+##              Number streams	Record Len	Save Data
+Input-Streams:	1		32768		0
+##
+## Optional directory spec. If not specified File-Names must contain the full
+## directory path
+File-Directory: /home/susanna/acqu_git_aug13/acqu_user/InData/Nov13/
+##
+## Specify each input stream
+## From disk file, ACQU (Mk1) format, save any output to file (save=1)
+## Input data record length, Output data record length
+##
+##            	Source	Format	Save?	RecLen	Buffers	Swap	MarkID
+Stream-Spec:	File	Mk1	0	32768	32	0	400
+##
+## Now the list of data files to analyse
+##		File Name	1st rec	Last rec
+#
+#
+# November13 - beamtime runs
+# diamond 350 MeV
+File-Name:	CBTaggTAPS_322.dat	0	0
+File-Name:	CBTaggTAPS_324.dat	0	0
+File-Name:	CBTaggTAPS_326.dat	0	0
+File-Name:	CBTaggTAPS_330.dat	0	0
+File-Name:	CBTaggTAPS_334.dat	0	0
+File-Name:	CBTaggTAPS_335.dat	0	0
+File-Name:	CBTaggTAPS_354.dat	0	0
+File-Name:	CBTaggTAPS_355.dat	0	0
+File-Name:	CBTaggTAPS_356.dat	0	0
+File-Name:	CBTaggTAPS_357.dat	0	0
+File-Name:	CBTaggTAPS_358.dat	0	0
+File-Name:	CBTaggTAPS_359.dat	0	0
+File-Name:	CBTaggTAPS_360.dat	0	0
+File-Name:	CBTaggTAPS_361.dat	0	0
+File-Name:	CBTaggTAPS_362.dat	0	0
+File-Name:	CBTaggTAPS_365.dat	0	0
+File-Name:	CBTaggTAPS_372.dat	0	0
+File-Name:	CBTaggTAPS_376.dat	0	0
+File-Name:	CBTaggTAPS_377.dat	0	0
+File-Name:	CBTaggTAPS_378.dat	0	0
+File-Name:	CBTaggTAPS_381.dat	0	0
+File-Name:	CBTaggTAPS_383.dat	0	0
+File-Name:	CBTaggTAPS_384.dat	0	0
+File-Name:	CBTaggTAPS_385.dat	0	0
+File-Name:	CBTaggTAPS_388.dat	0	0
+File-Name:	CBTaggTAPS_389.dat	0	0
+File-Name:	CBTaggTAPS_391.dat	0	0
+File-Name:	CBTaggTAPS_393.dat	0	0
+File-Name:	CBTaggTAPS_395.dat	0	0
+File-Name:	CBTaggTAPS_397.dat	0	0
+File-Name:	CBTaggTAPS_401.dat	0	0
+File-Name:	CBTaggTAPS_402.dat	0	0
+File-Name:	CBTaggTAPS_404.dat	0	0
+File-Name:	CBTaggTAPS_406.dat	0	0
+File-Name:	CBTaggTAPS_407.dat	0	0
+File-Name:	CBTaggTAPS_408.dat	0	0
+File-Name:	CBTaggTAPS_409.dat	0	0
+## reversed target polarisation
+File-Name:	CBTaggTAPS_860.dat	0	0
+File-Name:	CBTaggTAPS_861.dat	0	0
+File-Name:	CBTaggTAPS_862.dat	0	0
+File-Name:	CBTaggTAPS_863.dat	0	0
+File-Name:	CBTaggTAPS_864.dat	0	0
+File-Name:	CBTaggTAPS_865.dat	0	0
+File-Name:	CBTaggTAPS_866.dat	0	0
+File-Name:	CBTaggTAPS_867.dat	0	0
+File-Name:	CBTaggTAPS_868.dat	0	0
+File-Name:	CBTaggTAPS_869.dat	0	0
+File-Name:	CBTaggTAPS_870.dat	0	0
+File-Name:	CBTaggTAPS_871.dat	0	0
+File-Name:	CBTaggTAPS_872.dat	0	0
+File-Name:	CBTaggTAPS_873.dat	0	0
+File-Name:	CBTaggTAPS_874.dat	0	0
+File-Name:	CBTaggTAPS_875.dat	0	0
+File-Name:	CBTaggTAPS_876.dat	0	0
+File-Name:	CBTaggTAPS_877.dat	0	0
+File-Name:	CBTaggTAPS_878.dat	0	0
+File-Name:	CBTaggTAPS_880.dat	0	0
+File-Name:	CBTaggTAPS_882.dat	0	0
+File-Name:	CBTaggTAPS_883.dat	0	0
+File-Name:	CBTaggTAPS_884.dat	0	0
+File-Name:	CBTaggTAPS_885.dat	0	0
+File-Name:	CBTaggTAPS_887.dat	0	0
+File-Name:	CBTaggTAPS_888.dat	0	0
+File-Name:	CBTaggTAPS_889.dat	0	0
+File-Name:	CBTaggTAPS_890.dat	0	0
+##
+# amorphous
+File-Name: 	CBTaggTAPS_343.dat	0	0
+#File-Name:	CBTaggTAPS_422.dat	0	0  # permission denied ???
+File-Name:	CBTaggTAPS_484.dat	0	0
+File-Name:	CBTaggTAPS_485.dat	0	0
+File-Name:	CBTaggTAPS_539.dat	0	0
+File-Name:	CBTaggTAPS_540.dat	0	0
+File-Name:	CBTaggTAPS_541.dat	0	0
+File-Name:	CBTaggTAPS_542.dat	0	0
+File-Name:	CBTaggTAPS_589.dat	0	0
+File-Name:	CBTaggTAPS_590.dat	0	0
+File-Name:	CBTaggTAPS_591.dat	0	0
+File-Name:	CBTaggTAPS_592.dat	0	0
+File-Name:	CBTaggTAPS_593.dat	0	0
+File-Name:	CBTaggTAPS_641.dat	0	0
+File-Name:	CBTaggTAPS_646.dat	0	0
+File-Name:	CBTaggTAPS_693.dat	0	0
+File-Name:	CBTaggTAPS_695.dat	0	0
+File-Name:	CBTaggTAPS_696.dat	0	0
+File-Name:	CBTaggTAPS_697.dat	0	0
+File-Name:	CBTaggTAPS_743.dat	0	0
+File-Name:	CBTaggTAPS_744.dat	0	0
+File-Name:	CBTaggTAPS_745.dat	0	0
+File-Name:	CBTaggTAPS_746.dat	0	0
+# reversed target polarisation
+# ATTENTION!!!! - check fIsReversed flag in the class
+File-Name:	CBTaggTAPS_905.dat	0	0
+File-Name:	CBTaggTAPS_906.dat	0	0
+File-Name:	CBTaggTAPS_907.dat	0	0
+File-Name:	CBTaggTAPS_908.dat	0	0
+File-Name:	CBTaggTAPS_941.dat	0	0
+File-Name:	CBTaggTAPS_1004.dat	0	0
+File-Name:	CBTaggTAPS_1043.dat	0	0
+File-Name:	CBTaggTAPS_1044.dat	0	0
+File-Name:	CBTaggTAPS_1067.dat	0	0
+File-Name:	CBTaggTAPS_1068.dat	0	0
+File-Name:	CBTaggTAPS_1069.dat	0	0
+File-Name:	CBTaggTAPS_1070.dat	0	0
+File-Name:	CBTaggTAPS_1115.dat	0	0
+File-Name:	CBTaggTAPS_1116.dat	0	0
+File-Name:	CBTaggTAPS_1117.dat	0	0
+File-Name:	CBTaggTAPS_1118.dat	0	0
+File-Name:	CBTaggTAPS_1119.dat	0	0
+File-Name:	CBTaggTAPS_1178.dat	0	0
+File-Name:	CBTaggTAPS_1179.dat	0	0
+File-Name:	CBTaggTAPS_1180.dat	0	0
+File-Name:	CBTaggTAPS_1181.dat	0	0
+File-Name:	CBTaggTAPS_1182.dat	0	0
+File-Name:	CBTaggTAPS_1185.dat	0	0
+File-Name:	CBTaggTAPS_1232.dat	0	0
+File-Name:	CBTaggTAPS_1234.dat	0	0
+File-Name:	CBTaggTAPS_1235.dat	0	0
+File-Name:	CBTaggTAPS_1236.dat	0	0
+File-Name:	CBTaggTAPS_1286.dat	0	0
+File-Name:	CBTaggTAPS_1287.dat	0	0
+File-Name:	CBTaggTAPS_1288.dat	0	0
+File-Name:	CBTaggTAPS_1289.dat	0	0
+File-Name:	CBTaggTAPS_1290.dat	0	0
+File-Name:	CBTaggTAPS_1321.dat	0	0
+File-Name:	CBTaggTAPS_1322.dat	0	0
+File-Name:	CBTaggTAPS_1323.dat	0	0
+File-Name:	CBTaggTAPS_1324.dat	0	0
+File-Name:	CBTaggTAPS_1325.dat	0	0
+## END

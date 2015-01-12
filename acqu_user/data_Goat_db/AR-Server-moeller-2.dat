@@ -1,0 +1,51 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   13th Jan 2004
+##--Update	JRM Annand... 1st Dec 2004
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data
+##
+## Parameter File: FPcommServer.Offline
+## Configuration file for DataServer (data input for analysis)
+##
+##-----------------------------------------------------------------------
+## Number of Input streams (sources of data), Record length to write data
+## and switch 0/1 = no/yes to control data write
+##              Number streams	Record Len	Save Data
+Input-Streams:	1		32768		0
+##
+## Optional directory spec. If not specified File-Names must contain the full
+## directory path
+File-Directory: /home/susanna/acqu_git_aug13/acqu_user/InData/Nov13/moeller/
+##
+## Specify each input stream
+## From disk file, ACQU (Mk1) format, save any output to file (save=1)
+## Input data record length, Output data record length
+##
+##            	Source	Format	Save?	RecLen	Buffers	Swap	MarkID
+Stream-Spec:	File	Mk2	0	32768	32	0	400
+##
+## Now the list of data files to analyse
+##		File Name	1st rec	Last rec
+#
+#
+# November13 - beamtime runs
+# amorphous 350
+# reversed target polarisation
+File-Name:	CBTaggTAPS_905.dat	0	0
+File-Name:	CBTaggTAPS_906.dat	0	0
+File-Name:	CBTaggTAPS_907.dat	0	0
+File-Name:	CBTaggTAPS_908.dat	0	0
+File-Name:	CBTaggTAPS_941.dat	0	0
+File-Name:	CBTaggTAPS_1043.dat	0	0
+File-Name:	CBTaggTAPS_1044.dat	0	0
+File-Name:	CBTaggTAPS_1067.dat	0	0
+File-Name:	CBTaggTAPS_1068.dat	0	0
+File-Name:	CBTaggTAPS_1069.dat	0	0
+File-Name:	CBTaggTAPS_1070.dat	0	0
+File-Name:	CBTaggTAPS_1115.dat	0	0
+File-Name:	CBTaggTAPS_1116.dat	0	0
+File-Name:	CBTaggTAPS_1117.dat	0	0
+File-Name:	CBTaggTAPS_1118.dat	0	0
+File-Name:	CBTaggTAPS_1119.dat	0	0
+## END

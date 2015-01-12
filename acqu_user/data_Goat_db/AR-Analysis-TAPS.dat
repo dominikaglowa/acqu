@@ -1,0 +1,445 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   29th Apr 2003
+##--Update	R Gregor...
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Parameter File: TAPS.dat (specified in CBanalysis.dat)
+## Setup analysis of the TA2Calorimeter (TAPS) apparatus class
+## This one sets up an analysis of the forward-wall BaF2 array
+## Vetos handled in BaF2 class
+##----------------------------------------------------------------------------
+##
+## Specify list of detectors which constitute the TAPS apparatus
+##	  Name         Class Name		Setup file
+## Eta Mesic
+# from Lilian&Manuel
+#Detector: BaF2PWO       TA2MyTAPS_BaF2PWO	AR-Analysis-TAPS-BaF2.dat
+#Detector: VETO          TA2PlasticVETO          AR-Analysis-TAPS-Veto.dat
+#Detector: BaF2PWO	TA2TAPS_BaF2	AR-Analysis-TAPS-BaF2.dat
+#Detector: Veto		TA2TAPS_Veto	AR-Analysis-TAPS-Veto.dat
+#Detector:	BaF2	TA2TAPS_BaF2	Detector-BaF2.dat
+Detector:	BaF2	TA2TAPS_BaF2	BaF2_e883_Dec12_cal13.dat 
+Detector:	PbWO4        TA2PlasticPID            Detector-PbWO4.dat
+#Detector: 	VetoBaF2     TA2PlasticPID            Detector-Veto.dat
+Detector: 	VetoBaF2     TA2PlasticPID            VetoBaF2.14.12.06.dat
+##
+## Data reconstruction method for Crystal Ball 
+Reconstruct:
+##
+## PDG database	# particles
+ParticleID: 	16
+## Do some post-initialisation.
+## Should usually be done before display is setup
+Initialise:
+##
+#TAPSVetoInit: 384
+#TAPS-Factor: 1.19 # was commented
+#TAPS-Factor: 1.19
+###TAPS-Factor: 2.023
+#Use time of flight 0=off 1=on
+#TAPSTOF: 0
+#Use pulsehshape 0=off 1=on
+#TAPSPSA: 0
+# PSA-Sigma*Sigma to distinguish between gamma and proton lineshape, standard = 3, first value has to be greater/equal than second
+#PSA-Sigma: 3.0 3.0
+##
+##
+##
+##
+##
+##
+#
+#Display: 2D ETAPSCluster 100 0 600   0   EVETOElement 300 0 30   0
+#Display: 2D ETAPSCluster 100 0 600   1   EVETOElement 300 0 30   1
+#Display: 2D ETAPSCluster 100 0 600   2   EVETOElement 300 0 30   2
+#Display: 2D ETAPSCluster 100 0 600   3   EVETOElement 300 0 30   3
+#Display: 2D ETAPSCluster 100 0 600   4   EVETOElement 300 0 30   4
+#Display: 2D ETAPSCluster 100 0 600   5   EVETOElement 300 0 30   5
+#Display: 2D ETAPSCluster 100 0 600   6   EVETOElement 300 0 30   6
+#Display: 2D ETAPSCluster 100 0 600   7   EVETOElement 300 0 30   7
+#Display: 2D ETAPSCluster 100 0 600   8   EVETOElement 300 0 30   8
+#Display: 2D ETAPSCluster 100 0 600   9   EVETOElement 300 0 30   9
+#Display: 2D ETAPSCluster 100 0 600  10   EVETOElement 300 0 30  10
+#Display: 2D ETAPSCluster 100 0 600  11   EVETOElement 300 0 30  11
+#Display: 2D ETAPSCluster 100 0 600  12   EVETOElement 300 0 30  12
+#Display: 2D ETAPSCluster 100 0 600  13   EVETOElement 300 0 30  13
+#Display: 2D ETAPSCluster 100 0 600  14   EVETOElement 300 0 30  14
+#Display: 2D ETAPSCluster 100 0 600  15   EVETOElement 300 0 30  15
+#Display: 2D ETAPSCluster 100 0 600  16   EVETOElement 300 0 30  16
+#Display: 2D ETAPSCluster 100 0 600  17   EVETOElement 300 0 30  17
+#Display: 2D ETAPSCluster 100 0 600  18   EVETOElement 300 0 30  18
+#Display: 2D ETAPSCluster 100 0 600  19   EVETOElement 300 0 30  19
+#Display: 2D ETAPSCluster 100 0 600  20   EVETOElement 300 0 30  20
+#Display: 2D ETAPSCluster 100 0 600  21   EVETOElement 300 0 30  21
+#Display: 2D ETAPSCluster 100 0 600  22   EVETOElement 300 0 30  22
+#Display: 2D ETAPSCluster 100 0 600  23   EVETOElement 300 0 30  23
+#Display: 2D ETAPSCluster 100 0 600  24   EVETOElement 300 0 30  24
+#Display: 2D ETAPSCluster 100 0 600  25   EVETOElement 300 0 30  25
+#Display: 2D ETAPSCluster 100 0 600  26   EVETOElement 300 0 30  26
+#Display: 2D ETAPSCluster 100 0 600  27   EVETOElement 300 0 30  27
+#Display: 2D ETAPSCluster 100 0 600  28   EVETOElement 300 0 30  28
+#Display: 2D ETAPSCluster 100 0 600  29   EVETOElement 300 0 30  29
+#Display: 2D ETAPSCluster 100 0 600  30   EVETOElement 300 0 30  30
+#Display: 2D ETAPSCluster 100 0 600  31   EVETOElement 300 0 30  31
+#Display: 2D ETAPSCluster 100 0 600  32   EVETOElement 300 0 30  32
+#Display: 2D ETAPSCluster 100 0 600  33   EVETOElement 300 0 30  33
+#Display: 2D ETAPSCluster 100 0 600  34   EVETOElement 300 0 30  34
+#Display: 2D ETAPSCluster 100 0 600  35   EVETOElement 300 0 30  35
+#Display: 2D ETAPSCluster 100 0 600  36   EVETOElement 300 0 30  36
+#Display: 2D ETAPSCluster 100 0 600  37   EVETOElement 300 0 30  37
+#Display: 2D ETAPSCluster 100 0 600  38   EVETOElement 300 0 30  38
+#Display: 2D ETAPSCluster 100 0 600  39   EVETOElement 300 0 30  39
+#Display: 2D ETAPSCluster 100 0 600  40   EVETOElement 300 0 30  40
+#Display: 2D ETAPSCluster 100 0 600  41   EVETOElement 300 0 30  41
+#Display: 2D ETAPSCluster 100 0 600  42   EVETOElement 300 0 30  42
+#Display: 2D ETAPSCluster 100 0 600  43   EVETOElement 300 0 30  43
+#Display: 2D ETAPSCluster 100 0 600  44   EVETOElement 300 0 30  44
+#Display: 2D ETAPSCluster 100 0 600  45   EVETOElement 300 0 30  45
+#Display: 2D ETAPSCluster 100 0 600  46   EVETOElement 300 0 30  46
+#Display: 2D ETAPSCluster 100 0 600  47   EVETOElement 300 0 30  47
+#Display: 2D ETAPSCluster 100 0 600  48   EVETOElement 300 0 30  48
+#Display: 2D ETAPSCluster 100 0 600  49   EVETOElement 300 0 30  49
+#Display: 2D ETAPSCluster 100 0 600  50   EVETOElement 300 0 30  50
+#Display: 2D ETAPSCluster 100 0 600  51   EVETOElement 300 0 30  51
+#Display: 2D ETAPSCluster 100 0 600  52   EVETOElement 300 0 30  52
+#Display: 2D ETAPSCluster 100 0 600  53   EVETOElement 300 0 30  53
+#Display: 2D ETAPSCluster 100 0 600  54   EVETOElement 300 0 30  54
+#Display: 2D ETAPSCluster 100 0 600  55   EVETOElement 300 0 30  55
+#Display: 2D ETAPSCluster 100 0 600  56   EVETOElement 300 0 30  56
+#Display: 2D ETAPSCluster 100 0 600  57   EVETOElement 300 0 30  57
+#Display: 2D ETAPSCluster 100 0 600  58   EVETOElement 300 0 30  58
+#Display: 2D ETAPSCluster 100 0 600  59   EVETOElement 300 0 30  59
+#Display: 2D ETAPSCluster 100 0 600  60   EVETOElement 300 0 30  60
+#Display: 2D ETAPSCluster 100 0 600  61   EVETOElement 300 0 30  61
+#Display: 2D ETAPSCluster 100 0 600  62   EVETOElement 300 0 30  62
+#Display: 2D ETAPSCluster 100 0 600  63   EVETOElement 300 0 30  63
+#Display: 2D ETAPSCluster 100 0 600  64   EVETOElement 300 0 30  64
+#Display: 2D ETAPSCluster 100 0 600  65   EVETOElement 300 0 30  65
+#Display: 2D ETAPSCluster 100 0 600  66   EVETOElement 300 0 30  66
+#Display: 2D ETAPSCluster 100 0 600  67   EVETOElement 300 0 30  67
+#Display: 2D ETAPSCluster 100 0 600  68   EVETOElement 300 0 30  68
+#Display: 2D ETAPSCluster 100 0 600  69   EVETOElement 300 0 30  69
+#Display: 2D ETAPSCluster 100 0 600  70   EVETOElement 300 0 30  70
+#Display: 2D ETAPSCluster 100 0 600  71   EVETOElement 300 0 30  71
+#Display: 2D ETAPSCluster 100 0 600  72   EVETOElement 300 0 30  72
+#Display: 2D ETAPSCluster 100 0 600  73   EVETOElement 300 0 30  73
+#Display: 2D ETAPSCluster 100 0 600  74   EVETOElement 300 0 30  74
+#Display: 2D ETAPSCluster 100 0 600  75   EVETOElement 300 0 30  75
+#Display: 2D ETAPSCluster 100 0 600  76   EVETOElement 300 0 30  76
+#Display: 2D ETAPSCluster 100 0 600  77   EVETOElement 300 0 30  77
+#Display: 2D ETAPSCluster 100 0 600  78   EVETOElement 300 0 30  78
+#Display: 2D ETAPSCluster 100 0 600  79   EVETOElement 300 0 30  79
+#Display: 2D ETAPSCluster 100 0 600  80   EVETOElement 300 0 30  80
+#Display: 2D ETAPSCluster 100 0 600  81   EVETOElement 300 0 30  81
+#Display: 2D ETAPSCluster 100 0 600  82   EVETOElement 300 0 30  82
+#Display: 2D ETAPSCluster 100 0 600  83   EVETOElement 300 0 30  83
+#Display: 2D ETAPSCluster 100 0 600  84   EVETOElement 300 0 30  84
+#Display: 2D ETAPSCluster 100 0 600  85   EVETOElement 300 0 30  85
+#Display: 2D ETAPSCluster 100 0 600  86   EVETOElement 300 0 30  86
+#Display: 2D ETAPSCluster 100 0 600  87   EVETOElement 300 0 30  87
+#Display: 2D ETAPSCluster 100 0 600  88   EVETOElement 300 0 30  88
+#Display: 2D ETAPSCluster 100 0 600  89   EVETOElement 300 0 30  89
+#Display: 2D ETAPSCluster 100 0 600  90   EVETOElement 300 0 30  90
+#Display: 2D ETAPSCluster 100 0 600  91   EVETOElement 300 0 30  91
+#Display: 2D ETAPSCluster 100 0 600  92   EVETOElement 300 0 30  92
+#Display: 2D ETAPSCluster 100 0 600  93   EVETOElement 300 0 30  93
+#Display: 2D ETAPSCluster 100 0 600  94   EVETOElement 300 0 30  94
+#Display: 2D ETAPSCluster 100 0 600  95   EVETOElement 300 0 30  95
+#Display: 2D ETAPSCluster 100 0 600  96   EVETOElement 300 0 30  96
+#Display: 2D ETAPSCluster 100 0 600  97   EVETOElement 300 0 30  97
+#Display: 2D ETAPSCluster 100 0 600  98   EVETOElement 300 0 30  98
+#Display: 2D ETAPSCluster 100 0 600  99   EVETOElement 300 0 30  99
+#Display: 2D ETAPSCluster 100 0 600 100   EVETOElement 300 0 30 100
+#Display: 2D ETAPSCluster 100 0 600 101   EVETOElement 300 0 30 101
+#Display: 2D ETAPSCluster 100 0 600 102   EVETOElement 300 0 30 102
+#Display: 2D ETAPSCluster 100 0 600 103   EVETOElement 300 0 30 103
+#Display: 2D ETAPSCluster 100 0 600 104   EVETOElement 300 0 30 104
+#Display: 2D ETAPSCluster 100 0 600 105   EVETOElement 300 0 30 105
+#Display: 2D ETAPSCluster 100 0 600 106   EVETOElement 300 0 30 106
+#Display: 2D ETAPSCluster 100 0 600 107   EVETOElement 300 0 30 107
+#Display: 2D ETAPSCluster 100 0 600 108   EVETOElement 300 0 30 108
+#Display: 2D ETAPSCluster 100 0 600 109   EVETOElement 300 0 30 109
+#Display: 2D ETAPSCluster 100 0 600 110   EVETOElement 300 0 30 110
+#Display: 2D ETAPSCluster 100 0 600 111   EVETOElement 300 0 30 111
+#Display: 2D ETAPSCluster 100 0 600 112   EVETOElement 300 0 30 112
+#Display: 2D ETAPSCluster 100 0 600 113   EVETOElement 300 0 30 113
+#Display: 2D ETAPSCluster 100 0 600 114   EVETOElement 300 0 30 114
+#Display: 2D ETAPSCluster 100 0 600 115   EVETOElement 300 0 30 115
+#Display: 2D ETAPSCluster 100 0 600 116   EVETOElement 300 0 30 116
+#Display: 2D ETAPSCluster 100 0 600 117   EVETOElement 300 0 30 117
+#Display: 2D ETAPSCluster 100 0 600 118   EVETOElement 300 0 30 118
+#Display: 2D ETAPSCluster 100 0 600 119   EVETOElement 300 0 30 119
+#Display: 2D ETAPSCluster 100 0 600 120   EVETOElement 300 0 30 120
+#Display: 2D ETAPSCluster 100 0 600 121   EVETOElement 300 0 30 121
+#Display: 2D ETAPSCluster 100 0 600 122   EVETOElement 300 0 30 122
+#Display: 2D ETAPSCluster 100 0 600 123   EVETOElement 300 0 30 123
+#Display: 2D ETAPSCluster 100 0 600 124   EVETOElement 300 0 30 124
+#Display: 2D ETAPSCluster 100 0 600 125   EVETOElement 300 0 30 125
+#Display: 2D ETAPSCluster 100 0 600 126   EVETOElement 300 0 30 126
+#Display: 2D ETAPSCluster 100 0 600 127   EVETOElement 300 0 30 127
+#Display: 2D ETAPSCluster 100 0 600 128   EVETOElement 300 0 30 128
+#Display: 2D ETAPSCluster 100 0 600 129   EVETOElement 300 0 30 129
+#Display: 2D ETAPSCluster 100 0 600 130   EVETOElement 300 0 30 130
+#Display: 2D ETAPSCluster 100 0 600 131   EVETOElement 300 0 30 131
+#Display: 2D ETAPSCluster 100 0 600 132   EVETOElement 300 0 30 132
+#Display: 2D ETAPSCluster 100 0 600 133   EVETOElement 300 0 30 133
+#Display: 2D ETAPSCluster 100 0 600 134   EVETOElement 300 0 30 134
+#Display: 2D ETAPSCluster 100 0 600 135   EVETOElement 300 0 30 135
+#Display: 2D ETAPSCluster 100 0 600 136   EVETOElement 300 0 30 136
+#Display: 2D ETAPSCluster 100 0 600 137   EVETOElement 300 0 30 137
+#Display: 2D ETAPSCluster 100 0 600 138   EVETOElement 300 0 30 138
+#Display: 2D ETAPSCluster 100 0 600 139   EVETOElement 300 0 30 139
+#Display: 2D ETAPSCluster 100 0 600 140   EVETOElement 300 0 30 140
+#Display: 2D ETAPSCluster 100 0 600 141   EVETOElement 300 0 30 141
+#Display: 2D ETAPSCluster 100 0 600 142   EVETOElement 300 0 30 142
+#Display: 2D ETAPSCluster 100 0 600 143   EVETOElement 300 0 30 143
+#Display: 2D ETAPSCluster 100 0 600 144   EVETOElement 300 0 30 144
+#Display: 2D ETAPSCluster 100 0 600 145   EVETOElement 300 0 30 145
+#Display: 2D ETAPSCluster 100 0 600 146   EVETOElement 300 0 30 146
+#Display: 2D ETAPSCluster 100 0 600 147   EVETOElement 300 0 30 147
+#Display: 2D ETAPSCluster 100 0 600 148   EVETOElement 300 0 30 148
+#Display: 2D ETAPSCluster 100 0 600 149   EVETOElement 300 0 30 149
+#Display: 2D ETAPSCluster 100 0 600 150   EVETOElement 300 0 30 150
+#Display: 2D ETAPSCluster 100 0 600 151   EVETOElement 300 0 30 151
+#Display: 2D ETAPSCluster 100 0 600 152   EVETOElement 300 0 30 152
+#Display: 2D ETAPSCluster 100 0 600 153   EVETOElement 300 0 30 153
+#Display: 2D ETAPSCluster 100 0 600 154   EVETOElement 300 0 30 154
+#Display: 2D ETAPSCluster 100 0 600 155   EVETOElement 300 0 30 155
+#Display: 2D ETAPSCluster 100 0 600 156   EVETOElement 300 0 30 156
+#Display: 2D ETAPSCluster 100 0 600 157   EVETOElement 300 0 30 157
+#Display: 2D ETAPSCluster 100 0 600 158   EVETOElement 300 0 30 158
+#Display: 2D ETAPSCluster 100 0 600 159   EVETOElement 300 0 30 159
+#Display: 2D ETAPSCluster 100 0 600 160   EVETOElement 300 0 30 160
+#Display: 2D ETAPSCluster 100 0 600 161   EVETOElement 300 0 30 161
+#Display: 2D ETAPSCluster 100 0 600 162   EVETOElement 300 0 30 162
+#Display: 2D ETAPSCluster 100 0 600 163   EVETOElement 300 0 30 163
+#Display: 2D ETAPSCluster 100 0 600 164   EVETOElement 300 0 30 164
+#Display: 2D ETAPSCluster 100 0 600 165   EVETOElement 300 0 30 165
+#Display: 2D ETAPSCluster 100 0 600 166   EVETOElement 300 0 30 166
+#Display: 2D ETAPSCluster 100 0 600 167   EVETOElement 300 0 30 167
+#Display: 2D ETAPSCluster 100 0 600 168   EVETOElement 300 0 30 168
+#Display: 2D ETAPSCluster 100 0 600 169   EVETOElement 300 0 30 169
+#Display: 2D ETAPSCluster 100 0 600 170   EVETOElement 300 0 30 170
+#Display: 2D ETAPSCluster 100 0 600 171   EVETOElement 300 0 30 171
+#Display: 2D ETAPSCluster 100 0 600 172   EVETOElement 300 0 30 172
+#Display: 2D ETAPSCluster 100 0 600 173   EVETOElement 300 0 30 173
+#Display: 2D ETAPSCluster 100 0 600 174   EVETOElement 300 0 30 174
+#Display: 2D ETAPSCluster 100 0 600 175   EVETOElement 300 0 30 175
+#Display: 2D ETAPSCluster 100 0 600 176   EVETOElement 300 0 30 176
+#Display: 2D ETAPSCluster 100 0 600 177   EVETOElement 300 0 30 177
+#Display: 2D ETAPSCluster 100 0 600 178   EVETOElement 300 0 30 178
+#Display: 2D ETAPSCluster 100 0 600 179   EVETOElement 300 0 30 179
+#Display: 2D ETAPSCluster 100 0 600 180   EVETOElement 300 0 30 180
+#Display: 2D ETAPSCluster 100 0 600 181   EVETOElement 300 0 30 181
+#Display: 2D ETAPSCluster 100 0 600 182   EVETOElement 300 0 30 182
+#Display: 2D ETAPSCluster 100 0 600 183   EVETOElement 300 0 30 183
+#Display: 2D ETAPSCluster 100 0 600 184   EVETOElement 300 0 30 184
+#Display: 2D ETAPSCluster 100 0 600 185   EVETOElement 300 0 30 185
+#Display: 2D ETAPSCluster 100 0 600 186   EVETOElement 300 0 30 186
+#Display: 2D ETAPSCluster 100 0 600 187   EVETOElement 300 0 30 187
+#Display: 2D ETAPSCluster 100 0 600 188   EVETOElement 300 0 30 188
+#Display: 2D ETAPSCluster 100 0 600 189   EVETOElement 300 0 30 189
+#Display: 2D ETAPSCluster 100 0 600 190   EVETOElement 300 0 30 190
+#Display: 2D ETAPSCluster 100 0 600 191   EVETOElement 300 0 30 191
+#Display: 2D ETAPSCluster 100 0 600 192   EVETOElement 300 0 30 192
+#Display: 2D ETAPSCluster 100 0 600 193   EVETOElement 300 0 30 193
+#Display: 2D ETAPSCluster 100 0 600 194   EVETOElement 300 0 30 194
+#Display: 2D ETAPSCluster 100 0 600 195   EVETOElement 300 0 30 195
+#Display: 2D ETAPSCluster 100 0 600 196   EVETOElement 300 0 30 196
+#Display: 2D ETAPSCluster 100 0 600 197   EVETOElement 300 0 30 197
+#Display: 2D ETAPSCluster 100 0 600 198   EVETOElement 300 0 30 198
+#Display: 2D ETAPSCluster 100 0 600 199   EVETOElement 300 0 30 199
+#Display: 2D ETAPSCluster 100 0 600 200   EVETOElement 300 0 30 200
+#Display: 2D ETAPSCluster 100 0 600 201   EVETOElement 300 0 30 201
+#Display: 2D ETAPSCluster 100 0 600 202   EVETOElement 300 0 30 202
+#Display: 2D ETAPSCluster 100 0 600 203   EVETOElement 300 0 30 203
+#Display: 2D ETAPSCluster 100 0 600 204   EVETOElement 300 0 30 204
+#Display: 2D ETAPSCluster 100 0 600 205   EVETOElement 300 0 30 205
+#Display: 2D ETAPSCluster 100 0 600 206   EVETOElement 300 0 30 206
+#Display: 2D ETAPSCluster 100 0 600 207   EVETOElement 300 0 30 207
+#Display: 2D ETAPSCluster 100 0 600 208   EVETOElement 300 0 30 208
+#Display: 2D ETAPSCluster 100 0 600 209   EVETOElement 300 0 30 209
+#Display: 2D ETAPSCluster 100 0 600 210   EVETOElement 300 0 30 210
+#Display: 2D ETAPSCluster 100 0 600 211   EVETOElement 300 0 30 211
+#Display: 2D ETAPSCluster 100 0 600 212   EVETOElement 300 0 30 212
+#Display: 2D ETAPSCluster 100 0 600 213   EVETOElement 300 0 30 213
+#Display: 2D ETAPSCluster 100 0 600 214   EVETOElement 300 0 30 214
+#Display: 2D ETAPSCluster 100 0 600 215   EVETOElement 300 0 30 215
+#Display: 2D ETAPSCluster 100 0 600 216   EVETOElement 300 0 30 216
+#Display: 2D ETAPSCluster 100 0 600 217   EVETOElement 300 0 30 217
+#Display: 2D ETAPSCluster 100 0 600 218   EVETOElement 300 0 30 218
+#Display: 2D ETAPSCluster 100 0 600 219   EVETOElement 300 0 30 219
+#Display: 2D ETAPSCluster 100 0 600 220   EVETOElement 300 0 30 220
+#Display: 2D ETAPSCluster 100 0 600 221   EVETOElement 300 0 30 221
+#Display: 2D ETAPSCluster 100 0 600 222   EVETOElement 300 0 30 222
+#Display: 2D ETAPSCluster 100 0 600 223   EVETOElement 300 0 30 223
+#Display: 2D ETAPSCluster 100 0 600 224   EVETOElement 300 0 30 224
+#Display: 2D ETAPSCluster 100 0 600 225   EVETOElement 300 0 30 225
+#Display: 2D ETAPSCluster 100 0 600 226   EVETOElement 300 0 30 226
+#Display: 2D ETAPSCluster 100 0 600 227   EVETOElement 300 0 30 227
+#Display: 2D ETAPSCluster 100 0 600 228   EVETOElement 300 0 30 228
+#Display: 2D ETAPSCluster 100 0 600 229   EVETOElement 300 0 30 229
+#Display: 2D ETAPSCluster 100 0 600 230   EVETOElement 300 0 30 230
+#Display: 2D ETAPSCluster 100 0 600 231   EVETOElement 300 0 30 231
+#Display: 2D ETAPSCluster 100 0 600 232   EVETOElement 300 0 30 232
+#Display: 2D ETAPSCluster 100 0 600 233   EVETOElement 300 0 30 233
+#Display: 2D ETAPSCluster 100 0 600 234   EVETOElement 300 0 30 234
+#Display: 2D ETAPSCluster 100 0 600 235   EVETOElement 300 0 30 235
+#Display: 2D ETAPSCluster 100 0 600 236   EVETOElement 300 0 30 236
+#Display: 2D ETAPSCluster 100 0 600 237   EVETOElement 300 0 30 237
+#Display: 2D ETAPSCluster 100 0 600 238   EVETOElement 300 0 30 238
+#Display: 2D ETAPSCluster 100 0 600 239   EVETOElement 300 0 30 239
+#Display: 2D ETAPSCluster 100 0 600 240   EVETOElement 300 0 30 240
+#Display: 2D ETAPSCluster 100 0 600 241   EVETOElement 300 0 30 241
+#Display: 2D ETAPSCluster 100 0 600 242   EVETOElement 300 0 30 242
+#Display: 2D ETAPSCluster 100 0 600 243   EVETOElement 300 0 30 243
+#Display: 2D ETAPSCluster 100 0 600 244   EVETOElement 300 0 30 244
+#Display: 2D ETAPSCluster 100 0 600 245   EVETOElement 300 0 30 245
+#Display: 2D ETAPSCluster 100 0 600 246   EVETOElement 300 0 30 246
+#Display: 2D ETAPSCluster 100 0 600 247   EVETOElement 300 0 30 247
+#Display: 2D ETAPSCluster 100 0 600 248   EVETOElement 300 0 30 248
+#Display: 2D ETAPSCluster 100 0 600 249   EVETOElement 300 0 30 249
+#Display: 2D ETAPSCluster 100 0 600 250   EVETOElement 300 0 30 250
+#Display: 2D ETAPSCluster 100 0 600 251   EVETOElement 300 0 30 251
+#Display: 2D ETAPSCluster 100 0 600 252   EVETOElement 300 0 30 252
+#Display: 2D ETAPSCluster 100 0 600 253   EVETOElement 300 0 30 253
+#Display: 2D ETAPSCluster 100 0 600 254   EVETOElement 300 0 30 254
+#Display: 2D ETAPSCluster 100 0 600 255   EVETOElement 300 0 30 255
+#Display: 2D ETAPSCluster 100 0 600 256   EVETOElement 300 0 30 256
+#Display: 2D ETAPSCluster 100 0 600 257   EVETOElement 300 0 30 257
+#Display: 2D ETAPSCluster 100 0 600 258   EVETOElement 300 0 30 258
+#Display: 2D ETAPSCluster 100 0 600 259   EVETOElement 300 0 30 259
+#Display: 2D ETAPSCluster 100 0 600 260   EVETOElement 300 0 30 260
+#Display: 2D ETAPSCluster 100 0 600 261   EVETOElement 300 0 30 261
+#Display: 2D ETAPSCluster 100 0 600 262   EVETOElement 300 0 30 262
+#Display: 2D ETAPSCluster 100 0 600 263   EVETOElement 300 0 30 263
+#Display: 2D ETAPSCluster 100 0 600 264   EVETOElement 300 0 30 264
+#Display: 2D ETAPSCluster 100 0 600 265   EVETOElement 300 0 30 265
+#Display: 2D ETAPSCluster 100 0 600 266   EVETOElement 300 0 30 266
+#Display: 2D ETAPSCluster 100 0 600 267   EVETOElement 300 0 30 267
+#Display: 2D ETAPSCluster 100 0 600 268   EVETOElement 300 0 30 268
+#Display: 2D ETAPSCluster 100 0 600 269   EVETOElement 300 0 30 269
+#Display: 2D ETAPSCluster 100 0 600 270   EVETOElement 300 0 30 270
+#Display: 2D ETAPSCluster 100 0 600 271   EVETOElement 300 0 30 271
+#Display: 2D ETAPSCluster 100 0 600 272   EVETOElement 300 0 30 272
+#Display: 2D ETAPSCluster 100 0 600 273   EVETOElement 300 0 30 273
+#Display: 2D ETAPSCluster 100 0 600 274   EVETOElement 300 0 30 274
+#Display: 2D ETAPSCluster 100 0 600 275   EVETOElement 300 0 30 275
+#Display: 2D ETAPSCluster 100 0 600 276   EVETOElement 300 0 30 276
+#Display: 2D ETAPSCluster 100 0 600 277   EVETOElement 300 0 30 277
+#Display: 2D ETAPSCluster 100 0 600 278   EVETOElement 300 0 30 278
+#Display: 2D ETAPSCluster 100 0 600 279   EVETOElement 300 0 30 279
+#Display: 2D ETAPSCluster 100 0 600 280   EVETOElement 300 0 30 280
+#Display: 2D ETAPSCluster 100 0 600 281   EVETOElement 300 0 30 281
+#Display: 2D ETAPSCluster 100 0 600 282   EVETOElement 300 0 30 282
+#Display: 2D ETAPSCluster 100 0 600 283   EVETOElement 300 0 30 283
+#Display: 2D ETAPSCluster 100 0 600 284   EVETOElement 300 0 30 284
+#Display: 2D ETAPSCluster 100 0 600 285   EVETOElement 300 0 30 285
+#Display: 2D ETAPSCluster 100 0 600 286   EVETOElement 300 0 30 286
+#Display: 2D ETAPSCluster 100 0 600 287   EVETOElement 300 0 30 287
+#Display: 2D ETAPSCluster 100 0 600 288   EVETOElement 300 0 30 288
+#Display: 2D ETAPSCluster 100 0 600 289   EVETOElement 300 0 30 289
+#Display: 2D ETAPSCluster 100 0 600 290   EVETOElement 300 0 30 290
+#Display: 2D ETAPSCluster 100 0 600 291   EVETOElement 300 0 30 291
+#Display: 2D ETAPSCluster 100 0 600 292   EVETOElement 300 0 30 292
+#Display: 2D ETAPSCluster 100 0 600 293   EVETOElement 300 0 30 293
+#Display: 2D ETAPSCluster 100 0 600 294   EVETOElement 300 0 30 294
+#Display: 2D ETAPSCluster 100 0 600 295   EVETOElement 300 0 30 295
+#Display: 2D ETAPSCluster 100 0 600 296   EVETOElement 300 0 30 296
+#Display: 2D ETAPSCluster 100 0 600 297   EVETOElement 300 0 30 297
+#Display: 2D ETAPSCluster 100 0 600 298   EVETOElement 300 0 30 298
+#Display: 2D ETAPSCluster 100 0 600 299   EVETOElement 300 0 30 299
+#Display: 2D ETAPSCluster 100 0 600 300   EVETOElement 300 0 30 300
+#Display: 2D ETAPSCluster 100 0 600 301   EVETOElement 300 0 30 301
+#Display: 2D ETAPSCluster 100 0 600 302   EVETOElement 300 0 30 302
+#Display: 2D ETAPSCluster 100 0 600 303   EVETOElement 300 0 30 303
+#Display: 2D ETAPSCluster 100 0 600 304   EVETOElement 300 0 30 304
+#Display: 2D ETAPSCluster 100 0 600 305   EVETOElement 300 0 30 305
+#Display: 2D ETAPSCluster 100 0 600 306   EVETOElement 300 0 30 306
+#Display: 2D ETAPSCluster 100 0 600 307   EVETOElement 300 0 30 307
+#Display: 2D ETAPSCluster 100 0 600 308   EVETOElement 300 0 30 308
+#Display: 2D ETAPSCluster 100 0 600 309   EVETOElement 300 0 30 309
+#Display: 2D ETAPSCluster 100 0 600 310   EVETOElement 300 0 30 310
+#Display: 2D ETAPSCluster 100 0 600 311   EVETOElement 300 0 30 311
+#Display: 2D ETAPSCluster 100 0 600 312   EVETOElement 300 0 30 312
+#Display: 2D ETAPSCluster 100 0 600 313   EVETOElement 300 0 30 313
+#Display: 2D ETAPSCluster 100 0 600 314   EVETOElement 300 0 30 314
+#Display: 2D ETAPSCluster 100 0 600 315   EVETOElement 300 0 30 315
+#Display: 2D ETAPSCluster 100 0 600 316   EVETOElement 300 0 30 316
+#Display: 2D ETAPSCluster 100 0 600 317   EVETOElement 300 0 30 317
+#Display: 2D ETAPSCluster 100 0 600 318   EVETOElement 300 0 30 318
+#Display: 2D ETAPSCluster 100 0 600 319   EVETOElement 300 0 30 319
+#Display: 2D ETAPSCluster 100 0 600 320   EVETOElement 300 0 30 320
+#Display: 2D ETAPSCluster 100 0 600 321   EVETOElement 300 0 30 321
+#Display: 2D ETAPSCluster 100 0 600 322   EVETOElement 300 0 30 322
+#Display: 2D ETAPSCluster 100 0 600 323   EVETOElement 300 0 30 323
+#Display: 2D ETAPSCluster 100 0 600 324   EVETOElement 300 0 30 324
+#Display: 2D ETAPSCluster 100 0 600 325   EVETOElement 300 0 30 325
+#Display: 2D ETAPSCluster 100 0 600 326   EVETOElement 300 0 30 326
+#Display: 2D ETAPSCluster 100 0 600 327   EVETOElement 300 0 30 327
+#Display: 2D ETAPSCluster 100 0 600 328   EVETOElement 300 0 30 328
+#Display: 2D ETAPSCluster 100 0 600 329   EVETOElement 300 0 30 329
+#Display: 2D ETAPSCluster 100 0 600 330   EVETOElement 300 0 30 330
+#Display: 2D ETAPSCluster 100 0 600 331   EVETOElement 300 0 30 331
+#Display: 2D ETAPSCluster 100 0 600 332   EVETOElement 300 0 30 332
+#Display: 2D ETAPSCluster 100 0 600 333   EVETOElement 300 0 30 333
+#Display: 2D ETAPSCluster 100 0 600 334   EVETOElement 300 0 30 334
+#Display: 2D ETAPSCluster 100 0 600 335   EVETOElement 300 0 30 335
+#Display: 2D ETAPSCluster 100 0 600 336   EVETOElement 300 0 30 336
+#Display: 2D ETAPSCluster 100 0 600 337   EVETOElement 300 0 30 337
+#Display: 2D ETAPSCluster 100 0 600 338   EVETOElement 300 0 30 338
+#Display: 2D ETAPSCluster 100 0 600 339   EVETOElement 300 0 30 339
+#Display: 2D ETAPSCluster 100 0 600 340   EVETOElement 300 0 30 340
+#Display: 2D ETAPSCluster 100 0 600 341   EVETOElement 300 0 30 341
+#Display: 2D ETAPSCluster 100 0 600 342   EVETOElement 300 0 30 342
+#Display: 2D ETAPSCluster 100 0 600 343   EVETOElement 300 0 30 343
+#Display: 2D ETAPSCluster 100 0 600 344   EVETOElement 300 0 30 344
+#Display: 2D ETAPSCluster 100 0 600 345   EVETOElement 300 0 30 345
+#Display: 2D ETAPSCluster 100 0 600 346   EVETOElement 300 0 30 346
+#Display: 2D ETAPSCluster 100 0 600 347   EVETOElement 300 0 30 347
+#Display: 2D ETAPSCluster 100 0 600 348   EVETOElement 300 0 30 348
+#Display: 2D ETAPSCluster 100 0 600 349   EVETOElement 300 0 30 349
+#Display: 2D ETAPSCluster 100 0 600 350   EVETOElement 300 0 30 350
+#Display: 2D ETAPSCluster 100 0 600 351   EVETOElement 300 0 30 351
+#Display: 2D ETAPSCluster 100 0 600 352   EVETOElement 300 0 30 352
+#Display: 2D ETAPSCluster 100 0 600 353   EVETOElement 300 0 30 353
+#Display: 2D ETAPSCluster 100 0 600 354   EVETOElement 300 0 30 354
+#Display: 2D ETAPSCluster 100 0 600 355   EVETOElement 300 0 30 355
+#Display: 2D ETAPSCluster 100 0 600 356   EVETOElement 300 0 30 356
+#Display: 2D ETAPSCluster 100 0 600 357   EVETOElement 300 0 30 357
+#Display: 2D ETAPSCluster 100 0 600 358   EVETOElement 300 0 30 358
+#Display: 2D ETAPSCluster 100 0 600 359   EVETOElement 300 0 30 359
+#Display: 2D ETAPSCluster 100 0 600 360   EVETOElement 300 0 30 360
+#Display: 2D ETAPSCluster 100 0 600 361   EVETOElement 300 0 30 361
+#Display: 2D ETAPSCluster 100 0 600 362   EVETOElement 300 0 30 362
+#Display: 2D ETAPSCluster 100 0 600 363   EVETOElement 300 0 30 363
+#Display: 2D ETAPSCluster 100 0 600 364   EVETOElement 300 0 30 364
+#Display: 2D ETAPSCluster 100 0 600 365   EVETOElement 300 0 30 365
+#Display: 2D ETAPSCluster 100 0 600 366   EVETOElement 300 0 30 366
+#Display: 2D ETAPSCluster 100 0 600 367   EVETOElement 300 0 30 367
+#Display: 2D ETAPSCluster 100 0 600 368   EVETOElement 300 0 30 368
+#Display: 2D ETAPSCluster 100 0 600 369   EVETOElement 300 0 30 369
+#Display: 2D ETAPSCluster 100 0 600 370   EVETOElement 300 0 30 370
+#Display: 2D ETAPSCluster 100 0 600 371   EVETOElement 300 0 30 371
+#Display: 2D ETAPSCluster 100 0 600 372   EVETOElement 300 0 30 372
+#Display: 2D ETAPSCluster 100 0 600 373   EVETOElement 300 0 30 373
+#Display: 2D ETAPSCluster 100 0 600 374   EVETOElement 300 0 30 374
+#Display: 2D ETAPSCluster 100 0 600 375   EVETOElement 300 0 30 375
+#Display: 2D ETAPSCluster 100 0 600 376   EVETOElement 300 0 30 376
+#Display: 2D ETAPSCluster 100 0 600 377   EVETOElement 300 0 30 377
+#Display: 2D ETAPSCluster 100 0 600 378   EVETOElement 300 0 30 378
+#Display: 2D ETAPSCluster 100 0 600 379   EVETOElement 300 0 30 379
+#Display: 2D ETAPSCluster 100 0 600 380   EVETOElement 300 0 30 380
+#Display: 2D ETAPSCluster 100 0 600 381   EVETOElement 300 0 30 381
+#Display: 2D ETAPSCluster 100 0 600 382   EVETOElement 300 0 30 382
+#Display: 2D ETAPSCluster 100 0 600 383   EVETOElement 300 0 30 383
+##
+##
+#
+## End
+
+#
+# Genereted by iChangeARconfig for run : 26200
+#

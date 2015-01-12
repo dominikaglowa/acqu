@@ -1,0 +1,336 @@
+##--Author	S. Costanza   August 2013
+## Particle data group database,	max # particles
+ParticleID:				16
+##
+#		Tagger	Ball	TAPS
+Permutations:	128	32	16
+##
+## Do some post-initialisation.
+## Should usually be done before display is setup
+Initialise:
+#
+Misc: TimeWindows data/AR-Analysis-Window_PrRa.txt 
+#
+#Event time as calculated from time difference between tagged photon and
+#detected photons in CB/TAPS
+Display: 1D EventTime 1000 -750 650
+#
+Display: 1D M2g 800 0 800
+Display: 1D M2gMulti 800 0 800
+Display: 1D MCbTaps 400 0 800
+Display: 1D M2TAPS 800 0 800
+Display: 1D M2gselected 800 0 800
+Display: 1D TagChan 352 0 352
+Display: 2D EventTime 1000 -750 650 -1 TagChan 352 0 352 -1
+Display: 1D Ntaps 10 0 10
+Display: 1D Tne 1000 -750 650 
+Display: 1D Tch 1000 -750 650
+Display: 1D TCB 1000 -750 650
+# from TAPS
+Display: 1D PxTAPS 100 0 200
+Display: 1D PyTAPS 100 0 200
+Display: 1D PzTAPS 100 0 500
+Display: 1D ETAPS 100 0 1000
+Display: 1D ThetaTAPS 180 0 180
+Display: 1D PhiTAPS 360 0 360
+#Display: 1D dETAPS 100 0 1000
+#Display: 1D ClusterSizeTAPS 100 0 10
+#
+Display: 1D EgammaW1 1000 0 1600
+Display: 1D EgammaW2 1000 0 1600
+Display: 1D EgammaW3 1000 0 1600
+#
+Display: 1D BeamPol10W1 352 0 352
+Display: 1D BeamPol10W2 352 0 352
+Display: 1D BeamPol10W3 352 0 352
+Display: 1D BeamPol20W1 352 0 352
+Display: 1D BeamPol20W2 352 0 352
+Display: 1D BeamPol20W3 352 0 352
+# for inclusive cs
+Display: 1D BeamPol10CBW1 352 0 352
+Display: 1D BeamPol10CBW2 352 0 352
+Display: 1D BeamPol10CBW3 352 0 352
+Display: 1D BeamPol20CBW1 352 0 352
+Display: 1D BeamPol20CBW2 352 0 352
+Display: 1D BeamPol20CBW3 352 0 352
+#
+Display: 1D ThetaPi0AntiW1 180 1 180
+Display: 1D ThetaPi0AntiW2 180 1 180
+Display: 1D ThetaPi0AntiW3 180 1 180
+Display: 1D ThetaPi0ParaW1 180 1 180
+Display: 1D ThetaPi0ParaW2 180 1 180
+Display: 1D ThetaPi0ParaW3 180 1 180
+Display: 2D ThetaPi0AntiW1 180 1 180 -1 BeamPol10W1 352 0 352 -1 
+Display: 2D ThetaPi0AntiW2 180 1 180 -1 BeamPol10W2 352 0 352 -1 
+Display: 2D ThetaPi0AntiW3 180 1 180 -1 BeamPol10W3 352 0 352 -1 
+Display: 2D ThetaPi0ParaW1 180 1 180 -1 BeamPol20W1 352 0 352 -1 
+Display: 2D ThetaPi0ParaW2 180 1 180 -1 BeamPol20W2 352 0 352 -1 
+Display: 2D ThetaPi0ParaW3 180 1 180 -1 BeamPol20W3 352 0 352 -1 
+Display: 1D ThetaPi0CMAntiW1 180 1 180
+Display: 1D ThetaPi0CMAntiW2 180 1 180
+Display: 1D ThetaPi0CMAntiW3 180 1 180
+Display: 1D ThetaPi0CMParaW1 180 1 180
+Display: 1D ThetaPi0CMParaW2 180 1 180
+Display: 1D ThetaPi0CMParaW3 180 1 180
+Display: 2D ThetaPi0CMAntiW1 180 1 180 -1 BeamPol10W1 352 0 352 -1 
+Display: 2D ThetaPi0CMAntiW2 180 1 180 -1 BeamPol10W2 352 0 352 -1 
+Display: 2D ThetaPi0CMAntiW3 180 1 180 -1 BeamPol10W3 352 0 352 -1 
+Display: 2D ThetaPi0CMParaW1 180 1 180 -1 BeamPol20W1 352 0 352 -1 
+Display: 2D ThetaPi0CMParaW2 180 1 180 -1 BeamPol20W2 352 0 352 -1 
+Display: 2D ThetaPi0CMParaW3 180 1 180 -1 BeamPol20W3 352 0 352 -1 
+#
+Display: 1D BeamPol10MultiW1 352 0 352
+Display: 1D BeamPol10MultiW2 352 0 352
+Display: 1D BeamPol10MultiW3 352 0 352
+Display: 1D BeamPol20MultiW1 352 0 352
+Display: 1D BeamPol20MultiW2 352 0 352
+Display: 1D BeamPol20MultiW3 352 0 352
+Display: 1D ThetaPi0AntiMultiW1 180 1 180
+Display: 1D ThetaPi0AntiMultiW2 180 1 180
+Display: 1D ThetaPi0AntiMultiW3 180 1 180
+Display: 1D ThetaPi0ParaMultiW1 180 1 180
+Display: 1D ThetaPi0ParaMultiW2 180 1 180
+Display: 1D ThetaPi0ParaMultiW3 180 1 180
+Display: 2D ThetaPi0AntiMultiW1 180 1 180 -1 BeamPol10MultiW1 352 0 352 -1 
+Display: 2D ThetaPi0AntiMultiW2 180 1 180 -1 BeamPol10MultiW2 352 0 352 -1 
+Display: 2D ThetaPi0AntiMultiW3 180 1 180 -1 BeamPol10MultiW3 352 0 352 -1 
+Display: 2D ThetaPi0ParaMultiW1 180 1 180 -1 BeamPol20MultiW1 352 0 352 -1 
+Display: 2D ThetaPi0ParaMultiW2 180 1 180 -1 BeamPol20MultiW2 352 0 352 -1 
+Display: 2D ThetaPi0ParaMultiW3 180 1 180 -1 BeamPol20MultiW3 352 0 352 -1 
+Display: 1D ThetaPi0CMAntiMultiW1 180 1 180
+Display: 1D ThetaPi0CMAntiMultiW2 180 1 180
+Display: 1D ThetaPi0CMAntiMultiW3 180 1 180
+Display: 1D ThetaPi0CMParaMultiW1 180 1 180
+Display: 1D ThetaPi0CMParaMultiW2 180 1 180
+Display: 1D ThetaPi0CMParaMultiW3 180 1 180
+Display: 2D ThetaPi0CMAntiMultiW1 180 1 180 -1 BeamPol10MultiW1 352 0 352 -1 
+Display: 2D ThetaPi0CMAntiMultiW2 180 1 180 -1 BeamPol10MultiW2 352 0 352 -1 
+Display: 2D ThetaPi0CMAntiMultiW3 180 1 180 -1 BeamPol10MultiW3 352 0 352 -1 
+Display: 2D ThetaPi0CMParaMultiW1 180 1 180 -1 BeamPol20MultiW1 352 0 352 -1 
+Display: 2D ThetaPi0CMParaMultiW2 180 1 180 -1 BeamPol20MultiW2 352 0 352 -1 
+Display: 2D ThetaPi0CMParaMultiW3 180 1 180 -1 BeamPol20MultiW3 352 0 352 -1 
+#
+Display: 1D BeamPol10CbTapsW1 352 0 352
+Display: 1D BeamPol10CbTapsW2 352 0 352
+Display: 1D BeamPol10CbTapsW3 352 0 352
+Display: 1D BeamPol20CbTapsW1 352 0 352
+Display: 1D BeamPol20CbTapsW2 352 0 352
+Display: 1D BeamPol20CbTapsW3 352 0 352
+Display: 1D ThetaPi0AntiCbTapsW1 180 1 180
+Display: 1D ThetaPi0AntiCbTapsW2 180 1 180
+Display: 1D ThetaPi0AntiCbTapsW3 180 1 180
+Display: 1D ThetaPi0ParaCbTapsW1 180 1 180
+Display: 1D ThetaPi0ParaCbTapsW2 180 1 180
+Display: 1D ThetaPi0ParaCbTapsW3 180 1 180
+Display: 2D ThetaPi0AntiCbTapsW1 180 1 180 -1 BeamPol10CbTapsW1 352 0 352 -1 
+Display: 2D ThetaPi0AntiCbTapsW2 180 1 180 -1 BeamPol10CbTapsW2 352 0 352 -1 
+Display: 2D ThetaPi0AntiCbTapsW3 180 1 180 -1 BeamPol10CbTapsW3 352 0 352 -1 
+Display: 2D ThetaPi0ParaCbTapsW1 180 1 180 -1 BeamPol20CbTapsW1 352 0 352 -1 
+Display: 2D ThetaPi0ParaCbTapsW2 180 1 180 -1 BeamPol20CbTapsW2 352 0 352 -1 
+Display: 2D ThetaPi0ParaCbTapsW3 180 1 180 -1 BeamPol20CbTapsW3 352 0 352 -1 
+Display: 1D ThetaPi0CMAntiCbTapsW1 180 1 180
+Display: 1D ThetaPi0CMAntiCbTapsW2 180 1 180
+Display: 1D ThetaPi0CMAntiCbTapsW3 180 1 180
+Display: 1D ThetaPi0CMParaCbTapsW1 180 1 180
+Display: 1D ThetaPi0CMParaCbTapsW2 180 1 180
+Display: 1D ThetaPi0CMParaCbTapsW3 180 1 180
+Display: 2D ThetaPi0CMAntiCbTapsW1 180 1 180 -1 BeamPol10CbTapsW1 352 0 352 -1 
+Display: 2D ThetaPi0CMAntiCbTapsW2 180 1 180 -1 BeamPol10CbTapsW2 352 0 352 -1 
+Display: 2D ThetaPi0CMAntiCbTapsW3 180 1 180 -1 BeamPol10CbTapsW3 352 0 352 -1 
+Display: 2D ThetaPi0CMParaCbTapsW1 180 1 180 -1 BeamPol20CbTapsW1 352 0 352 -1 
+Display: 2D ThetaPi0CMParaCbTapsW2 180 1 180 -1 BeamPol20CbTapsW2 352 0 352 -1 
+Display: 2D ThetaPi0CMParaCbTapsW3 180 1 180 -1 BeamPol20CbTapsW3 352 0 352 -1 
+#
+Display: 1D BeamPol10TapsW1 352 0 352
+Display: 1D BeamPol10TapsW2 352 0 352
+Display: 1D BeamPol10TapsW3 352 0 352
+Display: 1D BeamPol20TapsW1 352 0 352
+Display: 1D BeamPol20TapsW2 352 0 352
+Display: 1D BeamPol20TapsW3 352 0 352
+Display: 1D ThetaPi0AntiTapsW1 180 1 180
+Display: 1D ThetaPi0AntiTapsW2 180 1 180
+Display: 1D ThetaPi0AntiTapsW3 180 1 180
+Display: 1D ThetaPi0ParaTapsW1 180 1 180
+Display: 1D ThetaPi0ParaTapsW2 180 1 180
+Display: 1D ThetaPi0ParaTapsW3 180 1 180
+Display: 2D ThetaPi0AntiTapsW1 180 1 180 -1 BeamPol10TapsW1 352 0 352 -1 
+Display: 2D ThetaPi0AntiTapsW2 180 1 180 -1 BeamPol10TapsW2 352 0 352 -1 
+Display: 2D ThetaPi0AntiTapsW3 180 1 180 -1 BeamPol10TapsW3 352 0 352 -1 
+Display: 2D ThetaPi0ParaTapsW1 180 1 180 -1 BeamPol20TapsW1 352 0 352 -1 
+Display: 2D ThetaPi0ParaTapsW2 180 1 180 -1 BeamPol20TapsW2 352 0 352 -1 
+Display: 2D ThetaPi0ParaTapsW3 180 1 180 -1 BeamPol20TapsW3 352 0 352 -1 
+Display: 1D ThetaPi0CMAntiTapsW1 180 1 180
+Display: 1D ThetaPi0CMAntiTapsW2 180 1 180
+Display: 1D ThetaPi0CMAntiTapsW3 180 1 180
+Display: 1D ThetaPi0CMParaTapsW1 180 1 180
+Display: 1D ThetaPi0CMParaTapsW2 180 1 180
+Display: 1D ThetaPi0CMParaTapsW3 180 1 180
+Display: 2D ThetaPi0CMAntiTapsW1 180 1 180 -1 BeamPol10TapsW1 352 0 352 -1 
+Display: 2D ThetaPi0CMAntiTapsW2 180 1 180 -1 BeamPol10TapsW2 352 0 352 -1 
+Display: 2D ThetaPi0CMAntiTapsW3 180 1 180 -1 BeamPol10TapsW3 352 0 352 -1 
+Display: 2D ThetaPi0CMParaTapsW1 180 1 180 -1 BeamPol20TapsW1 352 0 352 -1 
+Display: 2D ThetaPi0CMParaTapsW2 180 1 180 -1 BeamPol20TapsW2 352 0 352 -1 
+Display: 2D ThetaPi0CMParaTapsW3 180 1 180 -1 BeamPol20TapsW3 352 0 352 -1 
+#
+##
+Display: 1D PID_dE0 200 0 15
+Display: 1D PID_dE1 200 0 15
+Display: 1D PID_dE2 200 0 15
+Display: 1D PID_dE3 200 0 15
+Display: 1D PID_dE4 200 0 15
+Display: 1D PID_dE5 200 0 15
+Display: 1D PID_dE6 200 0 15
+Display: 1D PID_dE7 200 0 15
+Display: 1D PID_dE8 200 0 15
+Display: 1D PID_dE9 200 0 15
+Display: 1D PID_dE10 200 0 15
+Display: 1D PID_dE11 200 0 15
+Display: 1D PID_dE12 200 0 15
+Display: 1D PID_dE13 200 0 15
+Display: 1D PID_dE14 200 0 15
+Display: 1D PID_dE15 200 0 15
+Display: 1D PID_dE16 200 0 15
+Display: 1D PID_dE17 200 0 15
+Display: 1D PID_dE18 200 0 15
+Display: 1D PID_dE19 200 0 15
+Display: 1D PID_dE20 200 0 15
+Display: 1D PID_dE21 200 0 15
+Display: 1D PID_dE22 200 0 15
+Display: 1D PID_dE23 200 0 15
+Display: 1D Total_Energy 300 0 300
+Display: 1D Total_Energy_pion 300 0 300
+Display: 2D Total_Energy 300 0 300 -1  PID_dE0 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE1 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE2 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE3 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE4 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE5 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE6 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE7 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE8 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE9 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE10 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE11 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE12 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE13 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE14 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE15 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE16 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE17 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE18 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE19 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE20 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE21 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE22 200 0 15 -1
+Display: 2D Total_Energy 300 0 300 -1  PID_dE23 200 0 15 -1
+#
+Display: 1D PID_dE_prot0 200 0 15
+Display: 1D PID_dE_prot1 200 0 15
+Display: 1D PID_dE_prot2 200 0 15
+Display: 1D PID_dE_prot3 200 0 15
+Display: 1D PID_dE_prot4 200 0 15
+Display: 1D PID_dE_prot5 200 0 15
+Display: 1D PID_dE_prot6 200 0 15
+Display: 1D PID_dE_prot7 200 0 15
+Display: 1D PID_dE_prot8 200 0 15
+Display: 1D PID_dE_prot9 200 0 15
+Display: 1D PID_dE_prot10 200 0 15
+Display: 1D PID_dE_prot11 200 0 15
+Display: 1D PID_dE_prot12 200 0 15
+Display: 1D PID_dE_prot13 200 0 15
+Display: 1D PID_dE_prot14 200 0 15
+Display: 1D PID_dE_prot15 200 0 15
+Display: 1D PID_dE_prot16 200 0 15
+Display: 1D PID_dE_prot17 200 0 15
+Display: 1D PID_dE_prot18 200 0 15
+Display: 1D PID_dE_prot19 200 0 15
+Display: 1D PID_dE_prot20 200 0 15
+Display: 1D PID_dE_prot21 200 0 15
+Display: 1D PID_dE_prot22 200 0 15
+Display: 1D PID_dE_prot23 200 0 15
+Display: 1D Total_Energy_prot 300 0 300
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot0 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot1 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot2 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot3 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot4 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot5 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot6 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot7 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot8 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot9 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot10 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot11 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot12 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot13 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot14 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot15 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot16 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot17 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot18 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot19 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot20 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot21 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot22 200 0 15 -1
+Display: 2D Total_Energy_prot 300 0 300 -1  PID_dE_prot23 200 0 15 -1
+Display: 1D PID_dE_pion0 200 0 15
+Display: 1D PID_dE_pion1 200 0 15
+Display: 1D PID_dE_pion2 200 0 15
+Display: 1D PID_dE_pion3 200 0 15
+Display: 1D PID_dE_pion4 200 0 15
+Display: 1D PID_dE_pion5 200 0 15
+Display: 1D PID_dE_pion6 200 0 15
+Display: 1D PID_dE_pion7 200 0 15
+Display: 1D PID_dE_pion8 200 0 15
+Display: 1D PID_dE_pion9 200 0 15
+Display: 1D PID_dE_pion10 200 0 15
+Display: 1D PID_dE_pion11 200 0 15
+Display: 1D PID_dE_pion12 200 0 15
+Display: 1D PID_dE_pion13 200 0 15
+Display: 1D PID_dE_pion14 200 0 15
+Display: 1D PID_dE_pion15 200 0 15
+Display: 1D PID_dE_pion16 200 0 15
+Display: 1D PID_dE_pion17 200 0 15
+Display: 1D PID_dE_pion18 200 0 15
+Display: 1D PID_dE_pion19 200 0 15
+Display: 1D PID_dE_pion20 200 0 15
+Display: 1D PID_dE_pion21 200 0 15
+Display: 1D PID_dE_pion22 200 0 15
+Display: 1D PID_dE_pion23 200 0 15
+#Display: 1D Total_Energy_pion 300 0 300
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion0 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion1 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion2 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion3 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion4 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion5 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion6 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion7 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion8 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion9 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion10 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion11 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion12 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion13 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion14 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion15 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion16 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion17 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion18 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion19 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion20 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion21 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion22 200 0 15 -1
+Display: 2D Total_Energy_pion 300 0 300 -1  PID_dE_pion23 200 0 15 -1
+#
+Display: 1D PhiCh 180 0 180 
+Display: 1D PsVertexZ 100 -100 100
+Display: 1D DeltaPhi 360 0 360
+Display: 1D DeltaPhiNorm 360 -180 180
+
+
+
+Display: 1D GammaEneCB11 200 0 1000
+Display: 1D GammaEneTAPS11 200 0 1000
+Display: 2D GammaEneCB11 200 0 1000 -1 GammaEneTAPS11 200 0 1000 -1
+## END

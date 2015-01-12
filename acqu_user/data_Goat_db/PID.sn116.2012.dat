@@ -1,0 +1,70 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   29th Apr 2003
+##--Update	JRM Annand...17th May 2005
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Parameter File: PID.03.09.06 (specified in CBanalysis.dat)
+## Parameter file for PID II test run 3/9/06.
+## Setup decoding of Particle-ID (TA2PlasticPID) detector class
+##  **DEFAULT TEMPLATE ** DEFAULT TEMPLATE ** DEFAULT TEMPLATE **
+##-----------------------------------------------------------------------
+# Total # Elements in array, Pulse-Height info? Time info? Position info?
+# Info switch is off/on = 0/1
+#	Total	Energy?	Time?	Position?
+Size:  24	1       1	        1
+#
+# Calibration factors for each PID element...one line for each
+# Can optionally enter TDC-Time onfo...extra 5 parameters per line
+# low, high are energy cuts, ped is the pedestal, MeV/chan conversion gain
+#calibration for the June data:
+#	 ADC# low  hig  ped MeV/ch TDC#   low/high off ns/ch   gain   Position [r(# mm),theta,phi)]
+#NB ped and MeV/ch values! 
+Element: 100  0.001  1000   99.46  0.012    2016M0  -60 60   -2610.36	0.117  51.0  0.0    3.0322  
+Element: 101  0.001  1000   99.46  0.012    2017M0  -60 60   -2614.63  	0.117  51.0  0.0    18.2758 
+Element: 102  0.001  1000   109.5  0.009    2018M0  -60 60   -2614.46	0.117  51.0  0.0    33.5194  
+Element: 103  0.001  1000   115.6  0.009    2019M0  -60 60   -2610.84	0.117  51.0  0.0    48.763 
+Element: 104  0.001  1000   155.5  0.006    2020M0  -60 60   -2626.9	0.117  51.0  0.0    64.0066 
+Element: 105  0.001  1000   118.8  0.012    2021M0  -60 60   -2589.67	0.117  51.0  0.0    79.2502 
+Element: 106  0.001  1000   104.3  0.009    2022M0  -60 60   -2599.68 	0.117  51.0  0.0    94.4938
+Element: 107  0.001  1000   110.4  0.011    2023M0  -60 60   -2570.36 	0.117  51.0  0.0    109.7374
+Element: 108  0.001  1000   123.7  0.010    2024M0  -60 60   -2640.14 	0.117  51.0  0.0    124.981
+Element: 109  0.001  1000   115.5  0.007    2025M0  -60 60   -2687.76 	0.117  51.0  0.0    140.2246
+Element: 110  0.001  1000   110.9  0.008    2026M0  -60 60   -2647.63 	0.117  51.0  0.0    155.4682
+Element: 111  0.001  1000   106.2  0.008    2027M0  -60 60   -2632.26	0.117  51.0  0.0    170.7118   
+Element: 112  0.001  1000   100.5  0.009    2028M0  -60 60   -2643.82	0.117  51.0  0.0    -179.891  
+Element: 113  0.001  1000   93.9   0.010     2029M0  -60 60   -2624.13	0.117  51.0  0.0    -164.6474
+Element: 114  0.001  1000   97.81  0.010    2030M0  -60 60   -2630.54	0.117  51.0  0.0    -149.4038
+Element: 115  0.001  1000   123.4  0.009    2031M0  -60 60   -2594.71	0.117  51.0  0.0    -134.1602
+Element: 116  0.001  1000   130.4  0.009    2008M0  -60 60   -2631.25	0.117  51.0  0.0    -118.9166
+Element: 117  0.001  1000   130.4  0.009    2009M0  -60 60   -2626.41	0.117  51.0  0.0    -103.673
+Element: 118  0.001  1000   106.3  0.012    2010M0  -60 60   -2635.08 	0.117  51.0  0.0    -88.4294
+Element: 119  0.001  1000   111.7  0.009    2011M0  -60 60   -2632.21	0.117  51.0  0.0    -73.1858
+Element: 120  0.001  1000   140.9  0.008    2012M0  -60 60   -2663.35	0.117  51.0  0.0    -57.9422
+Element: 121  0.001  1000   89.93  0.008    2013M0  -60 60   -2649.36 	0.117  51.0  0.0    -42.6986
+Element: 122  0.001  1000   89.93  0.006    2014M0  -60 60   -2636.88	0.117  51.0  0.0    -27.455
+Element: 123  0.001  1000   89.93  0.006    2015M0  -60 60   -2600 	0.117  51.0  0.0    -12.2114
+
+
+
+
+
+#
+## Do some further array initialisation BEFORE display specification
+Initialise:
+##
+##	Histograming of basic detector stuff
+##
+#Display:	1D	Nhits  	24 0 24
+#Display:	1D	Hits		24	0	24
+## Total Energy deposited in the array, 1000 channels, range 0 -- 200 MeV
+#Display:	1D	Etot	 400 	0 	200
+## Energy deposited in individual elements, 200 channels, range 0 -- 20 MeV
+#Display:	1D	Energy	200 0 5	0 23
+#
+#Display:	1D	TimeOR 200 -100. 100.
+#Display:	1D	Time   120 0. 120.	0 24
+Display:	2D	TimeOR 200 -100. 100 -1 Hits 24 0 24 -1
+#
+#Display:	2D	EnergyOR 100 0 10 -1 Hits 24 0 24 -1

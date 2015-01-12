@@ -1,0 +1,115 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   29th Apr 2003
+##--Update	JRM Annand...17th May 2005
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Parameter File: CB.dat (specified in CBanalysis.dat)
+## or equivalent
+## Setup analysis of the Crystal Ball TA2CrystalBall apparatus
+## This one sets up an analysis of the Crystal_Ball NaI(Tl) array
+## the inner Particle ID Detector and 2-layer MWPC
+##
+##-----------------------------------------------------------------------
+##
+## Specify list of detectors which constitute the Crystal Ball apparatus
+##	  Name       Class Name		Setup file
+#Detector: NaI        TA2CalArray	AR-Analysis-CentApp-NaI.dat
+Detector: NaI        TA2CalArray	CB_NaI_e883_Dec12_cal13.dat
+Detector: PID        TA2PlasticPID	PID.oct.2012.dat
+Detector: CylMWPC    TA2CylMwpc		AR-Analysis-CentApp-MWPC.dat
+#
+## Data reconstruction method for Crystal Ball 
+Reconstruct:
+##
+## PDG database	# particles
+###ParticleID: 	16
+ParticleID: 	64
+##
+## Use best MWPC tracks
+# UseBestMwpcTracks:
+##
+## Droop correction for light attenuation inside PID strips
+##     Lpid	Npoints		DroopPosition ...		DroopFactor
+# Droop: 30.	7		0. 2. 4. 6. 10. 20. 30. 	1. 1.07 1.14 1.22 1.39 1.92 2.66
+##
+## Angle-difference limits (in rad.)  for hits correlation
+## 		MaxPhiMwpcNaI	MaxPhiMwpcPid	MaxPhiPidNaI	MaxPhiInterMwpcClNaI	MaxPhiTrSingleMwpcPid
+#AngleLimits:	20.		50.		100.		60.			50.
+AngleLimits:	20.		50.		23.		60.			50.
+##
+##
+##		MaxTrack	MaxRpsvertex	MaxZpsvertex	MinZpsvertex
+TrackLimits:	10		70.		500.		-500.
+##
+## Do some post-initialisation.
+## Should usually be done before display is setup
+Initialise:
+
+## Histograms of apparatus-level variables
+## histogram name should be preceeded by 1D or 2D (for dimension of spectrum)
+Display: 2D PID_Hits 24 0 24 -1              NaI_ClPhi 		180 -180 180 -1
+Display: 2D PID_Hits 24 0 24 -1              CylMWPC_Wire1Hits 	232  0   232 -1
+Display: 2D PID_Hits 24 0 24 -1              CylMWPC_Wire2Hits 	296  0   296 -1
+#
+Display:	1D	Ntracks		10	0	10
+Display:	1D	NchTracks	10	0	10
+Display:	1D	NneTracks	10	0	10
+#
+Display:	1D	PhiMwpcTrackNaI		180	0	180
+Display:	1D	PhiTrackPid		180	-180	180
+Display:	1D	PhiMwpcTrackPid		180	-180	180
+Display:	1D	PhiInterSingleMwpcNaI	180	0	180
+Display:	1D	PhiTrackSingleMwpcPid	180	-180	180
+Display:	1D	PhiMwpcInterNaI		180	0	180
+Display:	1D	PhiMwpcInterPid		180	-180	180
+Display:	1D	PhiPidNaI		180	-180	180
+#
+Display:	1D	TrackTypes	16	0	16
+Display:	1D	TrackTheta	180	0	180
+Display:	1D	TrackPhi	180	0	360
+Display:	1D	EclNaI		100	0	500
+Display:	1D	EhitPid		100	0	6
+Display:	2D	EclNaI		100	0	400	-1	EhitPid		100	0	6	-1
+Display:	1D	EtrackMwpc	100	0	2000
+Display:	2D	EhitPid		100	0	6	-1	EtrackMwpc	100	0	2000	-1
+Display:	2D	EclNaI		100	0	400	-1	EtrackMwpc	100	0	2000	-1
+Display:	1D	PsVertexX	40	-40	40
+Display:	1D	PsVertexY	40	-40	40
+Display:	1D	PsVertexZ	500	-250	250
+Display:	1D	PsVertexR	100	0	74
+Display:	2D	PsVertexX	40	-40	40	-1	PsVertexY	40	-40	40	-1
+Display:	2D	PsVertexZ	500	-250	250	-1	PsVertexX	40	-40	40	-1
+Display:	2D	PsVertexZ	500	-250	250	-1	PsVertexY	40	-40	40	-1
+# Vertexes
+Display:	1D	VertexN		5	0	5
+Display:	1D	VertexX		40	-40	40
+Display:	1D	VertexY		40	-40	40
+Display:	1D	VertexZ		500	-250	250
+Display:	1D	VertexR		70	0	70
+Display: 2D PID_Hits 24 0 24 -1              NaI_ClPhi 180 -180 180 -1
+Display: 2D Echarged 400 0 400 0   DeltaE 100 0 9 0
+Display: 2D Echarged 400 0 400 1   DeltaE 100 0 9 1
+Display: 2D Echarged 400 0 400 2   DeltaE 100 0 9 2
+Display: 2D Echarged 400 0 400 3   DeltaE 100 0 9 3
+Display: 2D Echarged 400 0 400 4   DeltaE 100 0 9 4
+Display: 2D Echarged 400 0 400 5   DeltaE 100 0 9 5
+Display: 2D Echarged 400 0 400 6   DeltaE 100 0 9 6
+Display: 2D Echarged 400 0 400 7   DeltaE 100 0 9 7
+Display: 2D Echarged 400 0 400 8   DeltaE 100 0 9 8
+Display: 2D Echarged 400 0 400 9   DeltaE 100 0 9 9
+Display: 2D Echarged 400 0 400 10   DeltaE 100 0 9 10
+Display: 2D Echarged 400 0 400 11   DeltaE 100 0 9 11
+Display: 2D Echarged 400 0 400 12   DeltaE 100 0 9 12
+Display: 2D Echarged 400 0 400 13   DeltaE 100 0 9 13
+Display: 2D Echarged 400 0 400 14   DeltaE 100 0 9 14
+Display: 2D Echarged 400 0 400 15   DeltaE 100 0 9 15
+Display: 2D Echarged 400 0 400 16   DeltaE 100 0 9 16
+Display: 2D Echarged 400 0 400 17   DeltaE 100 0 9 17
+Display: 2D Echarged 400 0 400 18   DeltaE 100 0 9 18
+Display: 2D Echarged 400 0 400 19   DeltaE 100 0 9 19
+Display: 2D Echarged 400 0 400 20   DeltaE 100 0 9 20
+Display: 2D Echarged 400 0 400 21   DeltaE 100 0 9 21
+Display: 2D Echarged 400 0 400 22   DeltaE 100 0 9 22
+Display: 2D Echarged 400 0 400 23   DeltaE 100 0 9 23

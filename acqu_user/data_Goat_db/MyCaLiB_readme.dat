@@ -1,0 +1,26 @@
+CaLib-Target-Position: 0 
+CaLib-CB-Energy: 1
+CaLib-CB-Quad: 0 0.0 0.0 0.0 0.0
+CaLib-CB-Time: 1
+CaLib-CB-Walk: 0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+CaLib-TAPS-Energy: 1
+CaLib-TAPS-Time: 1
+CaLib-TAPS-Quad: 0 0.0 0.0 0.0 0.0   
+CaLib-TAPS-PSA: 0
+CaLib-TAPS-LED: 0
+CaLib-PID-Phi: 0
+CaLib-PID-Energy: 0
+CaLib-PID-Time:  0
+CaLib-Veto-Corr: 0
+CaLib-Veto-Energy: 0
+CaLib-Veto-Time:  0
+CaLib-Tagger-Time:  1
+
+
+//TO REMOVE AT THE END : 
+0 no calibration
+1 do calibration
+
+check TA2MyCaLib.cc in function SetConfig to know the format wanted and the values expected.
+
+Ask Maria for her file.

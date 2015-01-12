@@ -1,0 +1,91 @@
+##
+## Parameter File: CBserver.Offline
+## Configuration file for DataServer (data input for analysis)
+##
+##-----------------------------------------------------------------------
+## Number of Input streams (sources of data), Record length to write data
+## and switch 0/1 = no/yes to control data write
+##              Number streams	Record Len	Save Data
+Input-Streams:	1		32768		0
+##
+## Optional directory spec. If not specified File-Names must contain the full
+## directory path
+# File-Directory:	../data/in/
+#File-Directory:	/home/mami_account/newmwpc/data/
+ File-Directory:	/data0/CB/Paolo-data/Nov13/
+##
+## Specify each input stream
+## From disk file, ACQU (Mk1) format, save any output to file (save=1)
+## Input data record length, Output data record length
+##
+##            	Source	Format	Save?	RecLen	Buffers	Swap	MarkID
+# Stream-Spec:	File	Mk1	0	32768	32	0	400
+Stream-Spec:	File	Mk2	0	32768	32	0	400
+##
+## Now the list of data files to analyse
+##		File Name	1st rec	Last rec
+####################################################################
+#
+# 201311_E-G
+# moeller, targpol+
+ File-Name:	CBTaggTAPS_343.dat	0	0
+ File-Name:	CBTaggTAPS_347.dat	0	0
+ File-Name:	CBTaggTAPS_539.dat	0	0
+ File-Name:	CBTaggTAPS_540.dat	0	0
+ File-Name:	CBTaggTAPS_541.dat	0	0
+ File-Name:	CBTaggTAPS_542.dat	0	0
+ File-Name:	CBTaggTAPS_589.dat	0	0
+ File-Name:	CBTaggTAPS_590.dat	0	0
+ File-Name:	CBTaggTAPS_591.dat	0	0
+ File-Name:	CBTaggTAPS_592.dat	0	0
+ File-Name:	CBTaggTAPS_593.dat	0	0
+ File-Name:	CBTaggTAPS_641.dat	0	0
+ File-Name:	CBTaggTAPS_646.dat	0	0
+ File-Name:	CBTaggTAPS_693.dat	0	0
+ File-Name:	CBTaggTAPS_695.dat	0	0
+ File-Name:	CBTaggTAPS_696.dat	0	0
+ File-Name:	CBTaggTAPS_697.dat	0	0
+ File-Name:	CBTaggTAPS_743.dat	0	0
+ File-Name:	CBTaggTAPS_744.dat	0	0
+ File-Name:	CBTaggTAPS_745.dat	0	0
+ File-Name:	CBTaggTAPS_746.dat	0	0
+# moeller, targpol-
+ File-Name:	CBTaggTAPS_905.dat	0	0
+ File-Name:	CBTaggTAPS_906.dat	0	0
+ File-Name:	CBTaggTAPS_907.dat	0	0
+ File-Name:	CBTaggTAPS_908.dat	0	0
+ File-Name:	CBTaggTAPS_941.dat	0	0
+ File-Name:	CBTaggTAPS_1004.dat	0	0
+ File-Name:	CBTaggTAPS_1043.dat	0	0
+ File-Name:	CBTaggTAPS_1044.dat	0	0
+ File-Name:	CBTaggTAPS_1067.dat	0	0
+ File-Name:	CBTaggTAPS_1068.dat	0	0
+ File-Name:	CBTaggTAPS_1069.dat	0	0
+ File-Name:	CBTaggTAPS_1070.dat	0	0
+ File-Name:	CBTaggTAPS_1115.dat	0	0
+ File-Name:	CBTaggTAPS_1116.dat	0	0
+ File-Name:	CBTaggTAPS_1118.dat	0	0
+ File-Name:	CBTaggTAPS_1119.dat	0	0
+ File-Name:	CBTaggTAPS_1178.dat	0	0
+ File-Name:	CBTaggTAPS_1179.dat	0	0
+ File-Name:	CBTaggTAPS_1180.dat	0	0
+ File-Name:	CBTaggTAPS_1181.dat	0	0
+ File-Name:	CBTaggTAPS_1182.dat	0	0
+ File-Name:	CBTaggTAPS_1185.dat	0	0
+ File-Name:	CBTaggTAPS_1232.dat	0	0
+ File-Name:	CBTaggTAPS_1234.dat	0	0
+ File-Name:	CBTaggTAPS_1235.dat	0	0
+ File-Name:	CBTaggTAPS_1236.dat	0	0
+ File-Name:	CBTaggTAPS_1286.dat	0	0
+ File-Name:	CBTaggTAPS_1287.dat	0	0
+ File-Name:	CBTaggTAPS_1288.dat	0	0
+ File-Name:	CBTaggTAPS_1289.dat	0	0
+ File-Name:	CBTaggTAPS_1290.dat	0	0
+ File-Name:	CBTaggTAPS_1321.dat	0	0
+ File-Name:	CBTaggTAPS_1322.dat	0	0
+ File-Name:	CBTaggTAPS_1323.dat	0	0
+ File-Name:	CBTaggTAPS_1324.dat	0	0
+ File-Name:	CBTaggTAPS_1325.dat	0	0
+# dummy
+File-Name:	CBTaggTAPS_484.dat	0	0
+## END
