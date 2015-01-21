@@ -29,7 +29,7 @@ Use-CaLib-PID:      0       0       0       0
 Use-CaLib-Veto:     1       1
 
 #Use-CaLib-CBEnergyPerRun: 	data/CBEnergyCorrectionPerRun.txt
-RootTree-Output-Folder:         /Disk/ecdf_thehub/thehub6/Dominika/Acqu/
+RootTree-Output-Folder:         /Disk/ecdf_thehub/thehub6/Dominika/acqu/acqu_user/
 RootTree-File-Name:		Acqu
 
 # Read in and decode beam helicity ADC

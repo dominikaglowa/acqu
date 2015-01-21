@@ -30,7 +30,7 @@ TA2GoAT::TA2GoAT(const char* Name, TA2Analysis* Analysis) : TA2AccessSQL(Name, A
                                                                     tagged_ch(0),
                                                                     tagged_t(0),
                                                                     plane(0),
-                                                                    edge(0),
+                                                                   edge(0),
                                                                     edgeSetting(0),
                                                                     nNaI_Hits(0),
                                                                     NaI_Hits(0),
@@ -533,7 +533,7 @@ void    TA2GoAT::Reconstruct()
 	}
 	
 	// Get Trigger information
-	TriggerReconstruction();
+	//	TriggerReconstruction();
 
 	nError = gAR->GetHardError();
 	ReadErrorMk2_t *ErrorBlock = gAR->GetHardwareError();
@@ -932,8 +932,8 @@ void    TA2GoAT::ParseMisc(char* line)
 void 	TA2GoAT::TriggerReconstruction()
 {
 	if (fNaI) ESum = fNaI->GetTotalEnergy();
-	if(gAR->GetProcessType() == EMCProcess) TriggerMC();
-	else TriggerHW();
+		if(gAR->GetProcessType() == EMCProcess) TriggerMC();
+		else TriggerHW();
 
 	
 }

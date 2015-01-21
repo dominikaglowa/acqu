@@ -16,7 +16,8 @@ Input-Streams:	1		32768		0
 ##
 ## Optional directory spec. If not specified File-Names must contain the full
 ## directory path
-File-Directory:	A2Data/
+#File-Directory:	/Disk/ecdf_thehub/thehub6/A2_Deuterium/
+File-Directory:	 /Disk/ds-pnp-np/dominika/Sn116/CBfiles/
 ##
 ## Specify each input stream
 ## From disk file, ACQU (Mk1) format, save any output to file (save=1)
@@ -29,5 +30,8 @@ Stream-Spec:	File	Mk1	0	32768	32	0	400
 ## Tagger test data files
 ##		File Name	1st rec	Last rec
 ## 2nA
-File-Name:	Run_Deuterium.dat	 0	0
+#File-Name:	Run_Deuterium.dat	 0	0
+#File-Name:	CB_314.dat.xz	 0	0
+#October 2012 Sn116
+File-Name:	CB_422.dat	0	
 ## END

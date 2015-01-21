@@ -40,9 +40,9 @@ BitPattern:  Analysis-TriggerPat.dat
 ## Apparatus setup....
 ## Raw analysis may be performed without Apparati
 ##              Name            Class           	Setup file
-Apparatus:      TAGG            TA2Tagger               Analysis-Tagger.dat
-Apparatus:      CB             	TA2CentralApparatus	Analysis-CentralApparatus.dat
-Apparatus:      TAPS            TA2Taps	 		Analysis-TAPS.dat
+#Apparatus:      TAGG            TA2Tagger               Analysis-Tagger.dat
+#Apparatus:      CB             	TA2CentralApparatus	Analysis-CentralApparatus.dat
+#Apparatus:      TAPS            TA2Taps	 		Analysis-TAPS.dat
 ##
 ## Turn on apparatus-level reconstruction
 Reconstruct-Analysis:
@@ -61,7 +61,8 @@ Initialise:
 Period: 100000   macros/PeriodMacro.C   PeriodMacro()
 ##
 ## Finish...when all input data files processed
-Finish:         macros/FinishMacro.C   FinishMacro()
+Finish:              	FinishMacro.C   FinishMacro()
+#EndFile:		EndFileMacro.C	EndFileMacro()
 ##
 ## Save all accepted events (ie those which pass all data cuts) to a
 ## ROOT file. Data saved in RAW format (ie ADC indices and values)

@@ -50,9 +50,9 @@ BitPattern:  AR-Analysis-TriggerPat.dat
 ## Apparatus setup....
 ## Raw analysis may be performed without Apparati
 ##              Name            Class           	Setup file
-Apparatus:      TAGG            TA2Tagger   		AR-Analysis-Tagger.dat
-Apparatus:      CB              TA2CentralApparatus	AR-Analysis-CentApp.dat
-Apparatus:      TAPS            TA2Taps		  	AR-Analysis-TAPS.dat
+#Apparatus:      TAGG            TA2Tagger   		AR-Analysis-Tagger.dat
+#Apparatus:      CB              TA2CentralApparatus	AR-Analysis-CentApp.dat
+#Apparatus:      TAPS            TA2Taps		  	AR-Analysis-TAPS.dat
 ##
 ## Turn on apparatus-level reconstruction
 Reconstruct-Analysis:
@@ -63,6 +63,7 @@ Reconstruct-Analysis:
 #Physics-Analysis:	PHYS	TA2GoAT		AR-Analysis-GoAT-Sn120.dat
 #Physics-Analysis:	PHYS	TA2GoAT		AR-Analysis-GoAT-Sn124.dat
 #Physics-Analysis:	MyCaLib	TA2MyCaLib		MyCaLiB.dat
+Physics-Analysis:       Example	TA2GammaDeuterium	TA2GammaDeuterium.dat
 ##
 ## Do some post initialisation...usually necessary
 Initialise:
@@ -78,6 +79,7 @@ Period: 100000  PeriodMacro.C   PeriodMacro()
 ## Finish...when all input data files processed
 #Finish: root/macros/FinishWorker.C	Finish();
 EndFile:		EndFileMacro.C	EndFileMacro()
+#Finish:		FinishMacro.C	FinishMacro()
 
 ##
 ## Histogram ALL defined single value ADC's

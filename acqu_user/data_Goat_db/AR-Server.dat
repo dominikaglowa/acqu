@@ -19,7 +19,7 @@ Input-Streams:	1		32768		0
 #File-Directory:	 /Disk/thehub_disk_5/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Sn116/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Sn124/
-File-Directory:	 /Disk/ds-pnp-np/dominika/Sn120/
+File-Directory:	 /Disk/ds-pnp-np/dominika/Sn120/CBfiles/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Pb208/
 ##
 ## Specify each input stream
@@ -713,13 +713,13 @@ Stream-Spec:	File	Mk1	0	32768	32	0	400
 #File-Name:	 CB_828.dat	 0	 0
 #File-Name:	 CB_829.dat	 0	 0
 ##October 2012 Sn120
-#File-Name:	CB_681.dat	 0	 0
-#File-Name:	CB_682.dat	 0	 0
-#File-Name:	CB_975.dat	 0	 0
-#File-Name:	CB_976.dat	 0	 0
-#File-Name:	CB_977.dat	 0	 0
-#File-Name:	CB_978.dat	 0	 0
-#File-Name:	CB_979.dat	 0	 0
+File-Name:	CB_681.dat	 0	 0
+File-Name:	CB_682.dat	 0	 0
+File-Name:	CB_975.dat	 0	 0
+File-Name:	CB_976.dat	 0	 0
+File-Name:	CB_977.dat	 0	 0
+File-Name:	CB_978.dat	 0	 0
+File-Name:	CB_979.dat	 0	 0
 #File-Name:	CB_980.dat	 0	 0
 #File-Name:	CB_981.dat	 0	 0
 #File-Name:	CB_982.dat	 0	 0
