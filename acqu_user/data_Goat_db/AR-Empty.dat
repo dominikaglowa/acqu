@@ -74,5 +74,4 @@ AnalysisSetup: AR-Analysis.dat
 ##
 ## Online running...setup of data server
 ## This is ignored for offline running and may be left in
-
-ServerSetup: Thread7Server.dat
+ServerSetup: AR-Server-Empty.dat

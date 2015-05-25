@@ -26,7 +26,7 @@
 ## NB with TAPS the number of ADCs = 29001
 ##
 ## Batch mode operation...redirect output directory for log files etc.
-BatchDir: /Disk/ecdf_thehub/thehub6/Dominika/Acqu/
+BatchDir: /Disk/ds-sopa-group/np/thehubdata/thehub6/Dominika/acqu_new/acqu_user/
 ##
 ##        Tree Name     	# branches	Process Type
 Name:     RawEvent_AR_Save	3		Raw
@@ -38,7 +38,7 @@ Branch:	  Mk1_Header            120000
 ## List of Tree files which will form the input TChain for --offline running
 ##
 ## Directory to save any created ROOT files (include final / )
-Directory:  /Disk/ecdf_thehub/thehub6/Dominika/Acqu/
+Directory:  /Disk/ds-sopa-group/np/thehubdata/thehub6/Dominika/acqu_new/acqu_user/
 ##
 ## Manual setup of ADC, Scaler, bits-in-ADC numbers
 ## Usually needed only where experiment header information is not given

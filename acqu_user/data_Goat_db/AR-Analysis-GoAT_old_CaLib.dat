@@ -15,18 +15,18 @@ Reconstruct:
 Use-CaLib:      172.20.80.13       Calibration_2012   dominika    magic^2014    2012_10_CohPi0_Ferretti
 #
 #
-#
-# tagger calib:     time    efficiency (0=off/1=on)
-Use-CaLib-TAGG:     1       1
-# CB calib:         energy  time    timewalk    quadr. energy    led  (0=off/1=on)
-Use-CaLib-CB:       1       1       1           1                1 
-# TAPS calib:       energy  time    quadr. energy   LED thr.    CFD thr.  (0=off/1=on)
-Use-CaLib-TAPS:     1       1       1               1           1
-# PID calib:        phi     energy  time  (0=off/1=on)
-Use-CaLib-PID:      0       0       0
-# Veto calib:       energy  time    LED thr. (0=off/1=on)
-Use-CaLib-Veto:     0       0       0
-
+# miscellaneous calibrations    # target position  (0=off/1=on)
+#Use-CaLib-Misc:                 1
+# tagger calib:     time  (0=off/1=on)
+Use-CaLib-TAGG:     0
+# CB calib:         energy  time    timewalk    quadr. energy  (0=off/1=on)
+Use-CaLib-CB:       0       0       0           0
+# TAPS calib:       energy  time    quadr. energy   LED thr.  (0=off/1=on)
+Use-CaLib-TAPS:     0       0       0               0
+# PID calib:        phi     droop   energy  time  (0=off/1=on)
+Use-CaLib-PID:      1       1       1       1
+# Veto calib:       energy  time  (0=off/1=on)
+Use-CaLib-Veto:     0       0
 
 #Use-CaLib-CBEnergyPerRun: 	data/CBEnergyCorrectionPerRun.txt
 RootTree-Output-Folder:         /Disk/ds-sopa-group/np/thehubdata/thehub6/Dominika/acqu_new/acqu_user/
@@ -45,10 +45,8 @@ RootTree-File-Name:		Acqu
 ## Target parameters
 ##	x,y,z		Mass(MeV)
 ## Proton
-#Target:	0. 0. -0.33	107961.738
-#Target:	0. 0. -0.33	111688.180
-#Target:	0. 0. -0.33	115417.416
-Target:	0. 0. 0.	1875.6
+Target:	0. 0. -0.33	107961.738
+#Target:	0. 0. 0.	1875.6
 
 Initialise:
 

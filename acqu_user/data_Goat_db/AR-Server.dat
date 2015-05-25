@@ -19,8 +19,9 @@ Input-Streams:	1		32768		0
 #File-Directory:	 /Disk/thehub_disk_5/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Sn116/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Sn124/
-File-Directory:	 /Disk/ds-pnp-np/dominika/Sn120/CBfiles/
+#File-Directory:	 /Disk/ds-pnp-np/dominika/Sn120/CBfiles/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Pb208/
+File-Directory:	 /Disk/ecdf_thehub/thehub6/A2_Deuterium/
 ##
 ## Specify each input stream
 ## From disk file, ACQU (Mk1) format, save any output to file (save=1)
@@ -32,6 +33,9 @@ Stream-Spec:	File	Mk1	0	32768	32	0	400
 ## Now the list of data files to analyse
 ##		File Name	1st rec	Last rec
 #
+#Stephen's 2014 data
+#File-Name: 	CB_314.dat.xz	0	0
+File-Name: 	CB_315.dat.xz	0	0
 #October 2012 Pb208
 #File-Name:    CB_683.dat	0	0
 #File-Name:    CB_684.dat	0	0
