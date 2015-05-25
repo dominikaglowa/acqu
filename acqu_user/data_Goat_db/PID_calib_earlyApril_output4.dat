@@ -1,0 +1,79 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   29th Apr 2003
+##--Update	JRM Annand...17th May 2005
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Parameter File: PID.03.09.06 (specified in CBanalysis.dat)
+## Parameter file for PID II test run 3/9/06.
+## Setup decoding of Particle-ID (TA2PlasticPID) detector class
+##  **DEFAULT TEMPLATE ** DEFAULT TEMPLATE ** DEFAULT TEMPLATE **
+##-----------------------------------------------------------------------
+# Total # Elements in array, Pulse-Height info? Time info? Position info?
+# Info switch is off/on = 0/1
+#	Total	Energy?	Time?	Position?
+Size:  24	1       1	        1
+RawHits:
+#
+# Calibration factors for each PID element...one line for each
+# Can optionally enter TDC-Time onfo...extra 5 parameters per line
+# low, high are energy cuts, ped is the pedestal, MeV/chan conversion gain
+#calibration for the early April 2014 data:
+#        ADC Low [MeV]  High [MeV]    Ped [chan.]      MeV/Chan            TDC   Low [ns]   High [ns]  Off [chan.]    ns/Chan  Position [r(mm), theta, phi(deg)] 
+Element: 126 	0.0010 	    1000.0 	 80.2096 	0.01031 	2016M0 	     -60 	   60 	  -2973.71 	0.117 	          51.0 	  0.0 	14.3157 
+Element: 101 	0.0010 	    1000.0 	 80.4764 	0.01083 	2017M0 	     -60 	   60 	  -2954.53 	0.117 	          51.0 	  0.0 	28.4352 
+Element: 127 	0.0010 	    1000.0 	 70.8065 	0.00941 	2018M0 	     -60 	   60 	  -2972.52 	0.117 	          51.0 	  0.0 	44.4128 
+Element: 103 	0.0010 	    1000.0 	 72.4725 	0.01111 	2019M0 	     -60 	   60 	  -2965.55 	0.117 	          51.0 	  0.0 	60.0527 
+Element: 104 	0.0010 	    1000.0 	 82.4701 	0.01146 	2020M0 	     -60 	   60 	  -2970.32 	0.117 	          51.0 	  0.0 	74.9022 
+Element: 105 	0.0010 	    1000.0 	 70.4720 	0.00844 	2021M0 	     -60 	   60 	  -2952.64 	0.117 	          51.0 	  0.0 	92.2553 
+Element: 106 	0.0010 	    1000.0 	 106.4764 	0.00941 	2022M0 	     -60 	   60 	  -2947.74 	0.117 	          51.0 	  0.0 	107.0538 
+Element: 107 	0.0010 	    1000.0 	 70.4720 	0.00943 	2023M0 	     -60 	   60 	  -2937.05 	0.117 	          51.0 	  0.0 	122.9838 
+Element: 108 	0.0010 	    1000.0 	 78.4701 	0.00941 	2024M0 	     -60 	   60 	  -2990.83 	0.117 	          51.0 	  0.0 	136.8014 
+Element: 109 	0.0010 	    1000.0 	 88.4701 	0.01096 	2025M0 	     -60 	   60 	  -3030.63 	0.117 	          51.0 	  0.0 	152.5664 
+Element: 110 	0.0010 	    1000.0 	 86.4706 	0.01301 	2026M0 	     -60 	   60 	  -2975.74 	0.117 	          51.0 	  0.0 	167.3307 
+Element: 111 	0.0010 	    1000.0 	 92.4716 	0.00930 	2027M0 	     -60 	   60 	  -2968.38 	0.117 	          51.0 	  0.0 	-179.2895 
+Element: 112 	0.0010 	    1000.0 	 76.4706 	0.01249 	2028M0 	     -60 	   60 	  -2978.87 	0.117 	          51.0 	  0.0 	-165.4701 
+Element: 113 	0.0010 	    1000.0 	 94.4745 	0.00852 	2029M0 	     -60 	   60 	  -2943.11 	0.117 	          51.0 	  0.0 	-151.2527 
+Element: 114 	0.0010 	    1000.0 	 74.4745 	0.01301 	2030M0 	     -60 	   60 	  -2967.16 	0.117 	          51.0 	  0.0 	-135.1160 
+Element: 115 	0.0010 	    1000.0 	 74.4711 	0.00879 	2031M0 	     -60 	   60 	  -2940.98 	0.117 	          51.0 	  0.0 	-120.0784 
+Element: 116 	0.0010 	    1000.0 	 56.4740 	0.01225 	2008M0 	     -60 	   60 	  -3042.74 	0.117 	          51.0 	  0.0 	-105.7504 
+Element: 117 	0.0010 	    1000.0 	 72.4691 	0.01236 	2009M0 	     -60 	   60 	  -3135.65 	0.117 	          51.0 	  0.0 	-89.6354 
+Element: 118 	0.0010 	    1000.0 	 76.4779 	0.01201 	2010M0 	     -60 	   60 	  -3184.00 	0.117 	          51.0 	  0.0 	-74.2983 
+Element: 119 	0.0010 	    1000.0 	 62.4716 	0.00850 	2011M0 	     -60 	   60 	  -3156.24 	0.117 	          51.0 	  0.0 	-58.5823 
+Element: 120 	0.0010 	    1000.0 	 72.4740 	0.00895 	2012M0 	     -60 	   60 	  -3145.23 	0.117 	          51.0 	  0.0 	-43.9719 
+Element: 121 	0.0010 	    1000.0 	 56.4779 	0.00833 	2013M0 	     -60 	   60 	  -3158.82 	0.117 	          51.0 	  0.0 	-28.2966 
+Element: 122 	0.0010 	    1000.0 	 90.4672 	0.01242 	2014M0 	     -60 	   60 	  -3102.16 	0.117 	          51.0 	  0.0 	-13.9755 
+Element: 123 	0.0010 	    1000.0 	 56.4755 	0.01415 	2015M0 	     -60 	   60 	  -3075.08 	0.117 	          51.0 	  0.0 	-0.1494 
+
+#
+## Do some further array initialisation BEFORE display specification
+Initialise:
+##
+##	Histograming of basic detector stuff
+##
+#Display:	1D	Nhits  	24 0 24
+#Display:	1D	Hits		24	0	24
+## Total Energy deposited in the array, 1000 channels, range 0 -- 200 MeV
+#Display:	1D	Etot	 400 	0 	200
+## Energy deposited in individual elements, 200 channels, range 0 -- 20 MeV
+#Display:	1D	Energy	200 0 5	0 23
+#
+#Display:	1D	TimeOR 200 -100. 100.
+#Display:	1D	Time   120 0. 120.	0 24
+Display:	2D	TimeOR 200 -100. 100 -1 Hits 24 0 24 -1
+#
+#Display:	2D	EnergyOR 100 0 10 -1 Hits 24 0 24 -1
+Display:	1D	Nhits  	 24 0 24
+Display:	1D	Hits	 24 0 24		   
+Display:	1D	NADChits 24 0 24
+Display:	1D	ADCHits	 24 0 24
+Display:	1D	NTDChits 24 0 24
+Display:	1D	TDCHits	 24 0 24
+Display:	1D	Etot	 400 0 200			   
+#Display:	1D	Energy	200 0 5	0 23				   
+Display:	1D	TimeOR 300 -50. 100.				   
+#Display:	1D	Time   120 0. 120. 0 24			   
+Display:	2D	TimeOR 150 -50. 100 -1 Hits 24 0 24 -1
+Display:	2D	EnergyOR 100 0 10 -1 Hits 24 0 24 -1
+Display:        2D      TDCHits  24 0 24 -1 ADCHits  24 0 24 -1

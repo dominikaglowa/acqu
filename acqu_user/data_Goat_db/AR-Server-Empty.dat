@@ -1,0 +1,120 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   13th Jan 2004
+##--Update	JRM Annand... 1st Dec 2004
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data
+##
+## Parameter File: FPcommServer.Offline
+## Configuration file for DataServer (data input for analysis)
+##
+##-----------------------------------------------------------------------
+## Number of Input streams (sources of data), Record length to write data
+## and switch 0/1 = no/yes to control data write
+##              Number streams	Record Len	Save Data
+Input-Streams:	1		32768		0
+##
+## Optional directory spec. If not specified File-Names must contain the full
+## directory path
+#File-Directory:	 /Disk/thehub_disk_5/
+#File-Directory:	 /Disk/ds-sopa-group/np/dominika/Sn116/CBfiles/
+#File-Directory:	 /Disk/ds-pnp-np/dominika/Sn124/
+#File-Directory:	 /Disk/ds-pnp-np/dominika/Sn120/
+File-Directory:	 /Disk/ds-pnp-np/dominika/EmptyTarget/
+##
+## Specify each input stream
+## From disk file, ACQU (Mk1) format, save any output to file (save=1)
+## Input data record length, Output data record length
+##
+##            	Source	Format	Save?	RecLen	Buffers	Swap	MarkID
+Stream-Spec:	File	Mk1	0	32768	32	0	400
+##
+## Now the list of data files to analyse
+##		File Name	1st rec	Last rec
+#
+#
+#October 2012 Empty Target
+ 
+File-Name: CB_890.dat	 0	 0
+File-Name: CB_891.dat	 0	 0
+File-Name: CB_892.dat	 0	 0
+File-Name: CB_893.dat	 0	 0
+File-Name: CB_894.dat	 0	 0
+File-Name: CB_895.dat    0	 0
+File-Name: CB_896.dat  	 0	 0
+File-Name: CB_897.dat	 0	 0
+File-Name: CB_898.dat	 0	 0
+File-Name: CB_899.dat    0	 0
+File-Name: CB_900.dat	 0	 0
+File-Name: CB_901.dat	 0	 0
+File-Name: CB_902.dat	 0	 0
+File-Name: CB_903.dat	 0	 0
+File-Name: CB_904.dat	 0	 0
+File-Name: CB_905.dat	 0	 0
+File-Name: CB_906.dat	 0	 0
+File-Name: CB_907.dat	 0	 0
+File-Name: CB_908.dat	 0	 0
+File-Name: CB_909.dat	 0	 0
+File-Name: CB_910.dat 	 0	 0
+File-Name: CB_911.dat	 0	 0
+File-Name: CB_912.dat	 0	 0
+File-Name: CB_913.dat	 0	 0
+File-Name: CB_914.dat	 0	 0
+File-Name: CB_915.dat	 0	 0
+File-Name: CB_916.dat	 0	 0
+File-Name: CB_917.dat	 0	 0
+File-Name: CB_918.dat	 0	 0
+File-Name: CB_919.dat	 0	 0
+File-Name: CB_920.dat 	 0	 0
+File-Name: CB_921.dat	 0	 0
+File-Name: CB_922.dat	 0	 0
+File-Name: CB_923.dat	 0	 0
+File-Name: CB_924.dat 	 0	 0
+File-Name: CB_925.dat	 0	 0
+File-Name: CB_926.dat	 0	 0
+File-Name: CB_927.dat 	 0	 0
+File-Name: CB_928.dat	 0	 0
+File-Name: CB_930.dat	 0	 0
+File-Name: CB_931.dat	 0	 0
+File-Name: CB_932.dat	 0	 0
+File-Name: CB_933.dat	 0	 0
+File-Name: CB_934.dat	 0	 0
+File-Name: CB_935.dat	 0	 0
+File-Name: CB_936.dat	 0	 0
+File-Name: CB_937.dat	 0	 0
+File-Name: CB_938.dat	 0	 0
+File-Name: CB_939.dat	 0	 0
+File-Name: CB_940.dat	 0	 0
+File-Name: CB_941.dat	 0	 0
+File-Name: CB_942.dat	 0	 0
+File-Name: CB_943.dat	 0	 0
+File-Name: CB_944.dat	 0	 0
+File-Name: CB_945.dat	 0	 0
+File-Name: CB_946.dat	 0	 0
+File-Name: CB_947.dat	 0	 0
+File-Name: CB_948.dat	 0	 0
+File-Name: CB_949.dat	 0	 0
+File-Name: CB_950.dat	 0	 0
+File-Name: CB_952.dat	 0	 0
+File-Name: CB_1191.dat 	 0	 0
+File-Name: CB_1192.dat	 0	 0
+File-Name: CB_1193.dat	 0	 0
+File-Name: CB_1194.dat	 0	 0
+File-Name: CB_1195.dat	 0	 0
+File-Name: CB_1196.dat	 0	 0
+File-Name: CB_1197.dat	 0	 0
+File-Name: CB_1198.dat	 0	 0
+File-Name: CB_1199.dat 	 0	 0
+File-Name: CB_1200.dat	 0	 0
+File-Name: CB_1201.dat	 0	 0
+File-Name: CB_1202.dat	 0	 0
+File-Name: CB_1203.dat	 0	 0
+File-Name: CB_1204.dat	 0	 0
+File-Name: CB_1205.dat   0	 0
+File-Name: CB_1206.dat 	 0	 0
+File-Name: CB_1207.dat 	 0	 0
+File-Name: CB_1208.dat 	 0	 0
+File-Name: CB_1209.dat	 0	 0
+File-Name: CB_1210.dat	 0	 0
+File-Name: CB_1211.dat	 0	 0
+
