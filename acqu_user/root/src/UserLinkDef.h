@@ -35,9 +35,11 @@
 #pragma link C++ class TA2BasePhysics+;
 #pragma link C++ class TA2TriggerPhysics+;
 #pragma link C++ class TA2TAPSAnalysis+;
+#pragma link C++ class TA2GammaDeuterium+;
 // TA2My... extension classes
 //#pragma link C++ class TA2MyAnalysis+;
 #pragma link C++ class TA2MyCaLib+;
+#pragma link C++ class TA2MyRateEstimation+;
 #pragma link C++ class TA2MyPhysics+;
 // Apparatus classes
 #pragma link C++ class TA2GenericApp+;
