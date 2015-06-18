@@ -11,12 +11,14 @@
 ## This one sets up an analysis of the main focal-plane detector
 ##----------------------------------------------------------------------------
 #	NMR field       Beam Energy
-Magnet:	1.05715		883.15
+#Magnet:	1.05715		883.15
+Magnet:	1.05715		855.00
 #
 #	  Name          Class Name    	Setup file
 #
 #Detector: FPD        	TA2Ladder	1212_Compton.Tagger.ua.dat
-Detector: FPD        	TA2Ladder	1212_Compton.Tagger.dat
+#Detector: FPD        	TA2Ladder	1212_Compton.Tagger.dat
+Detector: FPD		TA2Ladder 	FPD_855.29.09.12.dat
 #
 #
 Reconstruct:

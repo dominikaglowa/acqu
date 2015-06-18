@@ -38,7 +38,9 @@ Branch:	  Mk1_Header            120000
 ## List of Tree files which will form the input TChain for --offline running
 ##
 ## Directory to save any created ROOT files (include final / )
-Directory:  /Disk/ds-sopa-group/np/thehubdata/thehub6/Dominika/acqu_new/acqu_user/
+#Directory:  /Disk/ds-sopa-group/np/thehubdata/thehub6/Dominika/acqu_new/acqu_user/
+Directory:   /Disk/ds-sopa-personal/s0678212/a2goat/a2goat_phil/a2GoAT_Dominika
+
 ##
 ## Manual setup of ADC, Scaler, bits-in-ADC numbers
 ## Usually needed only where experiment header information is not given

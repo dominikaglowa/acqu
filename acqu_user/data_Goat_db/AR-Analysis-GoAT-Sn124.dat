@@ -20,13 +20,13 @@ Use-CaLib-Misc:                 1
 # tagger calib:     time  (0=off/1=on)
 Use-CaLib-TAGG:     1
 # CB calib:         energy  time    timewalk    quadr. energy  (0=off/1=on)
-Use-CaLib-CB:       0       0       0           0
+Use-CaLib-CB:       1       1       1           1
 # TAPS calib:       energy  time    quadr. energy   LED thr.  (0=off/1=on)
 Use-CaLib-TAPS:     1       1       1               1
 # PID calib:        phi     droop   energy  time  (0=off/1=on)
 Use-CaLib-PID:      0       0       0       0
 # Veto calib:       energy  time  (0=off/1=on)
-Use-CaLib-Veto:     1       1
+Use-CaLib-Veto:     0       0
 
 #Use-CaLib-CBEnergyPerRun: 	data/CBEnergyCorrectionPerRun.txt
 RootTree-Output-Folder:         /Disk/thehub_disk_6/Dominika/Acqu/
@@ -45,7 +45,7 @@ RootTree-File-Name:		Acqu
 ## Target parameters
 ##	x,y,z		Mass(MeV)
 ## Proton
-Target:	0. 0. -0.33	115417.416
+Target:	0. 0. -0.44	115417.416
 
 Initialise:
 

@@ -16,7 +16,7 @@ Input-Streams:	1		32768		0
 ##
 ## Optional directory spec. If not specified File-Names must contain the full
 ## directory path
-File-Directory:	/work0/a2cb/2012_12_Compton/
+File-Directory:	/Disk/ds-sopa-group/np/dominika/TaggEff/
 ##
 ## Specify each input stream
 ## From disk file, ACQU (Mk1) format, save any output to file (save=1)
@@ -28,5 +28,69 @@ Stream-Spec:	File	Mk1	0	32768	32	0	400
 ## Now the list of data files to analyse
 ##		File Name	1st rec	Last rec
 ##
-File-Name: TaggEff_472.dat 0 0
+####Sn116
+#File-Name:TaggEff_254.dat 0 0
+#File-Name:TaggEff_255.dat 0 0
+File-Name:TaggEff_256.dat 0 0
+
+#File-Name:TaggEff_258.dat 0 0
+#File-Name:TaggEff_259.dat 0 0
+#File-Name:TaggEff_260.dat 0 0
+
+#File-Name:TaggEff_281.dat 0 0
+#File-Name:TaggEff_282.dat 0 0
+#File-Name:TaggEff_283.dat 0 0
+
+#File-Name:TaggEff_284.dat 0 0
+#File-Name:TaggEff_285.dat 0 0
+#File-Name:TaggEff_286.dat 0 0
+
+####Pb208
+#File-Name:TaggEff_266.dat 0 0
+#File-Name:TaggEff_267.dat 0 0
+#File-Name:TaggEff_268.dat 0 0
+#File-Name:TaggEff_269.dat 0 0
+#File-Name:TaggEff_270.dat 0 0
+#File-Name:TaggEff_271.dat 0 0
+####Sn124
+#File-Name:TaggEff_272.dat 0 0
+#File-Name:TaggEff_273.dat 0 0
+#File-Name:TaggEff_274.dat 0 0
+#File-Name:TaggEff_275.dat 0 0
+#File-Name:TaggEff_276.dat 0 0
+#File-Name:TaggEff_277.dat 0 0
+#File-Name:TaggEff_278.dat 0 0
+#File-Name:TaggEff_279.dat 0 0
+#File-Name:TaggEff_280.dat 0 0
+####empty target
+#File-Name:TaggEff_287.dat 0 0
+#File-Name:TaggEff_288.dat 0 0
+#File-Name:TaggEff_289.dat 0 0
+#File-Name:TaggEff_290.dat 0 0
+####Sn120
+#File-Name:TaggEff_291.dat 0 0
+#File-Name:TaggEff_292.dat 0 0
+#File-Name:TaggEff_293.dat 0 0
+#File-Name:TaggEff_294.dat 0 0
+#File-Name:TaggEff_295.dat 0 0
+#File-Name:TaggEff_296.dat 0 0
+#File-Name:TaggEff_297.dat 0 0
+#File-Name:TaggEff_298.dat 0 0
+#File-Name:TaggEff_299.dat 0 0
+#File-Name:TaggEff_300.dat 0 0
+#File-Name:TaggEff_301.dat 0 0
+#File-Name:TaggEff_302.dat 0 0
+####Ni58
+#File-Name:TaggEff_303.dat 0 0
+#File-Name:TaggEff_304.dat 0 0
+#File-Name:TaggEff_305.dat 0 0
+#File-Name:TaggEff_306.dat 0 0
+#File-Name:TaggEff_307.dat 0 0
+#File-Name:TaggEff_309.dat 0 0
+#File-Name:TaggEff_310.dat 0 0
+#File-Name:TaggEff_312.dat 0 0
+#File-Name:TaggEff_313.dat 0 0
+#File-Name:TaggEff_314.dat 0 0
+#File-Name:TaggEff_315.dat 0 0
+#File-Name:TaggEff_316.dat 0 0
 ##
