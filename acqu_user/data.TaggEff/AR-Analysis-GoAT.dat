@@ -12,20 +12,20 @@ Reconstruct:
 
 # General:      dbhost       		dbname   dbuser      dbpass        calibration
 #Use-CaLib:      a2calib.online.a2.kph   calib    calib       basel10       Compton_2012_12
-Use-CaLib:      172.20.80.13       Calibration_2012   dominika    magic^2014    2012_10_CohPi0_Ferretti
+#Use-CaLib:      172.20.80.13       Calibration_2012   dominika    magic^2014    2012_10_CohPi0_Ferretti
 #
 #
 #
 # tagger calib:     time    efficiency (0=off/1=on)
-Use-CaLib-TAGG:     1       1
+#Use-CaLib-TAGG:     1       1
 # CB calib:         energy  time    timewalk    quadr. energy    led  (0=off/1=on)
-Use-CaLib-CB:       1       1       1           1                1 
+#Use-CaLib-CB:       1       1       1           1                1 
 # TAPS calib:       energy  time    quadr. energy   LED thr.    CFD thr.  (0=off/1=on)
-Use-CaLib-TAPS:     1       1       1               1           1
+#Use-CaLib-TAPS:     1       1       1               1           1
 # PID calib:        phi     energy  time  (0=off/1=on)
-Use-CaLib-PID:      0       0       0
+#Use-CaLib-PID:      0       0       0
 # Veto calib:       energy  time    LED thr. (0=off/1=on)
-Use-CaLib-Veto:     0       0       0
+#Use-CaLib-Veto:     0       0       0
 
 
 #Use-CaLib-CBEnergyPerRun: 	data/CBEnergyCorrectionPerRun.txt
@@ -45,8 +45,8 @@ RootTree-File-Name:		Acqu
 ## Target parameters
 ##	x,y,z		Mass(MeV)
 ## Proton
-#Target:	0. 0. -0.44	107961.738
-Target:	0. 0. -0.54	111688.180
+Target:	0. 0. -0.44	107961.738
+#Target:	0. 0. -0.54	111688.180
 #Target:	0. 0. -0.44	115417.416
 #Target:	0. 0. 0.	1875.6
 #Target:	0. 0. 0.	938.272
