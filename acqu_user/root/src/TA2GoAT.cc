@@ -25,7 +25,7 @@ TA2GoAT::TA2GoAT(const char* Name, TA2Analysis* Analysis) : TA2AccessSQL(Name, A
                                                                     WC_Vertex_X(0),
                                                                     WC_Vertex_Y(0),
                                                                     WC_Vertex_Z(0),
-                                                                    NaI_Cluster_X(0),                                                                   WC_Vertex_X(0),
+                                                                    NaI_Cluster_X(0),
                                                                     NaI_Cluster_Y(0),
                                                                     NaI_Cluster_Z(0),
                                                                     nTagged(0),
@@ -377,11 +377,10 @@ void    TA2GoAT::Reconstruct()
 		for(int i=0; i<nParticles; i++)
 		{
 			TA2Particle part = fCB->GetParticles(i);
-			TVector3 *v3_NaI = fCB->GetPositionsNaI(i);
 			
-			NaI_Cluster_X[i] = v3_NaI->X();
-			NaI_Cluster_Y[i] = v3_NaI->Y();
-			NaI_Cluster_Z[i] = v3_NaI->Z();
+			NaI_Cluster_X[i] = fCB->GetPositionsNaI(i)->X();
+			NaI_Cluster_Y[i] = fCB->GetPositionsNaI(i)->Y();
+			NaI_Cluster_Z[i] = fCB->GetPositionsNaI(i)->Z();
 			
 			part.SetParticleID(kRootino); // Set mass to 0 (rootino)
 			part.SetMass(0.0);
