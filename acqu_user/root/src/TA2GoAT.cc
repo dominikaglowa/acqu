@@ -25,6 +25,9 @@ TA2GoAT::TA2GoAT(const char* Name, TA2Analysis* Analysis) : TA2AccessSQL(Name, A
                                                                     WC_Vertex_X(0),
                                                                     WC_Vertex_Y(0),
                                                                     WC_Vertex_Z(0),
+                                                                    NaI_Cluster_X(0),                                                                   WC_Vertex_X(0),
+                                                                    NaI_Cluster_Y(0),
+                                                                    NaI_Cluster_Z(0),
                                                                     nTagged(0),
                                                                     photonbeam_E(0),
                                                                     tagged_ch(0),
@@ -178,6 +181,10 @@ void    TA2GoAT::PostInit()
    	WC_Vertex_X 	= new Double_t[TA2GoAT_MAX_PARTICLE];
    	WC_Vertex_Y 	= new Double_t[TA2GoAT_MAX_PARTICLE];
    	WC_Vertex_Z 	= new Double_t[TA2GoAT_MAX_PARTICLE];
+   	
+   	NaI_Cluster_X 	= new Double_t[TA2GoAT_MAX_PARTICLE];
+   	NaI_Cluster_Y 	= new Double_t[TA2GoAT_MAX_PARTICLE];
+   	NaI_Cluster_Z 	= new Double_t[TA2GoAT_MAX_PARTICLE];
     
    	NaI_Hits	= new Int_t[TA2GoAT_MAX_HITS];  
     	NaI_Cluster	= new Int_t[TA2GoAT_MAX_HITS];  
@@ -236,6 +243,9 @@ void    TA2GoAT::PostInit()
 	treeRawEvent->Branch("WC_Vertex_X", WC_Vertex_X, "WC_Vertex_X[nParticles]/D");	
 	treeRawEvent->Branch("WC_Vertex_Y", WC_Vertex_Y, "WC_Vertex_Y[nParticles]/D");	
 	treeRawEvent->Branch("WC_Vertex_Z", WC_Vertex_Z, "WC_Vertex_Z[nParticles]/D");
+	treeRawEvent->Branch("NaI_Cluster_X", NaI_Cluster_X, "NaI_Cluster_X[nParticles]/D");
+	treeRawEvent->Branch("NaI_Cluster_Y", NaI_Cluster_Y, "NaI_Cluster_Y[nParticles]/D");
+	treeRawEvent->Branch("NaI_Cluster_Z", NaI_Cluster_Z, "NaI_Cluster_Z[nParticles]/D");
 	
 	treeTagger->Branch("nTagged", &nTagged,"nTagged/I");
 	treeTagger->Branch("photonbeam_E", photonbeam_E, "photonbeam_E[nTagged]/D");
@@ -367,6 +377,11 @@ void    TA2GoAT::Reconstruct()
 		for(int i=0; i<nParticles; i++)
 		{
 			TA2Particle part = fCB->GetParticles(i);
+			TVector3 *v3_NaI = fCB->GetPositionsNaI(i);
+			
+			NaI_Cluster_X[i] = v3_NaI->X();
+			NaI_Cluster_Y[i] = v3_NaI->Y();
+			NaI_Cluster_Z[i] = v3_NaI->Z();
 			
 			part.SetParticleID(kRootino); // Set mass to 0 (rootino)
 			part.SetMass(0.0);
@@ -595,7 +610,10 @@ void    TA2GoAT::Reconstruct()
     	WC1_E[nParticles] 	= EBufferEnd;
     	WC_Vertex_X[nParticles] = EBufferEnd;  
     	WC_Vertex_Y[nParticles] = EBufferEnd;    
-	WC_Vertex_Z[nParticles] = EBufferEnd;    
+	WC_Vertex_Z[nParticles] = EBufferEnd;
+	NaI_Cluster_X[nParticles] = EBufferEnd;
+	NaI_Cluster_Y[nParticles] = EBufferEnd;
+	NaI_Cluster_Z[nParticles] = EBufferEnd;
 	d_E[nParticles] 	= EBufferEnd;    
     tagged_ch[nTagged] 	= EBufferEnd;
     tagged_t[nTagged] 	= EBufferEnd;	
