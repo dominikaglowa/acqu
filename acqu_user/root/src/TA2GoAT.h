@@ -66,6 +66,10 @@ private:
     	Double_t* 	WC_Vertex_X;
     	Double_t* 	WC_Vertex_Y;
     	Double_t* 	WC_Vertex_Z;
+    	
+    	Double_t* 	NaI_Cluster_X;
+    	Double_t* 	NaI_Cluster_Y;
+    	Double_t* 	NaI_Cluster_Z;
     
     	//Tagger
     	Int_t		nTagged;
