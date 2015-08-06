@@ -19,6 +19,7 @@
 #include "ARFile_t.h"
 
 
+ClassImp(TMCFoamGenerator)
 
 // Main command options
 static const Map_t kMCFoamCmd[] = {
@@ -271,4 +272,4 @@ void TMCFoamGenerator::PostInit( )
   TMCGenerator::PostInit();
 }
 
-ClassImp(TMCFoamGenerator)
+

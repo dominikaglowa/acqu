@@ -11,6 +11,7 @@
 
 #include "TCAMAC_4413DAQEnable.h"
 
+ClassImp(TCAMAC_4413DAQEnable)
 
 //-----------------------------------------------------------------------------
 TCAMAC_4413DAQEnable::TCAMAC_4413DAQEnable( Char_t* name, Char_t* input, 
@@ -44,5 +45,3 @@ void TCAMAC_4413DAQEnable::EndTrigCtrl()
 }
 
 //--------------------------------------------------------------------------
-
-ClassImp(TCAMAC_4413DAQEnable)

@@ -33,4 +33,3 @@ int main(int argc, char **argv)
   MC->PostInit();
   MC->Generate();
 }
-

@@ -15,6 +15,7 @@
 #include "TVirtualModule.h"
 #include "TDAQexperiment.h"
 
+ClassImp(TVirtualModule)
 
 enum { EVirtual_Random=100, EVirtual_DB };
 static Map_t kVirtualKeys[] = {
@@ -134,5 +135,3 @@ void TVirtualModule::ResetIRQ( )
   // Dummy reset interrupt
   usleep(10);
 }
-
-ClassImp(TVirtualModule)

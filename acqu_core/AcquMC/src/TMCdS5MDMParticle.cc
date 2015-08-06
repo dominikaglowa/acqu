@@ -20,6 +20,7 @@
 #include "ARFile_t.h"
 #include "TA2System.h"
 
+ClassImp(TMCdS5MDMParticle)
 
 //-----------------------------------------------------------------------------
 TMCdS5MDMParticle::TMCdS5MDMParticle( const Char_t* name, TRandom* rand, 
@@ -149,4 +150,4 @@ Bool_t TMCdS5MDMParticle::GenNDecay( )
   BoostLab( );
   return kTRUE;
 }
-ClassImp(TMCdS5MDMParticle)
+

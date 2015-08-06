@@ -1,14 +1,25 @@
-void FinishMacro(Char_t* file = "ARHistograms.root")
-{
-  // Stuff to do at the end of an analysis run
-  // Here all spectra are saved to disk
+void FinishMacro()  {
+
+  char command[128];
+  TA2GammaDeuterium* treeFile = (TA2GammaDeuterium*)(gAN->GetPhysics());
+  treeFile->Print();
+  treeFile->ProcessEnd();
   printf("End-of-Run macro executing\n");
-  TFile f(file,"recreate");
-  if( !f ){
-    printf("Open file %s for histogram save FAILED!!\n",file);
-    return;
-  }
-  gROOT->GetList()->Write();
-  f.Close();
-  printf("All histograms saved to %s\n\n",file);
+  sprintf(command,"kill -9 %d",gSystem->GetPid());
+  gSystem->Exec(command);
+
+/*
+    TString name;
+    printf("\nEnd-of-Run macro executing:\n");
+
+    Char_t* file = "ARHistograms.root";
+    TFile f1(file,"RECREATE");
+    gROOT->GetList()->Write();
+    gROOT->GetList()->Print();
+    f1.Close();
+    printf("done.\n",file);
+    printf("All histograms saved to %s\n",file); 
+    gSystem->Exit(0);
+*/
+
 }

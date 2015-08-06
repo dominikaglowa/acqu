@@ -12,6 +12,7 @@ using namespace std;
 // My includes
 #include "TA2GeomCalibPhysics.h"
 
+ClassImp(TA2GeomCalibPhysics)
 
 //_____________________________________________________________________________________
 TA2GeomCalibPhysics::TA2GeomCalibPhysics( const char* name, TA2Analysis* analysis ) : TA2Physics( name, analysis )
@@ -704,5 +705,3 @@ void TA2GeomCalibPhysics::MarkEndBuffers()
   }
   
 }
-
-ClassImp(TA2GeomCalibPhysics)

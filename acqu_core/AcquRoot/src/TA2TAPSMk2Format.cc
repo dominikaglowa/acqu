@@ -17,6 +17,7 @@
 //	ClassImp.....for ROOT implementation of classes
 //	Macro defined in $ROOTSYS/include/Rtypes.h
 
+ClassImp(TA2TAPSMk2Format)
 
 TA2TAPSMk2Format::TA2TAPSMk2Format(char* n, Int_t l, Int_t nsrc) :
   TA2DataFormat(n, l, nsrc)
@@ -114,5 +115,3 @@ void TA2TAPSMk2Format::MergeHeader( void* h1, void* h2, Int_t orl, Int_t irl  )
   delete (char*)h;
   */
 }
-
-ClassImp(TA2TAPSMk2Format)

@@ -16,6 +16,7 @@
 
 R__EXTERN TA2Analysis*  gAN;
 
+ClassImp(TA2Particle)
 
 //-----------------------------------------------------------------------------
 
@@ -68,13 +69,6 @@ void TA2Particle::Reset()
   fApparati = EAppUndef;
   fDetectors = EDetUndef;
   fUnclear = false;
-  fIintersMwpc[0] = 0;
-  fIintersMwpc[1] = 0;
-  fTrackEnergy = 0.0;
-  fEnergyMwpc0 = 0.0;
-  fEnergyMwpc1 = 0.0;
-  fPsVertex.SetXYZ(0.0,0.0,0.0);
-  fTrackTime = 0.0;
 }
 
 //-----------------------------------------------------------------------------
@@ -571,4 +565,4 @@ HitCluster_t* TA2Particle::FindCluster(const Char_t* pAppName, const Char_t* pDe
 }
 
 //-----------------------------------------------------------------------------
-ClassImp(TA2Particle)
+

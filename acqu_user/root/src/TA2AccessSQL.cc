@@ -16,6 +16,7 @@
 
 #include "TA2AccessSQL.h"
 
+ClassImp(TA2AccessSQL)
 
 //______________________________________________________________________________
 TA2AccessSQL::TA2AccessSQL(const char* name, TA2Analysis* analysis)	: TA2Physics(name, analysis), 
@@ -45,7 +46,6 @@ TA2AccessSQL::TA2AccessSQL(const char* name, TA2Analysis* analysis)	: TA2Physics
   fTOF              = 0;   
   fPbGlassApp       = 0;
   fPbGlass          = 0;  
-  fMoeller          = 0;
   
   fRunNumber = fIsMC ? 0 : TOSUtils::ExtractRunNumber(gAR->GetFileName());
 }
@@ -355,12 +355,7 @@ void TA2AccessSQL::LoadDetectors(TA2DataManager* parent, Int_t depth)
       fLinPol = (TA2LinearPolEpics*) obj;
       added = kTRUE;
     }
-    else if (!strcmp(obj->ClassName(), "TA2Moeller"))
-    {
-      fMoeller = (TA2Moeller*) obj;
-      added = kTRUE;
-    }
-
+    
     // print information if a detector was added
     if (added)
     {
@@ -494,5 +489,3 @@ void TA2AccessSQL::Reconstruct()
 {
   TA2Physics::Reconstruct();
 }
-
-ClassImp(TA2AccessSQL)

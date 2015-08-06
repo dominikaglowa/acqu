@@ -16,6 +16,7 @@
 
 #include "TA2MyPhysics.h"
 
+ClassImp(TA2MyPhysics)
 
 
 //______________________________________________________________________________
@@ -43,7 +44,7 @@ TA2MyPhysics::TA2MyPhysics(const char* name, TA2Analysis* analysis)
     fEventCounter       = 0;
     fEventOffset        = 0;
     fSaveEvent          = 0;
-    fScalerReadCounter  = 0;
+    fNScalerReads       = 0;
     fUseBadScalerReads  = kFALSE;
 
     fTaggerPhotonNhits  = 0;                 
@@ -170,9 +171,17 @@ TA2MyPhysics::TA2MyPhysics(const char* name, TA2Analysis* analysis)
     fOldScalerSum = new Double_t[gAR->GetMaxScaler()];
     for (Int_t i = 0; i < gAR->GetMaxScaler(); i++) fOldScalerSum[i] = 0.;
     
+    if (!fIsMC)
+    {
+        fTScEvent = new TTree("ScalerEvents", "A2 scaler events tree");
+        fScEventOld = new TOA2ScalerEvent();
+        fScEventNew = new TOA2ScalerEvent();
+        fTScEvent->Branch("ScalerEventsOld", "TOA2ScalerEvent", &fScEventOld, 2);
+        fTScEvent->Branch("ScalerEventsNew", "TOA2ScalerEvent", &fScEventNew, 2);
+    }
+    
     fNBadScalerReads = 0;
     fBadScalerReads = 0;
-    fIsBadScalerSkip = kFALSE;
     fH_BadScR_SumScalers = 0;
     fH_BadScR_SumFPDScalers = 0;
 
@@ -233,47 +242,33 @@ void TA2MyPhysics::SetConfig(Char_t* line, Int_t key)
     {
         case EMP_CALIB_BADSCR:
         {
-            // declare sscanf helpers (max. 16 data names)
+            fUseBadScalerReads = kTRUE;
+
             Int_t list;
             Int_t first;
             Int_t last;
-            Char_t* d[16];
-            for (Int_t i = 0; i < 16; i++) d[i] = new Char_t[128];
 
-            // read config line
-            Int_t nfields = sscanf(line, "%i%i%i%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", &list, &first, &last,
-                                   d[0], d[1], d[2], d[3], d[4], d[5], d[6], d[7], d[8], d[9], d[10], d[11], d[12], d[13], d[14], d[15]);
-
-            // check whether CaLib reader exists
-            if (fCaLibReader)
+            // read CaLib BadScR parameters 
+            if (sscanf(line, "%d%d%d", &list, &first, &last) == 3)
             {
-                // set flags
-                fCaLibReader->SetBadScRlist((Bool_t) list);
-                fCaLibReader->SetBadScRfirst((Bool_t) first);
-                fCaLibReader->SetBadScRlast((Bool_t) last);
-
-                // read (from database) & configure bad scaler reads
-                if (fCaLibReader->ReadScalerReads(nfields-3, d))
+                // check if CaLib reader exists
+                if (fCaLibReader)
                 {
-                    // set members
-                    fNBadScalerReads = fCaLibReader->GetNBadScR();
-                    fBadScalerReads = fCaLibReader->GetBadScR();
-
-                    // activate bad scaler reads
-                    fUseBadScalerReads = kTRUE;
+                    fCaLibReader->SetBadScRlist((Bool_t) list);
+                    fCaLibReader->SetBadScRfirst((Bool_t) first);
+                    fCaLibReader->SetBadScRlast((Bool_t) last);
+                    if (fCaLibReader->ReadScalerReads());
+                    {
+                        fNBadScalerReads = fCaLibReader->GetNBadScR();
+                        fBadScalerReads = fCaLibReader->GetBadScR();
+                    }
                 }
                 else
                 {
-                    Error("SetConfig", "Bad scaler read could not be configured!");
+                    Error("SetConfig", "Bad scaler read cannot be configured because CaLib was not configured!");
                 }
-            }
-            else
-            {
-                Error("SetConfig", "Bad scaler read cannot be configured because CaLib was not configured!");
-            }
-
-            // clean up
-            for (Int_t i = 0; i < 16; i++) delete d[i];
+            }                
+            else Error("SetConfig", "CaLib PID calibration could not be configured!");
             break;
         }
         case EMP_RUN_NUMBER:
@@ -790,7 +785,7 @@ void TA2MyPhysics::PostInit()
     printf("\n\n\n");
 
     // print scaler read list
-    if (fUseBadScalerReads && fBadScalerReads)
+    if (fBadScalerReads)
     {
         printf("  %d Bad scaler read(s): %s", fNBadScalerReads,
                                               TOSUtils::FormatArrayList(fNBadScalerReads, fBadScalerReads));
@@ -999,14 +994,11 @@ void TA2MyPhysics::Reconstruct()
     // check for scaler read event
     if (!fIsMC && gAR->IsScalerRead())
     {
-        // reset event skipping flag
-        fIsBadScalerSkip = kFALSE;
-
         // increment scaler reads counter
-        fScalerReadCounter++;
+        fNScalerReads++;
 
         // check whether previous scaler read (interval) was good in order to update scaler histos
-        if (fUseBadScalerReads && !IsBadScalerRead(fScalerReadCounter - 1))
+        if (fUseBadScalerReads && !IsBadScalerRead(fNScalerReads - 1))
         {
             // loop over scalers
             for (Int_t i = 0; i < gAR->GetMaxScaler(); i++)
@@ -1031,14 +1023,11 @@ void TA2MyPhysics::Reconstruct()
     // apply bad scaler read event skip
     if (!fIsMC && fUseBadScalerReads)
     {
-        // set the skip flag once for events before first scaler read
-        if (fIsBadScalerSkip == kFALSE && IsBadScalerRead(fScalerReadCounter)) fIsBadScalerSkip = kTRUE;
-        
         // check for bad scaler read in order to skip event
-        if (fIsBadScalerSkip)
+        if (IsBadScalerRead(fNScalerReads))
         {
             // display user info
-            if (fEventCounter == 0 || gAR->IsScalerRead()) Info("Reconstruct", "Skipping scaler read %d", fScalerReadCounter);
+            if (fEventCounter == 0 || gAR->IsScalerRead()) Info("Reconstruct", "Skipping scaler read %d", fNScalerReads);
 
             // increment event counter
             fEventCounter++;
@@ -1629,11 +1618,38 @@ void TA2MyPhysics::Reconstruct()
         // user information
         //printf("Scaler read @ event %lld\n", fEventCounter);
 
+        // set event number
+        fScEventOld->SetEvent(fEventCounter);
+        fScEventNew->SetEvent(fEventCounter);
+
         // update corrected clock scalers
         UpdateCorrectedScaler(0);
         UpdateCorrectedScaler(1);
         UpdateCorrectedScaler(144);
         UpdateCorrectedScaler(145);
+        
+        // set new scalers
+        fScEventNew->SetTaggInh((Double_t)fScaler[535]);
+        fScEventNew->SetTaggFree((Double_t)fScaler[534]);
+        fScEventNew->SetTotInh((Double_t)fScaler[528]);
+        fScEventNew->SetTotFree((Double_t)fScaler[529]);
+        
+        // save P2
+        fScEventOld->SetP2((Double_t)fScaler[151]);
+        fScEventNew->SetP2((Double_t)fScaler[151]);
+
+        // set Faraday
+        fScEventOld->SetFaraday((Double_t)fScaler[150]);
+        fScEventNew->SetFaraday((Double_t)fScaler[150]);
+ 
+        // set tagger
+        fScEventOld->SetTagger((Double_t)fScaler[327]);
+        fScEventNew->SetTagger((Double_t)fScaler[327]);
+        
+        // save scaler events
+        fTScEvent->Fill();
+        fScEventOld->Clear();
+        fScEventNew->Clear();
     }
  
 
@@ -1730,15 +1746,11 @@ Bool_t TA2MyPhysics::IsBadScalerRead(Int_t scr)
     // Return kTRUE if yes, otherwise or if no bad scaler reads list was
     // specified kFALSE;
 
-    // loop over bad scaler reads list (should be sorted)
+    // loop over bad scaler reads list
     for (Int_t i = 0; i < fNBadScalerReads; i++)
     {
         // check for bad scaler read
-        if (fBadScalerReads[i] < scr) continue;
-        if (fBadScalerReads[i] == scr)
-            return kTRUE;
-        else
-            return kFALSE;
+        if (scr == fBadScalerReads[i]) return kTRUE;
     }
 
     return kFALSE;
@@ -2244,6 +2256,7 @@ void TA2MyPhysics::UpdateCorrectedScaler(Int_t sc)
             else scaler_0 = fScaler[0];
             fH_Corrected_Scalers->SetBinContent(1, scaler_0);
             fH_Corrected_SumScalers->AddBinContent(1, scaler_0);
+            fScEventOld->SetTotFree(scaler_0);
         }
         // free running, overflow vulnerable 24-bit scaler (tagger)
         else if (sc == 144)
@@ -2253,11 +2266,14 @@ void TA2MyPhysics::UpdateCorrectedScaler(Int_t sc)
             else scaler_144 = fScaler[144];
             fH_Corrected_Scalers->SetBinContent(145, scaler_144);
             fH_Corrected_SumScalers->AddBinContent(145, scaler_144);
+            fScEventOld->SetTaggFree(scaler_144);
         }
         else 
         {
             fH_Corrected_Scalers->SetBinContent(sc+1, fScaler[sc]);
             fH_Corrected_SumScalers->AddBinContent(sc+1, fScaler[sc]);
+            if (sc == 1) fScEventOld->SetTotInh(fScaler[sc]);
+            if (sc == 145) fScEventOld->SetTaggInh(fScaler[sc]);
         }
 
         // update old sum scaler value
@@ -2775,4 +2791,3 @@ void TA2MyPhysics::TerminateAnalysis()
     fflush(NULL);
 }
 
-ClassImp(TA2MyPhysics)

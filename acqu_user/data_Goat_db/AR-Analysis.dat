@@ -52,7 +52,7 @@ BitPattern:  AR-Analysis-TriggerPat.dat
 ##              Name            Class           	Setup file
 Apparatus:      TAGG            TA2Tagger   		AR-Analysis-Tagger.dat
 Apparatus:      CB              TA2CentralApparatus	AR-Analysis-CentApp.dat
-#Apparatus:      TAPS            TA2Taps		  	AR-Analysis-TAPS.dat
+Apparatus:      TAPS            TA2Taps		  	AR-Analysis-TAPS.dat
 ##
 ## Turn on apparatus-level reconstruction
 Reconstruct-Analysis:

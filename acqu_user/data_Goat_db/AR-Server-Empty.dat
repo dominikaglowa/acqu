@@ -20,7 +20,7 @@ Input-Streams:	1		32768		0
 #File-Directory:	 /Disk/ds-sopa-group/np/dominika/Sn116/CBfiles/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Sn124/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Sn120/
-File-Directory:	 /Disk/ds-pnp-np/dominika/EmptyTarget/
+File-Directory:	 /Disk/ds-sopa-group/np/dominika/EmptyTarget/
 ##
 ## Specify each input stream
 ## From disk file, ACQU (Mk1) format, save any output to file (save=1)

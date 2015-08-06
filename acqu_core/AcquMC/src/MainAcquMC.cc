@@ -27,4 +27,3 @@ int main(int argc, char **argv)
   MC->FileConfig((Char_t*)"setfile");
   MC->Generate();
 }
-

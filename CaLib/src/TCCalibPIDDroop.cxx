@@ -15,6 +15,7 @@
 
 #include "TCCalibPIDDroop.h"
 
+ClassImp(TCCalibPIDDroop)
 
 
 //______________________________________________________________________________
@@ -375,4 +376,4 @@ void TCCalibPIDDroop::Write()
     fLinPlot->Write();
     Info("Write", "Droop correction '%s' was written to '%s'", fLinPlot->GetName(), fOutFile->GetName());
 }
-ClassImp(TCCalibPIDDroop)
+

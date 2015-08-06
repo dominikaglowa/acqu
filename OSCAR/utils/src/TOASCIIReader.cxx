@@ -1,3 +1,5 @@
+// SVN Info: $Id: TOASCIIReader.cxx 1257 2012-07-26 15:33:13Z werthm $
+
 /*************************************************************************
  * Author: Dominik Werthmueller, 2007-2008
  *************************************************************************/
@@ -11,13 +13,13 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-#include <fstream>
-
 #include "TOASCIIReader.h"
+
+ClassImp(TOASCIIReader)
 
 
 //______________________________________________________________________________
-TOASCIIReader::TOASCIIReader(const Char_t* inFileName)
+TOASCIIReader::TOASCIIReader(const char* inFileName)
 {
     // Constructor with the file name as parameter.
 
@@ -63,11 +65,11 @@ Int_t TOASCIIReader::ReadLines(Bool_t inCallParser)
     fFile->open(fFileName);
 
     // read line by line and call ParseLine()
-    Char_t line[1024];
+    char line[256];
     Int_t lines = 0;
     while (!fFile->eof())
     {
-        fFile->getline(line, 1024);
+        fFile->getline(line, 256);
         if (inCallParser) ParseLine(line);
         lines++;
     }
@@ -90,4 +92,4 @@ Int_t TOASCIIReader::CountLines()
 
     return ReadLines(kFALSE);
 }
-ClassImp(TOASCIIReader)
+

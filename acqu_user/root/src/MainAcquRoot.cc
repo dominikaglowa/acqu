@@ -22,4 +22,3 @@ int main(int argc, char **argv)
   a2ctrl->Run();
   delete a2ctrl ;
 }
-

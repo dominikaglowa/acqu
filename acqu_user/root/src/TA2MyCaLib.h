@@ -16,8 +16,7 @@
 
 #include "THnSparse.h"
 
-#include "TOA2RecMeson2g.h"
-#include "TOA2DetParticle.h"
+#include "TOA2RecPi02g.h"
 #include "TOLoader.h"
 
 #include "TA2MyPhysics.h"
@@ -370,8 +369,6 @@ private:
     Int_t fCalib_BadScR;                                    // Bad scaler reads toggle
     TH2* fHCalib_BadScR_NaIHits;                            // NaI hits vs. scaler reads
     TH2* fHCalib_BadScR_BaF2PWOHits;                        // BaF2PWO hits vs. scaler reads
-    TH2* fHCalib_BadScR_BaF2Hits;                           // BaF2 hits vs. scaler reads
-    TH2* fHCalib_BadScR_PWOHits;                            // PWO hits vs. scaler reads
     TH2* fHCalib_BadScR_PIDHits;                            // PID hits vs. scaler reads
     TH2* fHCalib_BadScR_VetoHits;                           // Veto hits vs. scaler reads
     TH2* fHCalib_BadScR_LadderHits;                         // Ladder hits vs. scaler reads

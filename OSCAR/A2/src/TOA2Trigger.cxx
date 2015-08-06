@@ -1,3 +1,5 @@
+// SVN Info: $Id: TOA2Trigger.cxx 1257 2012-07-26 15:33:13Z werthm $
+
 /*************************************************************************
  * Author: Dominik Werthmueller, 2011
  *************************************************************************/
@@ -11,10 +13,9 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-#include "TClass.h"
-
 #include "TOA2Trigger.h"
-#include "TOSUtils.h"
+
+ClassImp(TOA2Trigger)
 
 
 //______________________________________________________________________________
@@ -75,22 +76,18 @@ void TOA2Trigger::Print(Option_t* option) const
 }
 
 //______________________________________________________________________________
-TOA2Trigger& TOA2Trigger::operator=(const TOA2Trigger& t)
+TOA2Trigger& TOA2Trigger::operator=(TOA2Trigger& t)
 {
     // Assignment operator.
     
-    // check self assignment
-    if (this != &t)
-    {
-        fPatternL1 = t.fPatternL1;
-        fPatternL2 = t.fPatternL2;
-        fBeamHelPattern = t.fBeamHelPattern;
-        fCBEnergySum = t.fCBEnergySum;
-        fMultCB = t.fMultCB;
-        fMultTAPSLED1 = t.fMultTAPSLED1;
-        fMultTAPSLED2 = t.fMultTAPSLED2;
-    }
+    fPatternL1 = t.fPatternL1;
+    fPatternL2 = t.fPatternL2;
+    fBeamHelPattern = t.fBeamHelPattern;
+    fCBEnergySum = t.fCBEnergySum;
+    fMultCB = t.fMultCB;
+    fMultTAPSLED1 = t.fMultTAPSLED1;
+    fMultTAPSLED2 = t.fMultTAPSLED2;
 
     return *this;
 }
-ClassImp(TOA2Trigger)
+

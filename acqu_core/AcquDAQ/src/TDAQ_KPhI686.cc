@@ -23,6 +23,7 @@
 
 #include "TDAQ_KPhI686.h"
 
+ClassImp(TDAQ_KPhI686)
 
 extern "C"{
 #include <unistd.h>
@@ -138,4 +139,4 @@ DAQMemMap_t*  TDAQ_KPhI686::MapSlave( void* addr, Int_t size, Int_t am )
 }
 
 //-------------------------------------------------------
-ClassImp(TDAQ_KPhI686)
+

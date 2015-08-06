@@ -1,5 +1,7 @@
+// SVN Info: $Id: TOLoader.h 1377 2012-10-01 09:18:46Z werthm $
+
 /*************************************************************************
- * Author: Dominik Werthmueller, 2009-2014
+ * Author: Dominik Werthmueller, 2009-2011
  *************************************************************************/
 
 //////////////////////////////////////////////////////////////////////////
@@ -14,18 +16,20 @@
 #ifndef OSCAR_TOLoader
 #define OSCAR_TOLoader
 
-#include "Rtypes.h"
+#include "TError.h"
+#include "TFile.h"
+#include "TH2.h"
+#include "TH3.h"
+#include "THnSparse.h"
+#include "TF1.h"
+#include "TGraphErrors.h"
+#include "TCutG.h"
+#include "TCanvas.h"
+#include "TChain.h"
+#include "TSystemDirectory.h"
 
-class TChain;
-class TH1;
-class TH2;
-class TH3;
-class TF1;
-class TGraph;
-class TGraphErrors;
-class THnSparse;
-class TCanvas;
-class TCutG;
+#include "TONumberReader.h"
+
 
 namespace TOLoader
 {
@@ -102,7 +106,7 @@ namespace TOLoader
     Bool_t LoadObjects(const Char_t* fName, const Char_t* objName, TCanvas*** outObj,
                        Int_t startID, Int_t endID,
                        const Char_t* objDescr = "", const Char_t* opt = "");
-
+   
     // template methods
     template <class T>
     Bool_t LoadObjectGeneric(const Char_t* fName, const Char_t* objName, T** outObj,

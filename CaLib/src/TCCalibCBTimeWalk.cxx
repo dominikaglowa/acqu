@@ -15,6 +15,7 @@
 
 #include "TCCalibCBTimeWalk.h"
 
+ClassImp(TCCalibCBTimeWalk)
 
 
 //______________________________________________________________________________
@@ -353,4 +354,4 @@ void TCCalibCBTimeWalk::Write()
         TCMySQLManager::GetManager()->WriteParameters("Data.CB.Walk.Par3", fCalibration.Data(), fSet[i], fPar3, fNelem);
     }
 }
-ClassImp(TCCalibCBTimeWalk)
+

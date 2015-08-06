@@ -12,6 +12,7 @@
 
 #include "TA2FPMicro.h"
 
+ClassImp(TA2FPMicro)
 
 //---------------------------------------------------------------------------
 TA2FPMicro::TA2FPMicro( const char* name, TA2System* apparatus )
@@ -79,5 +80,3 @@ void TA2FPMicro::LoadVariable( )
   TA2DataManager::LoadVariable("NFPhits",     &fNFPhits,     EISingleX);
   TA2DataManager::LoadVariable("FPhits",      fFPhits,       EIMultiX);
 }
-
-ClassImp(TA2FPMicro)

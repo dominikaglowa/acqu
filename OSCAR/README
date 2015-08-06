@@ -9,14 +9,41 @@
 ##         OSCAR simplifies coding and analyzing with ROOT         ##
 ##                                                                 ##
 ##                                                                 ##
-##                        (C) 2007-2014 by                         ##
+##                        (C) 2007-2012 by                         ##
 ##      Dominik Werthmueller <dominik.werthmueller@unibas.ch>      ##
 ##                                                                 ##
 #####################################################################
 
 
-INFO
-====
 
-This directory contains a minimal built-in version of OSCAR for acqu.
+REQUIREMENTS
+============
+
+ROOT > 5.26
+
+
+COMPILATION
+===========
+
+$ make clean
+$ make
+$ make install
+
+
+HTML DOCUMENTATION CREATION
+===========================
+
+$ make docs
+
+The documentation will be saved in the htmldoc directory.
+
+
+USAGES
+======
+
+1. Add the lib directory to your LD_LIBRARY_PATH variable so
+   ROOT can automatically find the OSCAR classes using the ROOT map
+2. Load the dynamic library lib/libOSCAR.so in your ROOT macro
+3. Add OSCARS's include directory to the includes of your project and
+   link against lib/libOSCAR.so
 

@@ -12,6 +12,7 @@
 
 #include "TA2CylStrip.h"
 
+ClassImp(TA2CylStrip)
 
 //---------------------------------------------------------------------------
 TA2CylStrip::TA2CylStrip( const char* name, Int_t nelem, Int_t maxclust,
@@ -30,4 +31,4 @@ TA2CylStrip::TA2CylStrip( const char* name, Int_t nelem, Int_t maxclust,
   }
   fEffLength = 0.5 * fLength + fPitch*TMath::Sqrt(1 + fTgWC*fTgWC);
 }
-ClassImp(TA2CylStrip)
+

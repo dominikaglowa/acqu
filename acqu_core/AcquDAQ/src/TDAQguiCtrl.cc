@@ -29,6 +29,7 @@
 #include "CMakeConfig.h"
 
 
+ClassImpQ(TDAQguiCtrl)
 
 ULong_t blue;         // pale blue
 ULong_t lightBlue;
@@ -810,5 +811,3 @@ void TDAQguiCtrl::SetMThresh()
   sprintf(line, "Set-M-Threshold: %d %d\n", fChan, datum);
   fSupervise->ConfigVUPROM(line);
 }
-
-ClassImpQ(TDAQguiCtrl)

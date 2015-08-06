@@ -15,6 +15,7 @@
 
 #include "TCCalibEnergy.h"
 
+ClassImp(TCCalibEnergy)
 
 
 //______________________________________________________________________________
@@ -197,10 +198,8 @@ void TCCalibEnergy::Calculate(Int_t elem)
         // check if line position was modified by hand
         if (fLine->GetX1() != fPi0Pos) fPi0Pos = fLine->GetX1();
         
-        // calculate the new gain
-        // apply fConvergenceFactor only to the desired procentual change of fOldVal,
-        // given by (TCConfig::kPi0Mass / fPi0Pos - 1)
-        fNewVal[elem] = fOldVal[elem] + fOldVal[elem] * fConvergenceFactor * (TCConfig::kPi0Mass / fPi0Pos - 1);
+        // calculate the new offset
+        fNewVal[elem] = fOldVal[elem] * TCConfig::kPi0Mass / fPi0Pos;
         
         // if new value is negative take old
         if (fNewVal[elem] < 0) 
@@ -246,4 +245,4 @@ void TCCalibEnergy::Calculate(Int_t elem)
         printf("Average difference to pi0 mass : %.3f MeV\n", fAvrDiff);
     }
 }   
-ClassImp(TCCalibEnergy)
+

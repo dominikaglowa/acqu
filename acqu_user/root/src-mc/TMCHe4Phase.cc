@@ -18,6 +18,7 @@ static Double_t Mhe3;
 static Double_t Mhe4;
 static Double_t C;
 
+ClassImp(TMCHe4Phase)
 
 enum { EHe4Egamma };
 static const Map_t kHe4Keys[] = {
@@ -272,5 +273,3 @@ void TMCHe4Phase::Generate()
    f.Close();
    return;
 }
-
-ClassImp(TMCHe4Phase)

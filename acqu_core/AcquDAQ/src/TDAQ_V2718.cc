@@ -14,6 +14,7 @@
 
 #include "TDAQ_V2718.h"
 
+ClassImp(TDAQ_V2718)
 
 enum { EV2718SetReg=100, EV2718RdReg };
 static Map_t kV2718Keys[] = {
@@ -115,5 +116,3 @@ void TDAQ_V2718::BlkWrite()
   //				     CVDataWidth DW, int *count);
 #endif
 }
-
-ClassImp(TDAQ_V2718)

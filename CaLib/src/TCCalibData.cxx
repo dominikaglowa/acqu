@@ -15,6 +15,7 @@
 
 #include "TCCalibData.h"
 
+ClassImp(TCCalibData)
 
 
 //______________________________________________________________________________
@@ -37,4 +38,4 @@ void TCCalibData::Print()
     printf("Table name     : %s\n", fTableName.Data());
     printf("Number of par. : %d\n", fSize);
 }
-ClassImp(TCCalibData)
+

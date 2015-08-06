@@ -12,6 +12,7 @@
 
 #include "TA2BitPattern.h"
 
+ClassImp(TA2BitPattern)
 
 //---------------------------------------------------------------------------
 TA2BitPattern::TA2BitPattern( char* fname, UShort_t* adc ) :
@@ -130,4 +131,4 @@ void TA2BitPattern::SetConfig( char* line, int key )
   }
   return;
 }
-ClassImp(TA2BitPattern)
+

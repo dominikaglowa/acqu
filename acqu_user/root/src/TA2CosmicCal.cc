@@ -23,6 +23,7 @@ static Map_t kValidDetectors[] = {
   {NULL, 		-1}
 };
 
+ClassImp(TA2CosmicCal)
 
 //-----------------------------------------------------------------------------
 TA2CosmicCal::TA2CosmicCal( const char* name, TA2System* analysis  )
@@ -87,4 +88,4 @@ void TA2CosmicCal::PostInit( )
   // Set up histograms if desired.
   TA2Apparatus::PostInit();
 }
-ClassImp(TA2CosmicCal)
+

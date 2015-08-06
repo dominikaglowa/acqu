@@ -18,6 +18,7 @@
 #include "TVME_VUPROMT.h"
 #include "TDAQexperiment.h"
 
+ClassImp(TVME_VUPROMT)
 
 enum { EVUPT_CFD=300, EVUPT_LED1, EVUPT_LED2, EVUPT_Veto, EVUPT_PbWO4,
        EVUPT_PbWO4Veto, EVUPT_Pulser, EVUPT_TAPSMode, EVUPT_FrontEnd,
@@ -602,5 +603,3 @@ void TVME_VUPROMT::ReadIRQ( void** outBuffer )
   j++; 
   ADCStore( outBuffer, datumhigh, j );
 }
-
-ClassImp(TVME_VUPROMT)

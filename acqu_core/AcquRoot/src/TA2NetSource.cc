@@ -14,6 +14,7 @@
 #include "TA2NetSource.h"
 #include "ARSocket_t.h"
 
+ClassImp(TA2NetSource)
 
 //---------------------------------------------------------------------------
 TA2NetSource::TA2NetSource( Char_t* name, Char_t* remoteHost,
@@ -190,5 +191,3 @@ void TA2NetSource::InputList(Char_t* name, UInt_t start, UInt_t stop)
   fFileName[0] = new char[strlen(name)+1];
   strcpy(fFileName[0], name);
 }
-
-ClassImp(TA2NetSource)

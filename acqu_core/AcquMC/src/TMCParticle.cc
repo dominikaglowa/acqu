@@ -28,6 +28,7 @@
 #include "TMCGenerator.h"
 //#include "SysUtil.h"
 
+ClassImp(TMCParticle)
 
 //-----------------------------------------------------------------------------
   TMCParticle::TMCParticle( const Char_t* name, TRandom* rand, Double_t mass,
@@ -523,4 +524,4 @@ TMCParticle*  TMCParticle::ReplaceDecay( TMCParticle* decay )
   p = (TMCParticle*)fDecayList->FindObject( name );
   return p;
 }
-ClassImp(TMCParticle)
+

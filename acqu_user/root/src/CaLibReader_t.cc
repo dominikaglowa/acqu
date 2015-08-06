@@ -97,26 +97,14 @@ CaLibReader_t::~CaLibReader_t()
 }
 
 //______________________________________________________________________________
-Bool_t CaLibReader_t::ReadScalerReads(Int_t ndata_in, Char_t** data_in)
+Bool_t CaLibReader_t::ReadScalerReads()
 {
-    // Sets the total number of scaler reads 'fTotNScR' from the data base value
-    // 'scr_n'. Fills the bad scaler read list 'fBadScR' with the data base
+    // Sets the total number of scaler reads 'fTotNScR' from the database value
+    // 'scr_n'. Fills the bad scaler read list 'fBadScR' with the database
     // value 'scr_bad'. If the flag 'fBadScRfirst' is set '0' is added to the
     // list, if the flag 'fBadScRlast' is set fTotNScR is added to the list.
     // Finally the number of bad scaler reads 'fNBadScR' will be set. Returns
     // kTRUE on success, kFALSE otherwise.
-    
-    // check database connection
-    if (!IsConnected())
-    {
-        Error("ReadScalerReads", "No connection to database!");
-        fWasError = kTRUE;
-        return kFALSE;
-    }
-
-    // init flags
-    Bool_t isALL = kFALSE;   // use bad scr of all data
-    Bool_t isNONE = kFALSE;  // do not use bad scr of any data
 
     // reset members
     fTotNScR = 0;
@@ -124,76 +112,38 @@ Bool_t CaLibReader_t::ReadScalerReads(Int_t ndata_in, Char_t** data_in)
     if (fBadScR) delete [] fBadScR;
     fBadScR = 0;
 
-    // check arguments
-    if (ndata_in > 0)
-    {
-        if (0 == strcmp(data_in[0], "ALL"))
-        {
-            isALL = kTRUE;
-            data_in++;
-            ndata_in--;
-
-        }
-        if (0 == strcmp(data_in[0], "NONE"))
-        {
-            isNONE = kTRUE;
-            data_in++;
-            ndata_in--;
-        }
-    }
-    else
-    {
-        Warning("ReadScalerReads", "Old config file version.");
-
-        if (fBadScRlist)
-        {
-            isALL = kTRUE;
-            Warning("ReadScalerReads", "Old config file version: All bad scaler read calibrations will be activated.");
-        }
-        else
-        {
-            isNONE = kTRUE;
-        }
-    }
-
     // init helpers
     Char_t tmp[128];
-
-    // init temporary number of bad scr and bad scr list
     Int_t nbadscr_tmp = 0;
-    Int_t badscr_tmp[1204*16];
+    Int_t badscr_tmp[1204];
 
     // check database connection
     if (!IsConnected())
     {
         Error("ReadScalerReads", "BadScR calibration was not applied! No connection to database!");
+        fWasError = kTRUE;
         return kFALSE;
     }
 
-    // get total number of scaler reads from data base
+    // get total number of scaler reads from database
     if (!SearchRunEntry("scr_n", tmp))
     {
         // total number of scaler reads is neccessary for option fBadScRlast
         if (fBadScRlast)
         {
-            Error("ReadScalerReads", "Could not find number of scaler reads in data base.");
+            Error("ReadScalerReads", "Could not find number of scaler reads in database.");
+            fWasError = kTRUE;
             return kFALSE;
         }
         else
         {
-            Warning("ReadScalerReads", "Could not find number of scaler reads in data base.");
+            Warning("ReadScalerReads", "Could not find number of scaler reads in database.");
         }
     }
     else
     {
         // set number of scaler reads
         fTotNScR = atoi(tmp);
-
-        // check number
-        if (fTotNScR > 0)
-            Info("ReadScalerReads", "Set number of scaler reads to '%d'.", fTotNScR);
-        else // do an error here?
-            Warning("ReadScalerReads", "Set number of scaler reads to '%d'. Not initialized yet?", fTotNScR);
     }
 
     // add first to list
@@ -204,154 +154,68 @@ Bool_t CaLibReader_t::ReadScalerReads(Int_t ndata_in, Char_t** data_in)
     }
 
     // add list to list
-    if (fBadScRlist && !isNONE) 
+    if (fBadScRlist) 
     {
-        // init query result string
-        Char_t badscr_str[1024*64];
+        // init bad scaler read input string
+        Char_t badscr_str[1024];
 
-        // get bad scaler reads from database
+        // read list
         if (!SearchRunEntry("scr_bad", badscr_str))
         {
-            Error("ReadScalerReads", "Could not load bad scaler reads list from data base.");
+            Error("ReadScalerReads", "Could not load bad scaler reads list from database.");
+            fWasError = kTRUE;
             return kFALSE;
         }
 
-        // init number of data
-        Int_t ndata = 0;
+        // get first token (comma separated)
+        Char_t* t = strtok(badscr_str, ",");
 
-        // init pointers to data tokens
-        Char_t** data = 0;
+        // reset counter if '0' is already in list
+        if (fBadScRfirst && t && atoi(t) == 0) nbadscr_tmp = 0;
 
-        // get token for first data
-        Char_t* datatok = strtok(badscr_str, ";");
-
-        // loop over data tokens
-        while (datatok)
+        // loop over tokens (comma separated)
+        while (t)
         {
-            // create new pointer array
-            Char_t** data_tmp = new Char_t*[ndata + 1];
+            // detect series (colon separated)
+            Char_t* loc = strchr(t, (Int_t) ':');
 
-            // copy old pointers
-            for (Int_t i = 0; i < ndata; i++)
-                data_tmp[i] = data[i];
+            // check for series
+            if (!loc)
+            {
+               // set single bad scr
+               badscr_tmp[nbadscr_tmp++] = atoi(t);
+            }
+            else
+            {
+                // get start value of series
+                Int_t min = atoi(t);
 
-            // delete old pointer array
-            if (data) delete [] data;
+                // get stop value of series
+                Int_t max = atoi(&loc[1]);
+ 
+                // fill series to list
+                for (Int_t i = min; i <= max; i++)
+                    badscr_tmp[nbadscr_tmp++] = i;
+            }
 
-            // set pointer array to new pointer array
-            data = data_tmp;
-
-            // add new pointer to array
-            data[ndata] = datatok;
-
-            // increment data counter
-            ndata++;
-
-            // get next data token
-            datatok = strtok(0, ";");
+            // get next token
+            t = strtok(0, " ,");
         }
 
-        // loop over data
-        for (Int_t i = 0; i < ndata; i++)
-        {
-            Int_t data_nbad = nbadscr_tmp;
-
-            // get data name
-            Char_t* data_name = strtok(data[i], ":");
-
-            // check whether bad scaler reads for this data is activated
-            if (!isALL)
-            {
-                Bool_t ische = kFALSE; 
-
-                // loop over input data names
-                for (Int_t j = 0; j < ndata_in; j++)
-                {
-                   if (0 == strcmp(data_name, data_in[j]))
-                   {
-                       // mark as done
-                       sprintf(data_in[j], "%s", "");
-                       ische = kTRUE;
-                       break;
-                   }
-                }
-
-                // if not ische then ische nitte
-                if (!ische) continue;
-            }
-
-            // get first bad scr token (e.g., "1" or "1-3")
-            Char_t* bad = strtok(0, ",");
-
-            // loop over bad scr
-            while (bad)
-            {
-                // detect series (colon separated)
-                Char_t* loc = strchr(bad, (Int_t) '-');
-
-                // check for series
-                if (!loc)
-                {
-                    // set single bad scr
-                    badscr_tmp[nbadscr_tmp++] = atoi(bad);
-                }
-                else
-                {
-                    // get start value of series
-                    Int_t min = atoi(bad);
-
-                    // get stop value of series
-                    Int_t max = atoi(&loc[1]);
-
-                    // fill series to list
-                    for (Int_t j = min; j <= max; j++)
-                    {
-                        // set single bad scr
-                        badscr_tmp[nbadscr_tmp++] = j;
-                    }
-                }
-
-                // get next bad scr
-                bad = strtok(0, ",");
-            }
-
-            // print info
-            Info("ReadScalerReads", "Added %i bad scaler reads for data '%s'.", nbadscr_tmp - data_nbad, data_name);
-
-        } // lopp over data end
-
-        // clean up
-        if (data) delete [] data;
-
-        // check for non existing data
-        for (Int_t i = 0; i < ndata_in; i++)
-        {
-            if(!isALL && strlen(data_in[i]) > 0)
-            {
-                Error("ReadScalerReads", "No calibration for bad scaler read data '%s' found!", data_in[i]);
-            }
-        }
+        Info("ReadScalerReads", "Added bad scaler reads list from database to bad scaler reads list.");
     }
 
-    // add last scaler read to list
+    // add last to list
     if (fBadScRlast)
     { 
-        badscr_tmp[nbadscr_tmp++] = fTotNScR;
+        if (!nbadscr_tmp || badscr_tmp[nbadscr_tmp - 1] != fTotNScR) badscr_tmp[nbadscr_tmp++] = fTotNScR;
         Info("ReadScalerReads", "Added last scaler read ('%d') to bad scaler reads list.", fTotNScR);
     }
-    
-    // sort list
-    Int_t s[nbadscr_tmp];
-    TMath::Sort(nbadscr_tmp, badscr_tmp, s, kFALSE);
-    for (Int_t i = 0; i < nbadscr_tmp; i++) s[i] = badscr_tmp[s[i]];
- 
-    // copy result to member but skip duplicates
-    fBadScR = new Int_t[nbadscr_tmp];
-    Int_t n = 0;
-    fBadScR[n++] = s[0];
-    for (Int_t i = 1; i < nbadscr_tmp; i++) 
-        if (s[i] != fBadScR[n-1]) fBadScR[n++] = s[i];
-    fNBadScR = n;
+
+    // copy result to member
+    fNBadScR = nbadscr_tmp;
+    fBadScR = new Int_t[fNBadScR];
+    for (Int_t i = 0; i < fNBadScR; i++) fBadScR[i] = badscr_tmp[i];
 
     return kTRUE;
 }

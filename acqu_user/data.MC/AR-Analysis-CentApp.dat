@@ -2,8 +2,10 @@
 ##
 ## Specify list of detectors which constitute the Crystal Ball apparatus
 ##	  Name       Class Name		Setup file
-Detector: NaI        TA2CalArray	AR-Analysis-CentApp-NaI.dat
-Detector: PID        TA2PlasticPID	AR-Analysis-CentApp-PID.dat
+#Detector: NaI        TA2CalArray	AR-Analysis-CentApp-NaI.dat
+Detector: NaI        TA2CalArray	CB_NaI_e883_Dec12_cal13.dat
+#Detector: PID        TA2PlasticPID	AR-Analysis-CentApp-PID.dat
+Detector: PID        TA2PlasticPID	PID.oct.2012.dat
 Detector: MWPC       TA2CylMwpc		AR-Analysis-CentApp-MWPC.dat
 #
 ## Data reconstruction method for Crystal Ball 
@@ -22,7 +24,7 @@ ParticleID: 	16
 ## Angle-difference limits (in rad.)  for hits correlation
 ## 		MaxPhiMwpcNaI	MaxPhiTrackPid	MaxPhiPidNaI	MaxPhiMwpcInterNaI	MaxPhiMwpcInterPid
 #AngleLimits:	20.		50.		100.		60.			50.
-AngleLimits:	20.		50.		15.		60.			50.
+AngleLimits:	20.		50.		23.		60.			50.
 ##
 ##
 ##		MaxTrack	MaxRpsvertex	MaxZpsvertex	MinZpsvertex
@@ -46,31 +48,31 @@ Initialise:
 # Data-Cut: 2D EclNaI AND  data EhitPid Pion     ./CB/PionCutPID2_07.root   0  0   0 211
 #Data-Cut: 2D EclNaI AND  misc EhitPid Kaon     ./CB/KaonCut.root   0  0   0 321
 #
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 0 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 1 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 2 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 3 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 4 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 5 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 6 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 7 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 8 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 9 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 10 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 11 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 12 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 13 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 14 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 15 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 16 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 17 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 18 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 19 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 20 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 21 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 22 2212
-Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 23 2212
-ParticleID-Cut: 24	24
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 0 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 1 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 2 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 3 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 4 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 5 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 6 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 7 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 8 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 9 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 10 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 11 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 12 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 13 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 14 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 15 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 16 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 17 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 18 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 19 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 20 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 21 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 22 2212
+#Data-Cut: 2D EclNaI AND misc EhitPid ProtonCut  cuts/CB_DeltaE-E_Proton.root 0 0 23 2212
+#ParticleID-Cut: 24	24
 ##
 ## Histograms of apparatus-level variables
 ## histogram name should be preceeded by 1D or 2D (for dimension of spectrum)

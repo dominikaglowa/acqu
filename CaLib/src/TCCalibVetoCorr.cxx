@@ -15,6 +15,7 @@
 
 #include "TCCalibVetoCorr.h"
 
+ClassImp(TCCalibVetoCorr)
 
 
 //______________________________________________________________________________
@@ -225,4 +226,4 @@ void TCCalibVetoCorr::PrintValuesChanged()
 
     Info("PrintValuesChanged", "Not implemented in this module");
 }
-ClassImp(TCCalibVetoCorr)
+

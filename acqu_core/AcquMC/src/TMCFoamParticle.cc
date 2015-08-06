@@ -30,6 +30,7 @@
 #include "ARFile_t.h"
 #include "TA2System.h"
 
+ClassImp(TMCFoamParticle)
 
 //-----------------------------------------------------------------------------
 TMCFoamParticle::TMCFoamParticle( const Char_t* name, TRandom* rand, 
@@ -121,5 +122,3 @@ void TMCFoamParticle::Init( )
   // Work in progress!!!!
   TMCParticle::Init();
 }
-
-ClassImp(TMCFoamParticle)

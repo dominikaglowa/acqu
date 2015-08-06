@@ -17,10 +17,10 @@ Input-Streams:	1		32768		0
 ## Optional directory spec. If not specified File-Names must contain the full
 ## directory path
 #File-Directory:	 /Disk/thehub_disk_5/
-#File-Directory:	 /Disk/ds-sopa-group/np/dominika/Sn116/CBfiles/
-#File-Directory:	 /Disk/ds-pnp-np/dominika/Sn124/
+File-Directory:	 /Disk/ds-sopa-group/np/dominika/Sn116/CBfiles/
+#File-Directory:	 /Disk/ds-sopa-group/np/dominika/Sn124/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Sn120/
-File-Directory:	 /Disk/ds-pnp-np/dominika/EmptyTarget/
+#File-Directory:	/Disk/ds-sopa-group/np/dominika/TaggEff/
 ##
 ## Specify each input stream
 ## From disk file, ACQU (Mk1) format, save any output to file (save=1)
@@ -33,8 +33,17 @@ Stream-Spec:	File	Mk1	0	32768	32	0	400
 ##		File Name	1st rec	Last rec
 #
 #
-#October 2012 Empty Target
- 
+#File-Name:	 CB_337.dat	 0	 0
+####Sn116
+#File-Name:TaggEff_254.dat 0 0
+#File-Name:TaggEff_255.dat 0 0
+#File-Name:TaggEff_256.dat 0 0
+#October 2012 Sn116
+#File-Name:	CB_431.dat	 0	 0
+#File-Name:      CB_444.dat      0       0
+#File-Name:	 CB_457.dat	0	0
+#File-Name:	CB_494.dat	0	0
+#File-Name:	 CB_511.dat	 0	 0
+#File-Name:	 CB_597.dat	 0	 0
 
-
-File-Name: CB_1211.dat 0 0
+File-Name: CB_550.dat 0 0

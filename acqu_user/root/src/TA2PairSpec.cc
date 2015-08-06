@@ -11,6 +11,7 @@ static const Map_t kPairSpecKeys[] = {
   {NULL,            -1}
 };
 
+ClassImp(TA2PairSpec)
 
 using namespace std;
 
@@ -187,4 +188,4 @@ void TA2PairSpec::Decode()
 }
 
 //-----------------------------------------------------------------------------
-ClassImp(TA2PairSpec)
+

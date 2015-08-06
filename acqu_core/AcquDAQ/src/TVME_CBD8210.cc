@@ -16,6 +16,7 @@
 #include "TDAQexperiment.h"
 //#include "TDAQmemmap.h"
 
+ClassImp(TVME_CBD8210)
 
 enum { ECBD_XXX=200, ECBD_YYY };
 static Map_t kCBDKeys[] = {
@@ -83,4 +84,4 @@ void TVME_CBD8210::PostInit( )
   return;
 }
 
-ClassImp(TVME_CBD8210)
+

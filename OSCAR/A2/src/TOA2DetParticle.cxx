@@ -1,5 +1,7 @@
+// SVN Info: $Id: TOA2DetParticle.cxx 1440 2012-11-09 07:55:46Z werthm $
+
 /*************************************************************************
- * Author: Dominik Werthmueller, 2008-2014
+ * Author: Dominik Werthmueller, 2008
  *************************************************************************/
 
 //////////////////////////////////////////////////////////////////////////
@@ -11,11 +13,9 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-#include "TVector3.h"
-#include "TMath.h"
-
 #include "TOA2DetParticle.h"
-#include "TOSUtils.h"
+
+ClassImp(TOA2DetParticle)
 
 
 //______________________________________________________________________________
@@ -37,27 +37,6 @@ TOA2DetParticle::TOA2DetParticle(const TOA2DetParticle& orig)
     fErrorTheta = orig.fErrorTheta;
     fErrorPhi = orig.fErrorPhi;
     fErrorEnergy = orig.fErrorEnergy;
-}
-
-//______________________________________________________________________________
-TOA2DetParticle::TOA2DetParticle(const TOA2BaseDetParticle& orig)
-    : TOA2BaseDetParticle(orig)
-{
-    // Copy constructor from TOA2BaseDetParticle.
-    
-    fClusterHits        = new UInt_t[fClusterSize];
-    fClusterHitEnergies = new Double_t[fClusterSize];
-    fClusterHitTimes    = new Double_t[fClusterSize];
-    for (Int_t i = 0; i < fClusterSize; i++) 
-    {
-        fClusterHits[i]        = 0;
-        fClusterHitEnergies[i] = 0;
-        fClusterHitTimes[i]    = 0;
-    }
-
-    fErrorTheta  = 0;
-    fErrorPhi    = 0;
-    fErrorEnergy = 0;
 }
 
 //______________________________________________________________________________
@@ -164,14 +143,14 @@ Double_t TOA2DetParticle::CalcChi2IMError(TOA2DetParticle* p)
     Double_t cos_psi12 = TMath::Cos(v1.Angle(v2));
 
     // error of cos(psi12)
-    Double_t a = -TMath::Sin(th1)*TMath::Sin(th2)*TMath::Sin(ph1-ph2)*dph1;
-    Double_t b = -TMath::Sin(th1)*TMath::Sin(th2)*TMath::Sin(ph2-ph1)*dph2;
-    Double_t c = (TMath::Cos(th1)*TMath::Sin(th2)*TMath::Cos(ph1-ph2) - TMath::Sin(th1)*TMath::Cos(th2))*dth1;
-    Double_t d = (TMath::Sin(th1)*TMath::Cos(th2)*TMath::Cos(ph2-ph1) - TMath::Cos(th1)*TMath::Sin(th2))*dth2; 
-    Double_t dcos_psi12 = TMath::Sqrt(a*a + b*b + c*c + d*d);
-
+    Double_t dcos_psi12 = -TMath::Sin(th1)*TMath::Sin(th2)*TMath::Sin(ph1-ph2)*(dph1-dph2) +
+                           TMath::Sin(th1)*TMath::Cos(th2)*(TMath::Cos(ph1-ph2)-1.)*dth1 +
+                           TMath::Cos(th1)*TMath::Sin(th2)*(TMath::Cos(ph1-ph2)-1.)*dth2 -
+                           TMath::Sin(th1-th2)*TMath::Cos(ph1-ph2)*(dth1-dth2);
+    
     // return the relative error on the invariant mass
-    return 0.5 * TMath::Sqrt((de1*de1/e1/e1) + (de2*de2/e2/e2) + 
+    return 0.5 * TMath::Sqrt((de1*de1/e1/e1) + 
+                             (de2*de2/e2/e2) + 
                              (dcos_psi12*dcos_psi12/(1.-cos_psi12)/(1.-cos_psi12)));
 }
 
@@ -180,15 +159,43 @@ void TOA2DetParticle::Print(Option_t* option) const
 {
     // Print out the content of this class.
 
-    // call parent method
-    TOA2BaseDetParticle::Print();
+    // detector string
+    Char_t detector[256] = "";
+    switch (fDetector)
+    {
+        case kNoDetector:
+            strcpy(detector, "no detector");
+            break;
+        case kCBDetector:
+            strcpy(detector, "CB");
+            break;
+        case kTAPSDetector:
+            strcpy(detector, "TAPS");
+            break;
+    }
 
     printf("TOA2DetParticle content:\n");
+    printf("PDG ID                 : %d\n", fPDG_ID);
+    printf("Detector               : %s\n", detector);
+    printf("Direction (x, y, z)    : %f, %f, %f\n", fX, fY, fZ);
+    printf("Direction (theta, phi) : %f, %f\n", GetTheta()*TMath::RadToDeg(), GetPhi()*TMath::RadToDeg());
+    printf("Energy                 : %f\n", fEnergy);
+    printf("Time                   : %f\n", fTime);
+    printf("Cluster size           : %d\n", fClusterSize);
     printf("Cluster hits           : %s\n", TOSUtils::FormatArrayList(fClusterSize, fClusterHits));
     printf("Cluster hit energies   : %s\n", TOSUtils::FormatArrayList(fClusterSize, fClusterHitEnergies, "%f"));
     printf("Cluster hit times      : %s\n", TOSUtils::FormatArrayList(fClusterSize, fClusterHitTimes, "%f"));
+    printf("Central element        : %d\n", fCentralElement);
+    printf("Central energy         : %f\n", fCentralEnergy);
+    printf("PID index              : %d\n", fPIDIndex);
+    printf("PID energy             : %f\n", fPIDEnergy);
+    printf("PID time               : %f\n", fPIDTime);
+    printf("Central SG energy      : %f\n", fCentralSGEnergy);
+    printf("Veto index             : %d\n", fVetoIndex);
+    printf("Veto energy            : %f\n", fVetoEnergy);
+    printf("Veto time              : %f\n", fVetoTime);
     printf("Error in theta         : %f\n", fErrorTheta*TMath::RadToDeg());
     printf("Error in phi           : %f\n", fErrorPhi*TMath::RadToDeg());
     printf("Error in energy        : %f\n", fErrorEnergy);
 }
-ClassImp(TOA2DetParticle)
+

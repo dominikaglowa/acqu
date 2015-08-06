@@ -3,17 +3,11 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/subdir-header.cmake)
 message(STATUS "Configuring acqu_core...")
 
 # LZMA for reading xz files directly
-# Note that ROOT provides $ROOTSYS/lib/liblzma.a in his own lib
-# directory. So you need to rebuild ROOT after
-# installing the LZMA header dev files...
-find_package(LibLZMA)
-if(LIBLZMA_FOUND)
-  message(STATUS "Found LibLZMA: Enabling DirectIO with XZ compression")
-  include_directories(${LIBLZMA_INCLUDE_DIRS})
-  add_definitions(-DWITH_LIBLZMA)
-else()
-  message(STATUS "No LibLZMA found: DirectIO with XZ compression NOT supported")
-endif()
+# it looks like ROOT provides liblzma.a in his own lib
+# directory. So maybe you need to rebuild ROOT after
+# installing the LZMA header dev files... 
+find_package(LibLZMA REQUIRED)
+include_directories(${LIBLZMA_INCLUDE_DIRS})
 
 # the following feature helps us to get rid of
 # getenv("acqu"), getenv("acqu_sys"), getenv("ROOTSYS")
@@ -55,14 +49,9 @@ set(EXTRA_LIBS EG Foam rt)
 set(CORE_EXESRCS)
 set(CORE_LIBS)
 
+
 CompileCoreLib(AcquRoot)
-# link against some optional libraries
-if(LIBLZMA_FOUND)
-  target_link_libraries(libAcquRoot ${LIBLZMA_LIBRARIES})
-endif()
-if(A2DISPLAY_FOUND)
-  target_link_libraries(libAcquRoot ${A2DISPLAY_LIBRARIES})
-endif()
+target_link_libraries(libAcquRoot ${LIBLZMA_LIBRARIES})
 CompileCoreLib(AcquDAQ "-O0") # AcquDAQ must not be optimized (hardware access gets scrambled)
 CompileCoreLib(AcquMC)
 

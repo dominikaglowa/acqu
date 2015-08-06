@@ -1,5 +1,6 @@
 #include "TA2MesonPhysics.h"
 
+ClassImp(TA2MesonPhysics)
 
 //-----------------------------------------------------------------------------
 
@@ -519,5 +520,3 @@ void TA2MesonPhysics::CorrectMatrix()
 }
 
 //-----------------------------------------------------------------------------
-
-ClassImp(TA2MesonPhysics)

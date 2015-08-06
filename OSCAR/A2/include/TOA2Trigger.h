@@ -1,3 +1,5 @@
+// SVN Info: $Id: TOA2Trigger.h 1257 2012-07-26 15:33:13Z werthm $
+
 /*************************************************************************
  * Author: Dominik Werthmueller, 2011
  *************************************************************************/
@@ -14,7 +16,11 @@
 #ifndef OSCAR_TOA2Trigger
 #define OSCAR_TOA2Trigger
 
+#include "TClass.h"
 #include "TObject.h"
+
+#include "TOSUtils.h"
+
 
 // define L1 trigger bits
 enum EA2TrigBitL1 {
@@ -26,6 +32,7 @@ enum EA2TrigBitL1 {
 };
 typedef EA2TrigBitL1 A2TrigBitL1_t;
 
+
 // define L2 trigger bits
 enum EA2TrigBitL2 {
     kM1 = 0,
@@ -35,6 +42,7 @@ enum EA2TrigBitL2 {
 };
 typedef EA2TrigBitL2 A2TrigBitL2_t;
 
+
 // define beam helicity bits
 enum EA2BeamHelBit {
     kPos = 0,
@@ -42,6 +50,7 @@ enum EA2BeamHelBit {
     kUndef
 };
 typedef EA2BeamHelBit A2BeamHelBit_t;
+
 
 class TOA2Trigger : public TObject
 {
@@ -84,7 +93,7 @@ public:
     void Reset();
     virtual void Print(Option_t* option = "") const;
     
-    TOA2Trigger& operator=(const TOA2Trigger& t);
+    TOA2Trigger& operator=(TOA2Trigger& t);
 
     ClassDef(TOA2Trigger, 1)  // A2 trigger
 };

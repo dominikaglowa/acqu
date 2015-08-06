@@ -33,6 +33,7 @@ static const Map_t kLongScintKeys[] = {
   {NULL,          -1}
 };
 
+ClassImp(TA2LongScint)
 
 //---------------------------------------------------------------------------
 TA2LongScint::TA2LongScint( const char* name, TA2System* apparatus )
@@ -226,4 +227,4 @@ void TA2LongScint::SaveDecoded( )
 {
   // Save decoded info to Root Tree file
 }
-ClassImp(TA2LongScint)
+

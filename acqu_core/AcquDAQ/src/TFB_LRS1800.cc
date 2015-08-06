@@ -16,6 +16,7 @@
 #include "TFB_1821SMI.h"
 #include "TDAQexperiment.h"
 
+ClassImp(TFB_LRS1800)
 
 //-----------------------------------------------------------------------------
 TFB_LRS1800::TFB_LRS1800( Char_t* name, Char_t* file, FILE* log,
@@ -73,4 +74,4 @@ void TFB_LRS1800::Decode( UInt_t **outBuff, void **P_buff, Int_t *n_word )
   }
   return;
 }
-ClassImp(TFB_LRS1800)
+

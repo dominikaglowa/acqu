@@ -115,6 +115,7 @@ static const Map_t kRAHist[] = {
   {NULL,          -1}
 };
 
+ClassImp(TA2Analysis)
 
 //-----------------------------------------------------------------------------
 TA2Analysis::TA2Analysis( const char* name )
@@ -145,8 +146,7 @@ TA2Analysis::TA2Analysis( const char* name )
       logfile = BuildName(gAR->GetBatchDir(),"Analysis.log");
   }
   else logfile = BuildName("Analysis.log");
-  if (gAR->IsLogFile()) SetLogFile(logfile);                  // output to log file
-  else SetLogFile(NULL);
+  SetLogFile(logfile);                  // output to log file
   delete[] logfile;
 
   fprintf(fLogStream," %s analysis linked to Acqu-to-Root interface\n\n",
@@ -811,5 +811,3 @@ void TA2Analysis::InitTreeFileName( Char_t* fname )
   if( fTreeFileName ) delete[] fTreeFileName;
   fTreeFileName = BuildName( name );
 }
-
-ClassImp(TA2Analysis)

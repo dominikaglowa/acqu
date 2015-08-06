@@ -23,6 +23,7 @@
 #include "TMCFoamInt.h"
 #include "ARFile_t.h"
 
+ClassImp(TMCFoamInt)
 
 //-----------------------------------------------------------------------------
 TMCFoamInt::TMCFoamInt( Int_t n, Double_t* scale, TA2System* sys, Int_t idens ) :
@@ -275,4 +276,4 @@ void TMCFoamInt::ReadData( Char_t* file )
   }
   j = 0;
 }
-ClassImp(TMCFoamInt)
+

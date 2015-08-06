@@ -49,6 +49,7 @@
 
 #include <sstream>
 
+ClassImp(TDAQsupervise)
 
 // Modes of entering control info to DAQ
 static Map_t kExpCtrl[] = {
@@ -1037,4 +1038,4 @@ void TDAQsupervise::ConfigV874(Char_t* line)
   PutString(" No V874 Module found\n");         // output message
   return;
 }
-ClassImp(TDAQsupervise)
+

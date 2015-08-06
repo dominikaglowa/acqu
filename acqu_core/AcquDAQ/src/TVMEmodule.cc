@@ -30,6 +30,7 @@
 #include "TVMEmodule.h"
 #include "TDAQexperiment.h"
 
+ClassImp(TVMEmodule)
 
 enum { EVME_AMDW=100, EVME_Register, EVME_IDRegister };
 static Map_t kVMEKeys[] = {
@@ -226,5 +227,3 @@ Bool_t TVMEmodule::CheckHardID( )
     PrintError("","<VMEbus module ID not recognised>", EErrFatal);
   return kTRUE;    
 }
-
-ClassImp(TVMEmodule)

@@ -23,6 +23,7 @@
 #include "TDAQexperiment.h"
 #include "TFB_1821SMI.h"
 
+ClassImp(TFBmodule)
 
 enum { EFB_AMDW=100, EFB_Register, EFB_IDRegister, EFB_RDMode }; //<-- Baya
 static Map_t kFBKeys[] = {
@@ -230,5 +231,3 @@ void TFBmodule::DecodeScaler( UInt_t **inBuff, void **outBuff, Int_t *n_word)
   }
   return;
 }
-
-ClassImp(TFBmodule)

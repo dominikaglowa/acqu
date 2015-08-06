@@ -15,6 +15,7 @@
 
 #include "TCWriteARCalib.h"
 
+ClassImp(TCWriteARCalib)
 
 
 //______________________________________________________________________________
@@ -245,4 +246,4 @@ void TCWriteARCalib::Write(const Char_t* calibFile,
     delete r;
     if (rSG) delete rSG;
 }
-ClassImp(TCWriteARCalib)
+

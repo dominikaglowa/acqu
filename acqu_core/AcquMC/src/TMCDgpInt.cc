@@ -20,6 +20,7 @@
 
 #include "TMCDgpInt.h"
 
+ClassImp(TMCDgpInt)
 
 // Legendre-Coefficient parameters D.A.Jenkins et al., PRC50(1994),74
 Double_t A0Je[] = {12.17, -10.70, 137.90, -67.78, 6.82, -8.70, 0.2792, 91.1};
@@ -115,4 +116,4 @@ void TMCDgpInt::ReadData( Char_t* file )
   fScale[4] = 0.0;
   fScale[5] = TMath::TwoPi();
 }
-ClassImp(TMCDgpInt)
+

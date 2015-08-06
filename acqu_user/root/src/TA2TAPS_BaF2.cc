@@ -14,11 +14,6 @@
 
 #include "TA2TAPS_BaF2.h"
 #include "HitClusterTAPS_t.h"
-#include <string>
-
-#ifdef WITH_A2DISPLAY
-#include <TH2TAPS.h>
-#endif
 
 // constants for command-line maps below
 enum {
@@ -43,14 +38,15 @@ static const Map_t kTAPSClustDetKeys[] = {
   {NULL,          -1}
 };
 
+ClassImp(TA2TAPS_BaF2)
 
 //---------------------------------------------------------------------------
 
 TA2TAPS_BaF2::TA2TAPS_BaF2(const char* name, TA2System* apparatus)
              :TA2ClusterDetector(name, apparatus)
 {
-  fType = ENoType;
-
+  fType = ENoType;	
+	
   fUseEnergyResolution    = 0;
   fUseTimeResolution      = 0;
   fEnergyResolutionFactor = -1.0;
@@ -69,16 +65,6 @@ TA2TAPS_BaF2::TA2TAPS_BaF2(const char* name, TA2System* apparatus)
   fSGEnergy = NULL;
   fLGEnergy = NULL;
   fMaxSGElements = 0;
-
-#ifdef WITH_A2DISPLAY
-  // defined in base class TA2ClusterDetector
-  std::string s_name(GetName());
-  std::string s_single = s_name + "_ClustersSingle";
-  fDispClusterHitsSingle = new TH2TAPS(s_single, s_single);
-  std::string s_energy = s_name + "_ClustersEnergy";
-  fDispClusterHitsEnergy = new TH2TAPS(s_energy, s_energy);  
-#endif
-
   // Do not allocate any "new" memory here...Root will wipe
   // Set private variables to zero/false/undefined state
   AddCmdList( kTAPSClustDetKeys );
@@ -420,5 +406,3 @@ inline void TA2TAPS_BaF2::ReadDecoded()
 }
 
 //-----------------------------------------------------------------------------
-
-ClassImp(TA2TAPS_BaF2)

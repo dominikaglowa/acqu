@@ -11,10 +11,9 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-#include "TClass.h"
-#include "TLorentzVector.h"
-
 #include "TOA2BaseDetParticle.h"
+
+ClassImp(TOA2BaseDetParticle)
 
 
 //______________________________________________________________________________
@@ -325,16 +324,6 @@ Double_t TOA2BaseDetParticle::CalculateTOFTAPS(Double_t tapsTime, Bool_t isMC)
 }
 
 //______________________________________________________________________________
-void TOA2BaseDetParticle::SetPosition(TVector3* pos)
-{
-    // Set the hit position of the particle to 'pos.
-
-    fX = pos->X();
-    fY = pos->Y();
-    fZ = pos->Z();
-}
-
-//______________________________________________________________________________
 void TOA2BaseDetParticle::SetTheta(Double_t theta)
 {
     // Set the theta angle keeping the magnitude and the azimuth angle constant (ROOT).
@@ -344,14 +333,6 @@ void TOA2BaseDetParticle::SetTheta(Double_t theta)
     fX = mag * TMath::Sin(theta) * TMath::Cos(phi);
     fY = mag * TMath::Sin(theta) * TMath::Sin(phi);
     fZ = mag * TMath::Cos(theta);
-}
-
-//______________________________________________________________________________
-Double_t TOA2BaseDetParticle::GetFlightPath() const
-{
-    // Return the length of the flight path.
-
-    return TMath::Sqrt(fX*fX + fY*fY + fZ*fZ);
 }
 
 //______________________________________________________________________________
@@ -483,4 +464,4 @@ TOA2BaseDetParticle& TOA2BaseDetParticle::operator=(const TOA2BaseDetParticle& p
 
     return *this;
 }
-ClassImp(TOA2BaseDetParticle)
+

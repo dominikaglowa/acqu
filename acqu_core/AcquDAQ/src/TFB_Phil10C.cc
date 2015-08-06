@@ -14,6 +14,7 @@
 #include "TFB_1821SMI.h"
 #include "TDAQexperiment.h"
 
+ClassImp(TFB_Phil10C)
 
 //-----------------------------------------------------------------------------
 TFB_Phil10C::TFB_Phil10C( Char_t* name, Char_t* file, FILE* log,
@@ -86,5 +87,3 @@ void TFB_Phil10C::Decode(
   *P_buff = buff;
   return;
 }
-
-ClassImp(TFB_Phil10C)

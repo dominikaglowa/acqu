@@ -11,6 +11,7 @@
 
 #include "TCAMAC_2373.h"
 
+ClassImp(TCAMAC_2373)
 
 enum { E2373RAM=200, E2373CCR };
 static Map_t k2373Keys[] = {
@@ -124,5 +125,3 @@ void TCAMAC_2373::InitMEM2373()
   }
 
 }
-
-ClassImp(TCAMAC_2373)

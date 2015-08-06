@@ -61,9 +61,7 @@
 #include <iomanip>
 #include <string>
 #include <fstream>
-#ifdef WITH_LIBLZMA
 #include <lzma.h>
-#endif
 #include <stdint.h>
 
 using namespace std;
@@ -111,6 +109,8 @@ static const Map_t ARProcessType[] = {
 };
 
 
+ClassImp(TAcquRoot)
+
 void* A2RunThread( void* arg )
 {
   //  Threaded running of analyser
@@ -132,7 +132,7 @@ void* A2RunThread( void* arg )
 }
 
 //-----------------------------------------------------------------------------
-TAcquRoot::TAcquRoot( const char* name, Bool_t batch, Bool_t logfiles )
+TAcquRoot::TAcquRoot( const char* name, Bool_t batch )
   :TA2System( name, ConfigMap )
 {
   // Default contructor....don't allocate "new" memory here. Root will wipe
@@ -198,12 +198,7 @@ TAcquRoot::TAcquRoot( const char* name, Bool_t batch, Bool_t logfiles )
   fIsEpicsRead = EFalse;             // no epics read yet
   fIsFinished = EFalse;              // flag to show sort finished
   fIsBatch = batch;                  // save batch flag
-  fIsLogFile = logfiles;
-  if( !batch ) 
-  {
-    if (fIsLogFile) SetLogFile( "AcquRoot.log" );
-    else SetLogFile(NULL);
-  }
+  if( !batch ) SetLogFile( "AcquRoot.log" );
   fIsLocalDAQ = kFALSE;              // default no local DAQ
   fIsMk2Format = kFALSE;             // default not Mk2 format
   fIsPrintError = kFALSE;            // default no error printout
@@ -603,11 +598,10 @@ void TAcquRoot::SetConfig( char* line, int key )
     if( fBatchDir == NULL ){
       fBatchDir = BuildName( name );;
       logfile = BuildName( fBatchDir, "AcquRoot.log" );
-      if (fIsLogFile) SetLogFile( logfile );
-      else SetLogFile(NULL);
-      delete[] logfile;
-      if (fIsLogFile) fprintf(fLogStream," Batch-mode log files stored in directory: %s\n\n",
-	                      fBatchDir );
+      SetLogFile( logfile );
+      delete logfile;
+      fprintf(fLogStream," Batch-mode log files stored in directory: %s\n\n",
+	      fBatchDir );
     }
     break;
   case ERootSplitScaler:
@@ -1014,32 +1008,28 @@ void TAcquRoot::DataLoopDirectIO( )
            << endl
            << " Filename: " << filename 
            << endl;
-      if(start != 0) {
-        PrintError("","DirectIO mode does not support skipping data blocks.", 
-                   EErrFatal);
-      }
       if(filename.size()<4) {
         PrintError("","Unkown file extension, filename too short. Skipping.", 
-                   EErrFatal);
+                   EErrNonFatal);
+        continue;
       }
       Bool_t success = kFALSE;
       // check filename ending
       if(filename.compare(filename.size()-4, 4, ".dat") == 0) {
-        success = DataLoopDirectIOWorker(filename, stop);
+        success = DataLoopDirectIOWorker(filename, start, stop);
       }
-#ifdef WITH_LIBLZMA
       else if(filename.compare(filename.size()-7, 7, ".dat.xz") == 0) {
-        success = DataLoopDirectIOWorkerXZ(filename, stop);
+        success = DataLoopDirectIOWorkerXZ(filename, start, stop);
       }
-#endif
       else {
-        PrintError("","Unkown file extension, only .dat and .dat.xz (if liblzma found) supported.", 
-                   EErrFatal);
+        PrintError("","Unkown file extension, only .dat and .dat.xz supported. Skipping.", 
+                   EErrNonFatal);
+        continue;
       }
       
       if(!success) {
-        PrintError("","Something went wrong processing the file...", 
-                   EErrFatal);        
+        PrintError("","Something went wrong processing the file...see above", 
+                   EErrNonFatal);        
       }
       
       fprintf(fLogStream," End file %s, %d events sorted, last event #%d\n",
@@ -1055,8 +1045,8 @@ void TAcquRoot::DataLoopDirectIO( )
   
 }
 
-#ifdef WITH_LIBLZMA
-Bool_t TAcquRoot::DataLoopDirectIOWorkerXZ(const string& filename, const UInt_t stop) {
+Bool_t TAcquRoot::DataLoopDirectIOWorkerXZ(const string& filename, 
+                                         UInt_t start, UInt_t stop) {
   ifstream file(filename.c_str(), ios::in|ios::binary);
   if(!file.is_open()) {
     return kFALSE;
@@ -1087,14 +1077,9 @@ Bool_t TAcquRoot::DataLoopDirectIOWorkerXZ(const string& filename, const UInt_t 
       strm->next_in = inbuf;
       
       if(!file.read((char*)inbuf, fRecLen)) {
-        // since we're reading compressed data 
-	// with some arbitrary fRecLen, it might be
-	// that we reached the end of file
-	if(!file.eof()) {
-	  PrintError("","File read error.", 
-		     EErrNonFatal); 
-	  return false;
-	}
+        PrintError("","File read error.", 
+                   EErrNonFatal); 
+        return false;
       }
       strm->avail_in = file.gcount();
     
@@ -1190,10 +1175,9 @@ Bool_t TAcquRoot::DataLoopDirectIOWorkerXZ(const string& filename, const UInt_t 
   
   return kFALSE;
 }
-#endif
 
 Bool_t TAcquRoot::DataLoopDirectIOWorker(const string& filename, 
-                                         const UInt_t stop) {
+                                         UInt_t start, UInt_t stop) {
   ifstream file(filename.c_str(), ios::in|ios::binary);
   if(!file.is_open()) {
     PrintError("","Cannot open file.", 
@@ -1419,4 +1403,3 @@ void TAcquRoot::SetDataServer( TA2DataServer* dataserver )
   return;
 }
 
-ClassImp(TAcquRoot)

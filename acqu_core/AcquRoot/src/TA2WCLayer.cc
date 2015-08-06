@@ -12,6 +12,7 @@
 #include "TA2WCLayer.h"
 #include "TA2WireChamber.h"
 
+ClassImp(TA2WCLayer)
 
 //---------------------------------------------------------------------------
   TA2WCLayer::TA2WCLayer( const char* name, Int_t nelem,
@@ -50,4 +51,4 @@ TA2WCLayer::~TA2WCLayer()
     delete fCGClust;
   }
 }
-ClassImp(TA2WCLayer)
+

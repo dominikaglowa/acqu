@@ -44,7 +44,7 @@ MultiADC:       3       1401    1911    1400
 ## Apparatus setup....
 ## Raw analysis may be performed without Apparati
 ##              Name            Class           	Setup file
-Apparatus:      TAGG            TA2Tagger   		Tagger_883.TE.dat
+Apparatus:      TAGG            TA2Tagger   		Tagger_855.TE.dat
 ##
 ## Turn on apparatus-level reconstruction
 ##Reconstruct-Analysis:
@@ -64,10 +64,10 @@ Initialise:
 Period:	100000	PeriodMacro.C	PeriodMacro()
 ##
 ## EndFile...each time an input data file is closed
-#EndFile:		EndFileMacro.C  EndFileMacro()
+EndFile:		EndFileMacro.C  EndFileMacro()
 ##
 ## Finish...when all input data files processed
-Finish:		FinishMacro.C	FinishMacro("TaggEff.root")
+#Finish:		FinishMacro.C	FinishMacro("TaggEff.root")
 ##
 ## Save all accepted events (ie those which pass all data cuts) to a
 ## ROOT file. Data saved in RAW format (ie ADC indices and values)
@@ -79,7 +79,7 @@ Finish:		FinishMacro.C	FinishMacro("TaggEff.root")
 ## Tagger 
 ## 
 ## TDCs
-##Display: MultiHit 1432 1783 2000 -1000 1000 0
+Display: MultiHit 1432 1783 2000 -1000 1000 0
 ##
 ## QDCs
 ##Display: ADC 800  1183
@@ -94,7 +94,7 @@ Finish:		FinishMacro.C	FinishMacro("TaggEff.root")
 ##
 ##
 ## Pb-Glass, paddle QDCs
-##Display: ADC 1280 1375
+Display: ADC 1280 1375
 ##
 ##
 ## Display blocks of scalers

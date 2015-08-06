@@ -12,6 +12,7 @@
 
 #include "TCAMAC_GSI4800.h"
 
+ClassImp(TCAMAC_GSI4800)
 
 //-----------------------------------------------------------------------------
 TCAMAC_GSI4800::TCAMAC_GSI4800( Char_t* name, Char_t* input, FILE* log,
@@ -87,5 +88,3 @@ void TCAMAC_GSI4800::ReadIRQScaler( void** outBuffer )
   Read(EGSI4800_Reset);
   Read(EGSI4800_Enable);
 }
-
-ClassImp(TCAMAC_GSI4800)

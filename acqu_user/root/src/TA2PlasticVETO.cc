@@ -15,6 +15,7 @@
 
 #include "TA2PlasticVETO.h"
 
+ClassImp(TA2PlasticVETO)
 
 //---------------------------------------------------------------------------
 TA2PlasticVETO::TA2PlasticVETO( const char* name, TA2System* apparatus )
@@ -59,4 +60,4 @@ void TA2PlasticVETO::SaveDecoded( )
 {
   // Save decoded info to Root Tree file
 }
-ClassImp(TA2PlasticVETO)
+

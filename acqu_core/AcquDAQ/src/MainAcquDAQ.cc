@@ -48,4 +48,3 @@ else {
    printf("\n<Initialization completely done>\n");
 }
 }
-

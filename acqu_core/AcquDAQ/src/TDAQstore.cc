@@ -19,6 +19,7 @@
 #include "ARFile_t.h"
 #include "TA2Mk2Format.h"
 
+ClassImp(TDAQstore)
 
 // Type of data output channel
 static Map_t kExpDataOut[] = {
@@ -145,4 +146,4 @@ void TDAQstore::Process()
     fOutBuff->CNext();            // Mark current buffer empty and go to next
   }
 }
-ClassImp(TDAQstore)
+

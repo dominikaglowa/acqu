@@ -14,10 +14,11 @@
 #ifndef OSCAR_TOA2PSA
 #define OSCAR_TOA2PSA
 
-#include "TObject.h"
+#include "TGraph.h"
 
-class TGraph;
-class TOA2BaseDetParticle;
+#include "TOA2BaseDetParticle.h"
+#include "TOLoader.h"
+
 
 class TOA2PSA : public TObject
 {

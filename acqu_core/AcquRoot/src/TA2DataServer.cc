@@ -44,6 +44,7 @@
 #include "TA2TAPSMk2Format.h"
 #include "ARFile_t.h"
 
+ClassImp(TA2DataServer)
 
 // Command-line key words which determine what to read in
 // constants for command-line maps below
@@ -134,17 +135,12 @@ TA2DataServer::TA2DataServer( const Char_t* name, TAcquRoot* ar )
   fIsStore = EFalse;
   fIsSortLock = ETrue;
   fIsHeaderInit = EFalse;
-  Char_t* logfile;
   // Check batch log-file redirection
   if( fAcquRoot->IsBatch() ){
     if( fAcquRoot->GetBatchDir() )
-      logfile = BuildName(fAcquRoot->GetBatchDir(), "DataServer.log");
+      SetLogFile(BuildName(fAcquRoot->GetBatchDir(), "DataServer.log"));
   }
-  else logfile = BuildName("DataServer.log");
-  if (fAcquRoot->IsLogFile()) SetLogFile(logfile);
-  else SetLogFile(NULL);
-  delete[] logfile;
-  return;
+  else SetLogFile(BuildName("DataServer.log"));
 }
 
 //-----------------------------------------------------------------------------
@@ -681,4 +677,4 @@ void TA2DataServer::MergeBuffers(UInt_t buffType)
     *fOutBuff++ = EEndEvent;
   }
 }
-ClassImp(TA2DataServer)
+

@@ -15,6 +15,7 @@
 
 #include "TCCalibType.h"
 
+ClassImp(TCCalibType)
 
 
 //______________________________________________________________________________
@@ -51,4 +52,4 @@ void TCCalibType::Print()
     }
     printf("\r\n");
 }
-ClassImp(TCCalibType)
+

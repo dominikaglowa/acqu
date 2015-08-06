@@ -15,6 +15,7 @@
 
 #include "TCCalibTAPSEnergySG.h"
 
+ClassImp(TCCalibTAPSEnergySG)
 
 
 //______________________________________________________________________________
@@ -409,4 +410,4 @@ void TCCalibTAPSEnergySG::Write()
     // save overview canvas
     SaveCanvas(fCanvasResult, "Overview");
 }
-ClassImp(TCCalibTAPSEnergySG)
+

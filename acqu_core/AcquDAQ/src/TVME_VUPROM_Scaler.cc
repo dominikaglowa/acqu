@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 
+ClassImp(TVME_VUPROM_Scaler)
 
 enum { EVUPS_ModuleChain=400, EVUPS_Scaler };
 
@@ -209,5 +210,3 @@ void TVME_VUPROM_Scaler::StartScalers()
   // second register is global scaler gate, see SetConfig()
   Write((UInt_t)1, (UInt_t)1);
 }
-
-ClassImp(TVME_VUPROM_Scaler)

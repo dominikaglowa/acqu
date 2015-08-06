@@ -25,6 +25,7 @@ static const Map_t kPlasticPIDKeys[] =
   {NULL, -1}
 };
 
+ClassImp(TA2PlasticPID)
 
 //---------------------------------------------------------------------------
 
@@ -189,5 +190,3 @@ void TA2PlasticPID::ReadDecoded()
 }
 
 //---------------------------------------------------------------------------
-
-ClassImp(TA2PlasticPID)

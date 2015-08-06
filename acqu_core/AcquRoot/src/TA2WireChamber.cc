@@ -17,6 +17,7 @@
 
 #include "TA2WireChamber.h"
 
+ClassImp(TA2WireChamber)
 
 // constants for command-line maps below
 enum { 
@@ -242,5 +243,3 @@ void TA2WireChamber::LoadVariable( )
   TA2DataManager::LoadVariable("TrackTheta", fTrackTheta, EDMultiX);
   TA2DataManager::LoadVariable("TrackPhi", fTrackPhi, EDMultiX);
 }
-
-ClassImp(TA2WireChamber)

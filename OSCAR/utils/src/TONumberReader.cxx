@@ -1,3 +1,5 @@
+// SVN Info: $Id: TONumberReader.cxx 925 2011-05-29 03:25:14Z werthm $
+
 /*************************************************************************
  * Author: Dominik Werthmueller, 2007-2008
  *************************************************************************/
@@ -12,19 +14,13 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-#include <string>
-#include <sstream>
-#include <fstream>
-
-#include "TMath.h"
-
 #include "TONumberReader.h"
-#include "TOArray2D.h"
-#include "TOSUtils.h"
+
+ClassImp(TONumberReader)
 
 
 //______________________________________________________________________________
-TONumberReader::TONumberReader(const Char_t* inFileName, Int_t inColumns) 
+TONumberReader::TONumberReader(const char* inFileName, Int_t inColumns) 
     : TOASCIIReader(inFileName)
 {
     // Construct a TONumberReader with the ASCII file name and the number
@@ -49,7 +45,7 @@ TONumberReader::~TONumberReader()
 }
 
 //______________________________________________________________________________
-void TONumberReader::ParseLine(const Char_t* inLine)
+void TONumberReader::ParseLine(const char* inLine)
 {
     // Read in the numbers of one line and add them to the data structure.
     
@@ -57,8 +53,8 @@ void TONumberReader::ParseLine(const Char_t* inLine)
     Char_t* l = TOSUtils::Trim(inLine);
     if (l[0] == '\0' || TOSUtils::IsComment(inLine)) return;
     
-    std::string line(inLine);
-    std::istringstream iss(line);
+    string line(inLine);
+    istringstream iss(line);
     Double_t value;
     
     // read all columns
@@ -74,14 +70,6 @@ void TONumberReader::ParseLine(const Char_t* inLine)
 
     // increment row counter
     fNrow++;
-}
-
-//______________________________________________________________________________
-Double_t* TONumberReader::GetColumn(Int_t c) const
-{
-    // Return the array of the column 'c'.
-
-    return fData->GetColumn(c);
 }
 
 //______________________________________________________________________________
@@ -162,11 +150,11 @@ Int_t TONumberReader::CountLines()
     fFile->open(fFileName);
 
     // read line by line and call ParseLine()
-    Char_t line[1024];
+    char line[256];
     Int_t lines = 0;
     while (!fFile->eof())
     {
-        fFile->getline(line, 1024);
+        fFile->getline(line, 256);
         if ((TOSUtils::Trim(line))[0] == '\0' || TOSUtils::IsComment(line)) continue;
         lines++;
     }
@@ -293,4 +281,4 @@ Double_t TONumberReader::GetRowAverageWeighted(Int_t r, Double_t* outErr)
 
     return val;
 }
-ClassImp(TONumberReader)
+

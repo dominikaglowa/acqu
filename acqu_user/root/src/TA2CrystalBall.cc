@@ -39,6 +39,7 @@ static const Map_t kCBKeys[] = {
   {NULL,            -1}
 };
 
+ClassImp(TA2CrystalBall)
 
 //-----------------------------------------------------------------------------
 
@@ -427,5 +428,3 @@ inline void TA2CrystalBall::Cleanup()
 }
 
 //-----------------------------------------------------------------------------
-
-ClassImp(TA2CrystalBall)

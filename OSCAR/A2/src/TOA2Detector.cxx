@@ -12,9 +12,9 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-#include "TError.h"
-
 #include "TOA2Detector.h"
+
+ClassImp(TOA2Detector)
 
 
 //______________________________________________________________________________
@@ -210,4 +210,4 @@ Bool_t TOA2Detector::IsTAPSPWO(Int_t id, A2TAPSType_t type)
         }
     }
 }
-ClassImp(TOA2Detector)
+

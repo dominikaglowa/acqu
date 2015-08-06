@@ -12,6 +12,7 @@
 
 #include "TA2CylWire.h"
 
+ClassImp(TA2CylWire)
 
 //---------------------------------------------------------------------------
 TA2CylWire::TA2CylWire( const char* name, Int_t nelem, Int_t maxclust,
@@ -27,4 +28,4 @@ TA2CylWire::TA2CylWire( const char* name, Int_t nelem, Int_t maxclust,
   }
   fPhiSpace = TMath::TwoPi()/fNElement;
 }
-ClassImp(TA2CylWire)
+

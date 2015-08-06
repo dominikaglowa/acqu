@@ -17,11 +17,12 @@ Input-Streams:	1		32768		0
 ## Optional directory spec. If not specified File-Names must contain the full
 ## directory path
 #File-Directory:	 /Disk/thehub_disk_5/
-#File-Directory:	 /Disk/ds-pnp-np/dominika/Sn116/
+File-Directory:	 /Disk/ds-sopa-group/np/dominika/Sn116/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Sn124/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Sn120/CBfiles/
 #File-Directory:	 /Disk/ds-pnp-np/dominika/Pb208/
-File-Directory:	 /Disk/ecdf_thehub/thehub6/A2_Deuterium/
+#File-Directory:	 /Disk/ecdf_thehub/thehub6/A2_Deuterium/
+#File-Directory:	/Disk/ds-sopa-group/np/dominika/TaggEff/
 ##
 ## Specify each input stream
 ## From disk file, ACQU (Mk1) format, save any output to file (save=1)
@@ -33,9 +34,25 @@ Stream-Spec:	File	Mk1	0	32768	32	0	400
 ## Now the list of data files to analyse
 ##		File Name	1st rec	Last rec
 #
+####Sn116 tagging efficiency
+#File-Name:TaggEff_254.dat 0 0
+#File-Name:TaggEff_255.dat 0 0
+#File-Name:TaggEff_256.dat 0 0
+
+#File-Name:TaggEff_258.dat 0 0
+#File-Name:TaggEff_259.dat 0 0
+#File-Name:TaggEff_260.dat 0 0
+
+#File-Name:TaggEff_281.dat 0 0
+#File-Name:TaggEff_282.dat 0 0
+#File-Name:TaggEff_283.dat 0 0
+
+#File-Name:TaggEff_284.dat 0 0
+#File-Name:TaggEff_285.dat 0 0
+#File-Name:TaggEff_286.dat 0 0
 #Stephen's 2014 data
 #File-Name: 	CB_314.dat.xz	0	0
-File-Name: 	CB_315.dat.xz	0	0
+#File-Name: 	CB_315.dat.xz	0	0
 #October 2012 Pb208
 #File-Name:    CB_683.dat	0	0
 #File-Name:    CB_684.dat	0	0
@@ -83,7 +100,7 @@ File-Name: 	CB_315.dat.xz	0	0
 #File-Name:    CB_728.dat	0	0
 #File-Name:    CB_729.dat	0	0
 #October 2012 Sn116
-#File-Name:	CB_422.dat	0	0
+File-Name:	CB_422.dat	0	0
 #File-Name:      CB_423.dat      0       0
 #File-Name:      CB_424.dat      0       0
 #File-Name:      CB_426.dat      0       0

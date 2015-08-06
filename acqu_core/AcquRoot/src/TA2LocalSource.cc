@@ -22,6 +22,7 @@
 #include "Semaphore_t.h"
 #include "TDAQexperiment.h"
 
+ClassImp(TA2LocalSource)
 
 TA2LocalSource::TA2LocalSource( char* name, Int_t irecl,
 			      Int_t save, Int_t rsize, Int_t swap ) :
@@ -53,4 +54,4 @@ void TA2LocalSource::Initialise()
   if( !fInRecLen ) fInRecLen = fBuffer->GetLenBuff();
 }
 
-ClassImp(TA2LocalSource)
+

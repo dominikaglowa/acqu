@@ -1,5 +1,7 @@
+// SVN Info: $Id: TOLoader.cxx 1625 2013-01-07 14:50:45Z werthm $
+
 /*************************************************************************
- * Author: Dominik Werthmueller, 2009-2014
+ * Author: Dominik Werthmueller, 2009-2011
  *************************************************************************/
 
 //////////////////////////////////////////////////////////////////////////
@@ -11,22 +13,8 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-#include "TCanvas.h"
-#include "TFile.h"
-#include "TH2.h"
-#include "TH3.h"
-#include "TF1.h"
-#include "THnSparse.h"
-#include "TGraph.h"
-#include "TGraphErrors.h"
-#include "TCutG.h"
-#include "TSystemDirectory.h"
-#include "TChain.h"
-
 #include "TOLoader.h"
-#include "TOSUtils.h"
-#include "TONumberReader.h"
-#include "TOArray2D.h"
+
 
 //______________________________________________________________________________
 void TOLoader::LoadTaggerCalibration(const Char_t* fileName, Int_t nChannel,
@@ -53,7 +41,7 @@ void TOLoader::LoadTaggerCalibration(const Char_t* fileName, Int_t nChannel,
         }
         
         if (!quiet)
-            Info("TOLoader::LoadTaggerCalibration", "Loaded tagger energy calib. for %d channels from '%s'", 
+            Info("TOLoader::LoadTaggerCalibration", "Loaded tagger energy calibration for %d channels from '%s'", 
                  nChannel, fileName);
     }
     else
@@ -205,7 +193,7 @@ void TOLoader::LoadFilesToChains(const Char_t* loc, TChain** chains, Int_t nCh)
     TList* list = dir.GetListOfFiles();
     if (!list)
     {
-        Error("TOLoader::LoadFilesToChains", "'%s' is not a directory!", loc);
+        Error("LoadFilesToChains", "'%s' is not a directory!", loc);
         return;
     }
 
@@ -226,7 +214,7 @@ void TOLoader::LoadFilesToChains(const Char_t* loc, TChain** chains, Int_t nCh)
             sprintf(tmp, "%s/%s", loc, f->GetName());
 
             // user information
-            Info("TOLoader::LoadFilesToChains", "[%d] Adding '%s' to chain %d", n+1, tmp, (n % nCh));
+            Info("LoadFilesToChains", "[%d] Adding '%s' to chain %d", n, tmp, (n % nCh));
             
             // add file to chains
             chains[n % nCh]->Add(tmp);

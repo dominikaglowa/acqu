@@ -15,12 +15,13 @@
 #define OSCAR_TOA2BaseDetParticle
 
 #include "TObject.h"
+#include "TClass.h"
+#include "TVector3.h"
 #include "TPDGCode.h"
+#include "TLorentzVector.h"
 
 #include "TOA2Detector.h"
 
-class TVector3;
-class TLorentzVector;
 
 class TOA2BaseDetParticle : public TObject
 {
@@ -79,7 +80,7 @@ public:
     void SetX(Double_t x) { fX = x; }
     void SetY(Double_t y) { fY = y; }
     void SetZ(Double_t z) { fZ = z; }
-    void SetPosition(TVector3* pos);
+    void SetPosition(TVector3* pos) { fX = pos->X(); fY = pos->Y(); fZ = pos->Z(); }
     void SetTheta(Double_t theta);
 
     void SetEnergy(Double_t energy) { fEnergy = energy; }
@@ -113,7 +114,7 @@ public:
     Double_t GetX() const { return fX; }
     Double_t GetY() const { return fY; }
     Double_t GetZ() const { return fZ; }
-    Double_t GetFlightPath() const;
+    Double_t GetFlightPath() const { return TMath::Sqrt(fX*fX + fY*fY + fZ*fZ); }
     Double_t GetTheta() const;
     Double_t GetPhi() const;
 

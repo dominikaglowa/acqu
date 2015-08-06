@@ -19,6 +19,7 @@
 
 #include <time.h>
 
+ClassImp(TGUIsupervise)
 
 //-----------------------------------------------------------------------------
 TGUIsupervise::TGUIsupervise( Char_t* name,  TDAQexperiment* exp,
@@ -119,5 +120,3 @@ Bool_t TGUIsupervise::IsDataReady()
 { 
   return fSocket->IsReady();
 }
-
-ClassImp(TGUIsupervise)

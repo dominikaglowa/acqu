@@ -25,6 +25,7 @@
 #include "TFile.h"                           // ROOT file
 #include "ARFile_t.h"
 
+ClassImp(TA2HistManager)
 
 //-----------------------------------------------------------------------------
 TA2HistManager::TA2HistManager(const Char_t* name, const Map_t* commlist,
@@ -544,5 +545,3 @@ void TA2HistManager::ReadChanLim(Int_t nChan, Double_t** xBuff, Char_t* xname)
     PrintError(xname,"<Insufficient channel boundaries supplied>", EErrFatal);
   return;
 }
-
-ClassImp(TA2HistManager)

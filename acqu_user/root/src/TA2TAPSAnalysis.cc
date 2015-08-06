@@ -15,6 +15,7 @@
 
 #include "TA2TAPSAnalysis.h"
 
+ClassImp(TA2TAPSAnalysis)
 
 
 //______________________________________________________________________________
@@ -659,4 +660,4 @@ void TA2TAPSAnalysis::Reconstruct()
     }
 
 }
-ClassImp(TA2TAPSAnalysis)
+

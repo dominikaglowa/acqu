@@ -1,3 +1,5 @@
+// SVN Info: $Id: TOArray2D.h 1621 2012-12-30 22:57:19Z werthm $
+
 /*************************************************************************
  * Author: Dominik Werthmueller, 2007-2009
  *************************************************************************/
@@ -15,6 +17,8 @@
 #define OSCAR_TOArray2D
 
 #include "TNamed.h"
+#include "TMath.h"
+
 
 class TOArray2D : public TNamed
 {
@@ -24,7 +28,7 @@ protected:
     Int_t fNrow;                                   // Number of rows (2nd dimension)
     Double_t** fData;                              //[fNcol][fNrow] Data array
 
-    Bool_t BoundsOk(const Char_t* inLoc, Int_t inColumn, Int_t inRow) const;
+    Bool_t BoundsOk(const char* inLoc, Int_t inColumn, Int_t inRow) const;
 
 public:
     TOArray2D(): TNamed(), fNcol(0), fNrow(0), fData(0) { }

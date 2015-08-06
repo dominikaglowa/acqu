@@ -1,5 +1,7 @@
+// SVN Info: $Id: TOA2RecParticle.cxx 1257 2012-07-26 15:33:13Z werthm $
+
 /*************************************************************************
- * Author: Dominik Werthmueller, 2008-2014
+ * Author: Dominik Werthmueller, 2008-2010
  *************************************************************************/
 
 //////////////////////////////////////////////////////////////////////////
@@ -11,14 +13,9 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-#include "TClass.h"
-#include "TLorentzVector.h"
-#include "TH1.h"
-#include "TDatabasePDG.h"
-
 #include "TOA2RecParticle.h"
-#include "TOA2DetParticle.h"
-#include "TOGlobals.h"
+
+ClassImp(TOA2RecParticle)
 
 
 //______________________________________________________________________________
@@ -29,29 +26,29 @@ TOA2RecParticle::TOA2RecParticle()
     
     // do not save bit mask and unique ID
     Class()->IgnoreTObjectStreamer();
-    
-    // init members
+ 
     fP4 = 0;
+
     fNDetectedProducts = 0;
-    fDetectedProducts = 0;
-    fChiSquare = 0;
+    fDetectedProducts  = 0;
+    fChiSquare         = 0.;
 }
 
 //______________________________________________________________________________
-TOA2RecParticle::TOA2RecParticle(Int_t nPart)
+TOA2RecParticle::TOA2RecParticle(Int_t nParticle)
     : TObject()
 {
-    // Constructor using 'nPart' particles as the number of detected products.
+    // Pseudo-non-empty constructor (nParticle is not really used here).
     
     // do not save bit mask and unique ID
     Class()->IgnoreTObjectStreamer();
  
-    // init members
+    // create members
     fP4 = new TLorentzVector();
-    fNDetectedProducts = nPart;
-    fDetectedProducts = new TOA2DetParticle*[fNDetectedProducts];
-    for (Int_t i = 0; i < fNDetectedProducts; i++) fDetectedProducts[i] = 0;
-    fChiSquare = 0;
+
+    fNDetectedProducts = 0;
+    fDetectedProducts  = 0;
+    fChiSquare         = 0.;
 }
 
 //______________________________________________________________________________
@@ -63,16 +60,14 @@ TOA2RecParticle::TOA2RecParticle(const TOA2RecParticle& orig)
     // do not save bit mask and unique ID
     Class()->IgnoreTObjectStreamer();
  
-    // init members
+    // create members
     fP4 = new TLorentzVector(*orig.fP4);
+    
     fNDetectedProducts = orig.fNDetectedProducts;
+    fChiSquare         = orig.fChiSquare;
+    
     fDetectedProducts = new TOA2DetParticle*[fNDetectedProducts];
-    for (Int_t i = 0; i < fNDetectedProducts; i++) 
-    {
-        if (orig.fDetectedProducts[i]) fDetectedProducts[i] = new TOA2DetParticle(*orig.fDetectedProducts[i]);
-        else fDetectedProducts[i] = 0;
-    }
-    fChiSquare = orig.fChiSquare;
+    for (Int_t i = 0; i < fNDetectedProducts; i++) fDetectedProducts[i] = new TOA2DetParticle(*orig.GetDetectedProduct(i));
 }
 
 //______________________________________________________________________________
@@ -80,36 +75,50 @@ TOA2RecParticle::~TOA2RecParticle()
 {
     // Destructor.
  
+    Clear();
+}
+
+//______________________________________________________________________________
+void TOA2RecParticle::Clear(Option_t* option)
+{
+    // Clear the memory.
+    
     if (fP4) delete fP4;
     if (fDetectedProducts) 
     {
-        for (Int_t i = 0; i < fNDetectedProducts; i++) 
-            if (fDetectedProducts[i]) delete fDetectedProducts[i];
+        for (Int_t i = 0; i < fNDetectedProducts; i++) delete fDetectedProducts[i];
         delete [] fDetectedProducts;
     }
 }
 
 //______________________________________________________________________________
-Bool_t TOA2RecParticle::Reconstruct(Int_t nPart, TOA2DetParticle** partList)
+Bool_t TOA2RecParticle::Reconstruct(Int_t nParticle, TOA2DetParticle** particleList)
 {
     // Basic reconstruction of the particle from its detected decay products.
     // Get the mass of the detected decay products, calculate the 4-vectors
     // and combine them to this particle's 4-vector.
     //
     // Return kTRUE if the reconstruction was successful.
+    //
+    // Overwrite this method if you need a more sophisticated reconstruction.
     
     // check the number of particles
-    if (nPart != fNDetectedProducts)
+    if (!nParticle)
     {
-        Error("Reconstruct", "Number of particles has to be equal to %d!", fNDetectedProducts);
+        fNDetectedProducts = 0;
+        fDetectedProducts  = 0;
+        Error("Reconstruct", "Number of particles cannot be zero!");
         return kFALSE;
     }
+    // copy the particles directly to the detected decay product list
+    // and mark them as gammas
     else
     {
-        // add particles as photons
+        fNDetectedProducts = nParticle;
+        fDetectedProducts = new TOA2DetParticle*[fNDetectedProducts];
         for (Int_t i = 0; i < fNDetectedProducts; i++) 
         {
-            fDetectedProducts[i] = new TOA2DetParticle(*partList[i]);
+            fDetectedProducts[i] = new TOA2DetParticle(*particleList[i]);
             fDetectedProducts[i]->SetPDG_ID(kGamma);
         }
 
@@ -166,6 +175,19 @@ void TOA2RecParticle::CalculateConstrained4Vector(Double_t mass, TLorentzVector*
         return;
     }
 
+    /*
+    //
+    // gives the same result as the code below
+    //
+    Double_t ptot_old = (fP4->Vect()).Mag();
+    Double_t energy = mass / fP4->M() * fP4->E();
+
+    Double_t ptot_new = TMath::Sqrt(energy * energy - mass * mass);
+    Double_t scale = ptot_new / ptot_old;
+
+    fP4Const->SetPxPyPzE(fP4->Px() * scale, fP4->Py() * scale, fP4->Pz() * scale, energy);
+    */
+    
     Double_t scale = mass / fP4->M();
     outP4->SetPxPyPzE(fP4->Px()*scale, fP4->Py()*scale, fP4->Pz()*scale, fP4->E()*scale);
 }
@@ -179,22 +201,30 @@ Double_t TOA2RecParticle::GetAverageTime(A2Detector_t detector) const
     // If no decay products are set or no decay products are found int the 
     // specified detector 9999 is returned.
 
-    Double_t avr_time = 0.;
-    Int_t n = 0;
-
-    // loop over decay products
-    for (Int_t i = 0; i < fNDetectedProducts; i++)
+    if (fNDetectedProducts)
     {
-        // check detector
-        if (fDetectedProducts[i]->GetDetector() == detector) 
-        {
-            avr_time += fDetectedProducts[i]->GetTime();
-            n++;
-        }
-    }
+        Double_t avr_time = 0.;
+        Int_t n = 0;
 
-    if (!n) return 9999;
-    else return avr_time / (Double_t) n;
+        // loop over decay products
+        for (Int_t i = 0; i < fNDetectedProducts; i++)
+        {
+            // check detector
+            if (fDetectedProducts[i]->GetDetector() == detector) 
+            {
+                avr_time += fDetectedProducts[i]->GetTime();
+                n++;
+            }
+        }
+
+        if (!n) return 9999;
+        else return avr_time / (Double_t) n;
+    }
+    else 
+    {   
+        Error("GetAverageTime", "No detected products defined!");
+        return 9999;
+    }
 }
 
 //______________________________________________________________________________
@@ -317,108 +347,59 @@ TOA2DetParticle* TOA2RecParticle::GetDetectedProduct(Int_t index) const
 }
 
 //______________________________________________________________________________
-void TOA2RecParticle::Reset()
-{
-    // Reset the content for a new reconstruction.
-
-    // reset class members
-    fP4->SetPxPyPzE(0, 0, 0, 0);
-    for (Int_t i = 0; i < fNDetectedProducts; i++) 
-    {
-        if (fDetectedProducts)
-        {
-            if (fDetectedProducts[i]) 
-            {
-                delete fDetectedProducts[i];
-                fDetectedProducts[i] = 0;
-            }
-        }
-    }
-    fChiSquare = 0;
-}
-
-//______________________________________________________________________________
 void TOA2RecParticle::Print(Option_t* option) const
 {
     // Print out the content of this class.
 
     printf("TOA2RecParticle content:\n");
-    printf("4-vector               : %f %f %f %f %f\n", fP4->Px(), fP4->Py(),fP4->Pz(),fP4->E(), fP4->M());
+    if (fP4) printf("4-vector               : %f %f %f %f %f\n", fP4->Px(), fP4->Py(),fP4->Pz(),fP4->E(), fP4->M());
+    else printf("4-vector               : zero\n");
     printf("chi square (reconstr.) : %f\n", fChiSquare);
+
     printf("detected products      : %d\n", fNDetectedProducts);
-    for (Int_t i = 0; i < fNDetectedProducts; i++) 
-    {
-        printf("\n");
-        printf("product %d\n", i+1);
-        if (fDetectedProducts[i]) fDetectedProducts[i]->Print();
-        else printf("undefined\n");
-    }
-}
-
-//______________________________________________________________________________
-TOA2RecParticle& TOA2RecParticle::operator=(const TOA2RecParticle& p)
-{
-    // Assignment operator.
-
-    // check self assignment
-    if (this != &p)
-    {
-        *fP4 = *p.fP4;
-        fChiSquare = p.fChiSquare;
-        
-        // delete current particles
-        for (Int_t i = 0; i < fNDetectedProducts; i++) 
-            if (fDetectedProducts[i]) delete fDetectedProducts[i];
-        delete [] fDetectedProducts;
-
-        // set new particles
-        fNDetectedProducts = p.fNDetectedProducts;
-        fDetectedProducts = new TOA2DetParticle*[fNDetectedProducts];
+    if (fDetectedProducts) 
+    {   
         for (Int_t i = 0; i < fNDetectedProducts; i++) 
         {
-            if (p.fDetectedProducts[i]) fDetectedProducts[i] = new TOA2DetParticle(*p.fDetectedProducts[i]);
-            else fDetectedProducts[i] = 0;
+            printf("\n");
+            printf("product %d\n", i+1);
+            fDetectedProducts[i]->Print();
         }
+        printf("\n");
     }
-    
-    return *this;
 }
 
-//______________________________________________________________________________
-TOA2RecParticle& TOA2RecParticle::operator+=(const TOA2RecParticle& p)
+TOA2RecParticle operator+(const TOA2RecParticle& part1, const TOA2RecParticle& part2)
 {
-    // Compound assignment operator +=.
-    
-    *fP4 += *p.fP4;
-    
-    // backup old particle list
-    TOA2DetParticle** old = fDetectedProducts;
-    
-    // create new particle list
-    fDetectedProducts = new TOA2DetParticle*[fNDetectedProducts+p.fNDetectedProducts];
-    for (Int_t i = 0; i < fNDetectedProducts; i++) fDetectedProducts[i] = old[i];
-    
-    // add new particles
-    for (Int_t i = 0; i < p.fNDetectedProducts; i++) 
-    {
-        if (p.fDetectedProducts[i]) fDetectedProducts[fNDetectedProducts+i] = new TOA2DetParticle(*p.fDetectedProducts[i]);
-        else fDetectedProducts[fNDetectedProducts+i] = 0;
-    }
+    // Add two reconstructed particles.
+    //
+    // NOTE: Currently only the 4-vector and the list of detected particles are
+    //       added.
 
-    // set new number of particles
-    fNDetectedProducts += p.fNDetectedProducts;
-    
-    // destroy old list
-    delete [] old;
+    // create the object
+    TOA2RecParticle out(0);
 
-    return *this;
+    // set the 4-vector
+    TLorentzVector sum = *part1.Get4Vector() + *part2.Get4Vector();
+    out.Set4Vector(&sum);
+    
+    //
+    // set the detected products
+    //
+
+    // get the number of products, set the total number of products
+    Int_t nPart1 = part1.GetNDetectedProducts();
+    Int_t nPart2 = part2.GetNDetectedProducts();
+    out.SetNDetectedProducts(nPart1+nPart2);
+    
+    // create the new product list and copy the products over there
+    TOA2DetParticle** fDetectedProducts = new TOA2DetParticle*[nPart1+nPart2];
+    for (Int_t i = 0; i < nPart1; i++) fDetectedProducts[i] = new TOA2DetParticle(*part1.GetDetectedProduct(i));
+    for (Int_t i = 0; i < nPart2; i++) fDetectedProducts[nPart1+i] = new TOA2DetParticle(*part2.GetDetectedProduct(i));
+    
+    // set the list in the new object
+    out.SetDetectedProducts(fDetectedProducts);
+
+    return out;
 }
 
-//______________________________________________________________________________
-const TOA2RecParticle TOA2RecParticle::operator+(const TOA2RecParticle& p) const
-{
-    // Binary Arithmetic Operators +.
-
-     return TOA2RecParticle(*this) += p;
-}
-ClassImp(TOA2RecParticle)
